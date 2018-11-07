@@ -15,6 +15,7 @@ class House_types(object):
         self.perc_increase = 0
         self.length = 0
         self.width = 0
+        self.portion = 0
 
     def calculate_distance(self, other_house):
         """
@@ -36,7 +37,7 @@ class House_types(object):
         """
         Check if there are too many houses already.
         """
-        max_houses *= 0.60
+        max_houses *= self.portion
         if amount_houses > max_houses:
             return True
         return False
@@ -52,6 +53,7 @@ class House(House_types):
         self.perc_increase = 0.03
         self.length = 10
         self.width = 10
+        self.portion = 0.60 # 60% van de woningen
 
 class Bungalow(House_types):
     """
@@ -64,6 +66,7 @@ class Bungalow(House_types):
         self.perc_increase = 0.04
         self.length = 13
         self.width = 10.5
+        self.portion = 0.25
 
 class Maison(House_types):
     """
@@ -76,6 +79,7 @@ class Maison(House_types):
         self.perc_increase = 0.06
         self.length = 17
         self.width = 16.5
+        self.portion = 0.15
 
 
 if __name__ == "__main__":
