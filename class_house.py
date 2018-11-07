@@ -47,8 +47,8 @@ class House(House_types):
     """
     self.value = 285000
     self.perc_increase = 0.03
-    self.length = 8
-    self.width = 8
+    self.length = 10
+    self.width = 10
 
 class Bungalow(House_types):
     """
@@ -56,8 +56,8 @@ class Bungalow(House_types):
     """
     self.value = 399000
     self.perc_increase = 0.04
-    self.length = 10
-    self.width = 7.5
+    self.length = 13
+    self.width = 10.5
 
 class Maison(House_types):
     """
@@ -65,8 +65,8 @@ class Maison(House_types):
     """
     self.value = 610000
     self.perc_increase = 0.06
-    self.length = 11
-    self.width = 10.5
+    self.length = 17
+    self.width = 16.5
 
 
 if __name__ == "__main__":
