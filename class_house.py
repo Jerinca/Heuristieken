@@ -11,10 +11,10 @@ class House_types(object):
         """
         self.x = x
         self.y = y
-        self.value = value
-        self.perc_increase = perc_increase
-        self.length = length
-        self.width = width
+        self.value = 0
+        self.perc_increase = 0
+        self.length = 0
+        self.width = 0
 
     def calculate_distance(self, other_house):
         """
@@ -45,33 +45,42 @@ class House(House_types):
     """
     Representation of a house (child) in Amstelhaege
     """
-    self.value = 285000
-    self.perc_increase = 0.03
-    self.length = 10
-    self.width = 10
+
+    def __init__(self, x, y):
+        House_types.__init__(self, x, y)
+        self.value = 285000
+        self.perc_increase = 0.03
+        self.length = 10
+        self.width = 10
 
 class Bungalow(House_types):
     """
     Representation of a Bungalow (child) in Amstelhaege
     """
-    self.value = 399000
-    self.perc_increase = 0.04
-    self.length = 13
-    self.width = 10.5
+
+    def __init__(self, x, y):
+        House_types.__init__(self, x, y)
+        self.value = 399000
+        self.perc_increase = 0.04
+        self.length = 13
+        self.width = 10.5
 
 class Maison(House_types):
     """
     Representation of a Maison (child) in Amstelhaege
     """
-    self.value = 610000
-    self.perc_increase = 0.06
-    self.length = 17
-    self.width = 16.5
+
+    def __init__(self, x, y):
+        House_types.__init__(self, x, y)
+        self.value = 610000
+        self.perc_increase = 0.06
+        self.length = 17
+        self.width = 16.5
 
 
 if __name__ == "__main__":
-    house1 = House_types(2, 4)
-    house2 = House_types(5, 8)
+    house1 = Bungalow(2, 4)
+    house2 = Bungalow(5, 8)
     sum_distance = house1.calculate_distance(house2)
     value = house1.calculate_value(sum_distance)
     print(sum_distance)
