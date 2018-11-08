@@ -29,6 +29,8 @@ if __name__ == "__main__":
     print(coords_house)
     house4 = rectangle(1, 11, 10.5, 10, 0)
     house2 = rectangle(50, 100, 10, 10.5, 20)
+    coords_house2 = get_coordinates(house2)
+    print(coords_house2)
     ax.add_patch(house)
     ax.add_patch(house2)
     ax.add_patch(house4)
