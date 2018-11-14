@@ -1,7 +1,4 @@
-# Heuristieken
-
-
-# Amstelheage
+# Heuristieken - Amstelheage
 Er komt een nieuwe woonwijk in de Duivendrechtse polder, op een stuk grond van 160 x 180 meter. De gemeente overweegt drie varianten: de 20-huizenvariant, de 40-huizenvariant en de 60-huizenvariant. Er wordt aangenomen dat een huis meer waard wordt naarmate de vrijstand toeneemt, de rekenpercentages zijn per huistype vastgesteld. Het doel is om voor elk huizenvariant een plattegrond te creeeren waarbij een zo hoog mogelijke waarde van de wijk bereikt kan worden.   
 
 Daarnaast zijn er eisen waar de wijk aan moet voldoen, zoals een vast indeling (60% eengezinswoningen, 25% bungalows, 15% maisons), 20% oppervlaktewater. 
@@ -42,4 +39,4 @@ python main.py
 ## Dankwoord (Acknowledgments)
 
 * StackOverflow
-* minor programmeren van de UvA
+* Minor Programmeren UvA
