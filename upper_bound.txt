@@ -1,0 +1,6 @@
+Om het aantal mogelijkheden van het eerste huis te bepalen:
+
+Aannames: Huis kan nog niet roteren
+Breedte map - breedte huis + 1 = # mogelijkheden per rij (grid)
+
+Volgend huis kan dat aantal minus de breedte van het huis?
