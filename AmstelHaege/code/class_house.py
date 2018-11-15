@@ -1,4 +1,7 @@
 import math
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 
 class House_types(object):
     """
@@ -42,6 +45,21 @@ class House_types(object):
             return True
         return False
 
+    def rectangle(self, angle):
+
+        bottom_left = (self.x, self.y)
+        rectangle = patches.Rectangle(bottom_left, self.width, self.length, angle)
+        return rectangle
+
+
+    def get_coordinates(self, fig):
+
+        coords = np.array([fig.get_xy(), [fig.get_x() + fig.get_width(), fig.get_y()],
+                           [fig.get_x() + fig.get_width(), fig.get_y() + fig.get_height()],
+                           [fig.get_x(), fig.get_y() + fig.get_height()]])
+
+        return coords
+
 class House(House_types):
     """
     Representation of a house (child) in Amstelhaege
@@ -83,9 +101,32 @@ class Maison(House_types):
 
 
 if __name__ == "__main__":
-    house1 = Bungalow(2, 4)
-    house2 = Bungalow(5, 8)
+    house1 = Bungalow(110, 50)
+    house2 = Maison(20, 100)
+    house3 = House(140, 140)
     sum_distance = house1.calculate_distance(house2)
     value = house1.calculate_value(sum_distance)
     print(sum_distance)
     print(value)
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    plt.axis([0, 160, 0, 180])
+
+    house_rec1 = house1.rectangle(90)
+    coords_house1 = house1.get_coordinates(house_rec1)
+    print(coords_house1)
+    ax.add_patch(house_rec1)
+
+    house_rec2 = house2.rectangle(90)
+    coords_house2 = house2.get_coordinates(house_rec2)
+    print(coords_house2)
+    ax.add_patch(house_rec2)
+
+    house_rec3 = house3.rectangle(90)
+    coords_house3 = house3.get_coordinates(house_rec3)
+    print(coords_house3)
+    ax.add_patch(house_rec3)
+
+    plt.grid()
+    plt.show()
