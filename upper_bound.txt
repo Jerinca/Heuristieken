@@ -4,3 +4,20 @@ Aannames: Huis kan nog niet roteren
 Breedte map - breedte huis + 1 = # mogelijkheden per rij (grid)
 
 Volgend huis kan dat aantal minus de breedte van het huis?
+
+Stel er is een eensgezinswoning van 10x10 (inc. vrijstand) en de plattegrond
+is 160x180: Hoeveel eensgezinswoningen passen daar in?
+
+Omdat sommige afmetingen op een halve meter eindigen vergroten we de afmetingen
+met een factor 2: woning wordt 20x20 en plattegrond wordt 320x360
+
+Dus eerste woning heeft 320 - 20 + 1 = 301 mogelijkheden per rij
+De volgende woning heeft dan 301 - 20 = 281 mogelijkheden in dezelde rij als de
+rij waar dat huis geplaatst is.
+
+Dezelfde benadering geldt voor de kolommen, mits een huis 90 graden kan roteren
+
+Totaal # mogelijkheden eerste huis is: (320 - 20 + 1) * 360 + (360 - 20 + 1) * 320
+
+LET OP: Aangezien de lengte en breedte van een huis meerder "blokjes" in beslag
+        nemen is het niet zo dat elk kolom of rij zoveel opties heeft.
