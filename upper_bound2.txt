@@ -1,0 +1,50 @@
+An approximation of the upper bound:
+
+We first assume a free optimization problem, so no constraints and objective
+function are considered in the calculations for the upper bound
+
+// (Second we assume to express the measurements tp be in half-meters, so we
+   multiply by 2) -- misschien niet nodig
+
+- We express the surface of the 3 types of houses as a unit and "transform" the
+  map such to be executable with this unit.
+
+- House:
+
+    surface = 10x10
+    map = 160x180
+    transformed map: = 16x18  = 288
+    upper bound: 288! cause 288, 287, 286, 285 possibilities for each following
+                 house
+
+    but just 60% of the total houses can be of the type house:
+
+    total houses = [20, 40, 60]
+    type house: = [12, 24, 36]
+
+    so upper bound becomes:
+
+    upper bound = 288! / ((288 - 12)! *  12) (= 288! / 276!) = 2.581263147E+29
+                  288! / (288 - 24)! = 288! / 264! = 3.957446676E+58
+                  288! / (288 - 36)! = 288! / 252! = 3.519466783E+87
+
+                  als volgorde niet van belang is:
+                  288! / ((288 - 36)! * 36!) = 9.461101933E+45
+
+    Maar stel dat we al de helft vanwege spiegeling kunnen verwijderen (50 procent !!)
+    en dan ook ??
+
+- Bungalow:
+
+    surface = 10.5x13
+    map = 160 / 10.5 is approximately 15 and 180/13 is approximately 13 and thus
+    transformed map = 15x13 = 195
+
+    upper bound = 195! / (195 - 5)! = 2.677492396E+11
+                  195! / (195 - 10)! = 6.287182275E+22
+                  195! / (195 - 15)! = 1.290169157E+34
+
+    BECAUSE OF THE OBJECTIVE FUNTION IT DOES NOT MATTER WHERE THE FIRST HOUSE IS
+    PLACED, IT STILL HAS THE SAME VALUE???
+
+    So
