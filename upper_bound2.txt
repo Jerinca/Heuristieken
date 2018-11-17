@@ -32,7 +32,10 @@ function are considered in the calculations for the upper bound
                   288! / ((288 - 36)! * 36!) = 9.461101933E+45
 
     Maar stel dat we al de helft vanwege spiegeling kunnen verwijderen (50 procent !!)
-    en dan ook ??
+    en dan ook zetten met dexelfde waarde?
+
+    Dat zou betekenen dat zetten met gelijke hoeveelheid vrijstand en type huis
+    ook gelijk aan elkaar zijn.
 
 - Bungalow:
 
