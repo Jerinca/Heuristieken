@@ -15,6 +15,7 @@ class House_types(object):
         self.x = x
         self.y = y
         self.angle = angle
+        self.color = "grey"
         self.value = 0
         self.perc_increase = 0
         self.length = 0
@@ -50,7 +51,7 @@ class House_types(object):
     def rectangle(self):
 
         bottom_left = (self.x, self.y)
-        rectangle = patches.Rectangle(bottom_left, self.width, self.length, self.angle)
+        rectangle = patches.Rectangle(bottom_left, self.width, self.length, self.angle, color=self.color)
         return rectangle
 
 
@@ -64,19 +65,26 @@ class House_types(object):
 
     def intersect(self, other):
 
-        # coord_self = self.get_coordinates(self)
-        # tl_self = coord_self[3]
-        # br_self = coord_self[1]
-        # coord_other = get_coordinates(other)
-        # tl_other = coord_other[3]
-        # br_other = coord_other[1]
-
         br_self = self.coords[1]
         tl_self = self.coords[3]
         br_other = other.coords[1]
         tl_other = other.coords[3]
 
         return not (tl_self[0] > br_other[0] or tl_other[0] > br_self[0] or tl_self[1] < br_other[1] or tl_other[1] < br_self[1])
+
+
+    def in_map(self):
+
+        bottom_right_x = self.coords[1][0]
+        bottom_right_y = self.coords[1][1]
+        top_left_x = self.coords[3][0]
+        top_left_y = self.coords[3][1]
+
+        # if bottom_left_x < 0 or bottom_left_y < 0:
+        #     return False
+        # if top_right_x > 160 or top_right_y > 180
+        #  return False
+        return not (bottom_right_x > 160 or bottom_right_y < 0 or top_left_x < 0 or top_left_y >180)
 
 
 class House(House_types):
@@ -86,6 +94,7 @@ class House(House_types):
 
     def __init__(self, x, y, angle):
         House_types.__init__(self, x, y, angle)
+        self.color = "yellow"
         self.value = 285000
         self.perc_increase = 0.03
         self.length = 10
@@ -100,6 +109,7 @@ class Bungalow(House_types):
 
     def __init__(self, x, y, angle):
         House_types.__init__(self, x, y, angle)
+        self.color = "blue"
         self.value = 399000
         self.perc_increase = 0.04
         self.length = 13
@@ -114,6 +124,7 @@ class Maison(House_types):
 
     def __init__(self, x, y, angle):
         House_types.__init__(self, x, y, angle)
+        self.color = "red"
         self.value = 610000
         self.perc_increase = 0.06
         self.length = 17
@@ -123,9 +134,10 @@ class Maison(House_types):
 
 
 if __name__ == "__main__":
-    house1 = Bungalow(110, 50, 90)
-    house2 = Maison(20, 100, 90)
+    house1 = Bungalow(110, 50, 0)
+    house2 = Maison(10, -2, 0)
     house3 = House(140, 140, 90)
+    house4 = House(-10, 10, 90)
     sum_distance = house1.calculate_distance(house2)
     value = house1.calculate_value(sum_distance)
     print(sum_distance)
@@ -137,16 +149,20 @@ if __name__ == "__main__":
 
     house_rec1 = house1.rectangle()
     coords_house1 = house1.get_coordinates(house_rec1)
-    print(house1.coords)
-    print(house1.coords[1])
+    # print(house1.coords)
+    # print(house1.coords[1])
     ax.add_patch(house_rec1)
 
     house_rec2 = house2.rectangle()
     coords_house2 = house2.get_coordinates(house_rec2)
+    print(house2.coords)
+    print(house2.coords[2])
+    print("test")
+    print(house2.in_map())
     # print(coords_house2)
     ax.add_patch(house_rec2)
 
-    print(house1.intersect(house2))
+    # print(house1.intersect(house2))
 
     house_rec3 = house3.rectangle()
     coords_house3 = house3.get_coordinates(house_rec3)
