@@ -8,17 +8,19 @@ class House_types(object):
     Representation of a house (parent) in Amstelhaege
     """
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, angle):
         """
         Initialize house as a single coordinate.
         """
         self.x = x
         self.y = y
+        self.angle = angle
         self.value = 0
         self.perc_increase = 0
         self.length = 0
         self.width = 0
         self.portion = 0
+        self.coords = []
 
     def calculate_distance(self, other_house):
         """
@@ -45,65 +47,85 @@ class House_types(object):
             return True
         return False
 
-    def rectangle(self, angle):
+    def rectangle(self):
 
         bottom_left = (self.x, self.y)
-        rectangle = patches.Rectangle(bottom_left, self.width, self.length, angle)
+        rectangle = patches.Rectangle(bottom_left, self.width, self.length, self.angle)
         return rectangle
 
 
     def get_coordinates(self, fig):
 
-        coords = np.array([fig.get_xy(), [fig.get_x() + fig.get_width(), fig.get_y()],
+        self.coords = np.array([fig.get_xy(), [fig.get_x() + fig.get_width(), fig.get_y()],
                            [fig.get_x() + fig.get_width(), fig.get_y() + fig.get_height()],
                            [fig.get_x(), fig.get_y() + fig.get_height()]])
 
-        return coords
+        return
+
+    def intersect(self, other):
+
+        # coord_self = self.get_coordinates(self)
+        # tl_self = coord_self[3]
+        # br_self = coord_self[1]
+        # coord_other = get_coordinates(other)
+        # tl_other = coord_other[3]
+        # br_other = coord_other[1]
+
+        br_self = self.coords[1]
+        tl_self = self.coords[3]
+        br_other = other.coords[1]
+        tl_other = other.coords[3]
+
+        return not (tl_self[0] > br_other[0] or tl_other[0] > br_self[0] or tl_self[1] < br_other[1] or tl_other[1] < br_self[1])
+
 
 class House(House_types):
     """
     Representation of a house (child) in Amstelhaege
     """
 
-    def __init__(self, x, y):
-        House_types.__init__(self, x, y)
+    def __init__(self, x, y, angle):
+        House_types.__init__(self, x, y, angle)
         self.value = 285000
         self.perc_increase = 0.03
         self.length = 10
         self.width = 10
         self.portion = 0.60 # 60% van de woningen
+        self.coords = []
 
 class Bungalow(House_types):
     """
     Representation of a Bungalow (child) in Amstelhaege
     """
 
-    def __init__(self, x, y):
-        House_types.__init__(self, x, y)
+    def __init__(self, x, y, angle):
+        House_types.__init__(self, x, y, angle)
         self.value = 399000
         self.perc_increase = 0.04
         self.length = 13
         self.width = 10.5
         self.portion = 0.25
+        self.coords = []
 
 class Maison(House_types):
     """
     Representation of a Maison (child) in Amstelhaege
     """
 
-    def __init__(self, x, y):
-        House_types.__init__(self, x, y)
+    def __init__(self, x, y, angle):
+        House_types.__init__(self, x, y, angle)
         self.value = 610000
         self.perc_increase = 0.06
         self.length = 17
         self.width = 16.5
         self.portion = 0.15
+        self.coords = []
 
 
 if __name__ == "__main__":
-    house1 = Bungalow(110, 50)
-    house2 = Maison(20, 100)
-    house3 = House(140, 140)
+    house1 = Bungalow(110, 50, 90)
+    house2 = Maison(20, 100, 90)
+    house3 = House(140, 140, 90)
     sum_distance = house1.calculate_distance(house2)
     value = house1.calculate_value(sum_distance)
     print(sum_distance)
@@ -113,19 +135,22 @@ if __name__ == "__main__":
     ax = fig.add_subplot(111)
     plt.axis([0, 160, 0, 180])
 
-    house_rec1 = house1.rectangle(90)
+    house_rec1 = house1.rectangle()
     coords_house1 = house1.get_coordinates(house_rec1)
-    print(coords_house1)
+    print(house1.coords)
+    print(house1.coords[1])
     ax.add_patch(house_rec1)
 
-    house_rec2 = house2.rectangle(90)
+    house_rec2 = house2.rectangle()
     coords_house2 = house2.get_coordinates(house_rec2)
-    print(coords_house2)
+    # print(coords_house2)
     ax.add_patch(house_rec2)
 
-    house_rec3 = house3.rectangle(90)
+    print(house1.intersect(house2))
+
+    house_rec3 = house3.rectangle()
     coords_house3 = house3.get_coordinates(house_rec3)
-    print(coords_house3)
+    # print(coords_house3)
     ax.add_patch(house_rec3)
 
     plt.grid()
