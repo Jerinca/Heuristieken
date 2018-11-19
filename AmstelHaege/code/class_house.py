@@ -39,14 +39,14 @@ class House_types(object):
         self.value *= (1 + (sum_distance * self.perc_increase))
         return self.value
 
-    def too_many(self, max_houses, amount_houses):
-        """
-        Check if there are too many houses already.
-        """
-        max_houses *= self.portion
-        if amount_houses > max_houses:
-            return True
-        return False
+    # def too_many(self, max_houses, amount_houses):
+    #     """
+    #     Check if there are too many houses already.
+    #     """
+    #     max_houses *= self.portion
+    #     if amount_houses > max_houses:
+    #         return True
+    #     return False
 
     def rectangle(self):
 
