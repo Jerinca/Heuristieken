@@ -9,8 +9,8 @@ from class_house import House_types, House, Bungalow, Maison
 
 INPUT_CSV = "https://raw.githubusercontent.com/Jerinca/Heuristieken/master/AmstelHaege/data/Gegevenshuizen.csv"
 TOTAL_HOUSES = [20, 40, 60]
-WIDTH = 160
-HEIGHT = 180
+WIDTH = 320
+HEIGHT = 360
 
 def csv_reader(filename):
     """
@@ -99,7 +99,7 @@ def plot_distribution(list_houses):
     fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.set_facecolor("green")
-    plt.axis([0, 160, 0, 180])
+    plt.axis([0, WIDTH, 0, HEIGHT])
 
     for house in list_houses:
         house_rec = house.rectangle()

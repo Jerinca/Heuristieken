@@ -84,7 +84,7 @@ class House_types(object):
         #     return False
         # if top_right_x > 160 or top_right_y > 180
         #  return False
-        return not (bottom_right_x > 160 or bottom_right_y < 0 or top_left_x < 0 or top_left_y >180)
+        return not (bottom_right_x > 320 or bottom_right_y < 0 or top_left_x < 0 or top_left_y > 360)
 
 
 class House(House_types):
@@ -97,8 +97,8 @@ class House(House_types):
         self.color = "yellow"
         self.value = 285000
         self.perc_increase = 0.03
-        self.length = 10
-        self.width = 10
+        self.length = 20
+        self.width = 20
         self.portion = 0.60 # 60% van de woningen
         self.coords = []
 
@@ -112,8 +112,8 @@ class Bungalow(House_types):
         self.color = "blue"
         self.value = 399000
         self.perc_increase = 0.04
-        self.length = 13
-        self.width = 10.5
+        self.length = 26
+        self.width = 21
         self.portion = 0.25
         self.coords = []
 
@@ -127,8 +127,8 @@ class Maison(House_types):
         self.color = "red"
         self.value = 610000
         self.perc_increase = 0.06
-        self.length = 17
-        self.width = 16.5
+        self.length = 34
+        self.width = 33
         self.portion = 0.15
         self.coords = []
 
@@ -145,7 +145,7 @@ if __name__ == "__main__":
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    plt.axis([0, 160, 0, 180])
+    plt.axis([0, 320, 0, 360])
 
     house_rec1 = house1.rectangle()
     coords_house1 = house1.get_coordinates(house_rec1)
