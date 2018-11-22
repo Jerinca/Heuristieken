@@ -86,6 +86,9 @@ class House_types(object):
         #  return False
         return not (bottom_right_x > 320 or bottom_right_y < 0 or top_left_x < 0 or top_left_y > 360)
 
+    def __eq__(self, other):
+        return self.__dict__==other.__dict__
+
 
 class House(House_types):
     """

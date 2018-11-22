@@ -95,7 +95,7 @@ def place_houses(TOTAL_HOUSES, percentages):
 
         plot_distribution(list_houses)
 
-    # return list_houses
+    return list_houses
 
 def plot_distribution(list_houses):
 
@@ -111,18 +111,58 @@ def plot_distribution(list_houses):
     plt.grid()
     plt.show()
 
+def move_house(list, index, new_x, new_y):
+    list[index].x = new_x
+    list[index].y = new_y
+
+    return (list)
+    # move_house(old_list, index, randint(0, WIDTH), randint(0, HEIGHT))
+def legit_placement(new_house, list_houses):
+    house_rect = new_house.rectangle()
+    new_house.get_coordinates(house_rect)
+    print(new_house.x)
+    print(new_house.y)
+
+    if new_house.in_map():
+        count = 0
+
+        for house in list_houses:
+            if not house == new_house:
+                if new_house.intersect(house):
+                    # count += 1
+                    print("hoi")
+                    return False
+
+            if count == 0:
+                print("doei")
+                return True
+
+    print("maybe")
+    return False
 
 if __name__ == "__main__":
 
     data = csv_reader(INPUT_CSV)
-    print(data)
+    # print(data)
     test = data["Percentage"][0]
-    print(type(test))
+    # print(type(test))
     dict = df_to_dict(data)
-    print(dict)
-    print(type(dict["Percentage"]["Eensgezins"]))
+    # print(dict)
+    # print(type(dict["Percentage"]["Eensgezins"]))
 
     list_houses = place_houses(TOTAL_HOUSES, data["Percentage"])
-    print(list_houses)
-    print(len(list_houses))
+    # list_houses_new = move_house(list_houses, 1, randint(0, WIDTH), randint(0, HEIGHT))
+    list_houses_new = move_house(list_houses, 1, list_houses[2].x + 1, list_houses[2].y + 1)
+    # plot_distribution(list_houses_new)
+
+    while not legit_placement(list_houses_new[1], list_houses_new):
+        list_houses_new = move_house(list_houses_new, 1, randint(0, WIDTH), randint(0, HEIGHT))
+        print("here")
+
+    print("not here")
+
+    # print(list_houses)
+    # print(len(list_houses))
     # plot_distribution(list_houses)
+
+    # if not house == new_house werkt niet
