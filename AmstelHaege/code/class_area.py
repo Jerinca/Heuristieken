@@ -40,59 +40,62 @@ def place_houses(TOTAL_HOUSES, percentages):
     # possible to place the rectangle and can be added to list of houses
     list_houses = []
 
-    while len(list_houses) < TOTAL_HOUSES[0]:
-         if len(list_houses) < (TOTAL_HOUSES[0] * percentages[0]):
-             x = randint(0, WIDTH)
-             y = randint(0, HEIGHT)
-             new_house = House(x, y, 0)
-             house_rect = new_house.rectangle()
-             new_house.get_coordinates(house_rect)
-             if new_house.in_map():
-                 count = 0
+    for amount in TOTAL_HOUSES:
+        while len(list_houses) < amount:
+             if len(list_houses) < (amount * percentages[0]):
+                 x = randint(0, WIDTH)
+                 y = randint(0, HEIGHT)
+                 new_house = House(x, y, 0)
+                 house_rect = new_house.rectangle()
+                 new_house.get_coordinates(house_rect)
+                 if new_house.in_map():
+                     count = 0
 
-                 for house in list_houses:
-                     if new_house.intersect(house):
-                         count += 1
+                     for house in list_houses:
+                         if new_house.intersect(house):
+                             count += 1
 
-                 if count == 0:
+                     if count == 0:
 
-                     list_houses.append(new_house)
+                         list_houses.append(new_house)
 
-         elif len(list_houses) < ((TOTAL_HOUSES[0] * percentages[0]) + (TOTAL_HOUSES[0] * percentages[1])):
-             x = randint(0, WIDTH)
-             y = randint(0, HEIGHT)
-             new_house = Bungalow(x, y, 0)
-             house_rect = new_house.rectangle()
-             new_house.get_coordinates(house_rect)
-             if new_house.in_map():
-                 count = 0
+             elif len(list_houses) < ((amount * percentages[0]) + (amount * percentages[1])):
+                 x = randint(0, WIDTH)
+                 y = randint(0, HEIGHT)
+                 new_house = Bungalow(x, y, 0)
+                 house_rect = new_house.rectangle()
+                 new_house.get_coordinates(house_rect)
+                 if new_house.in_map():
+                     count = 0
 
-                 for house in list_houses:
-                     if new_house.intersect(house):
-                         count += 1
+                     for house in list_houses:
+                         if new_house.intersect(house):
+                             count += 1
 
-                 if count == 0:
+                     if count == 0:
 
-                     list_houses.append(new_house)
+                         list_houses.append(new_house)
 
-         else:
-             x = randint(0, WIDTH)
-             y = randint(0, HEIGHT)
-             new_house = Maison(x, y, 0)
-             house_rect = new_house.rectangle()
-             new_house.get_coordinates(house_rect)
-             if new_house.in_map():
-                 count = 0
+             else:
+                 x = randint(0, WIDTH)
+                 y = randint(0, HEIGHT)
+                 new_house = Maison(x, y, 0)
+                 house_rect = new_house.rectangle()
+                 new_house.get_coordinates(house_rect)
+                 if new_house.in_map():
+                     count = 0
 
-                 for house in list_houses:
-                     if new_house.intersect(house):
-                         count += 1
+                     for house in list_houses:
+                         if new_house.intersect(house):
+                             count += 1
 
-                 if count == 0:
+                     if count == 0:
 
-                     list_houses.append(new_house)
+                         list_houses.append(new_house)
 
-    return list_houses
+        plot_distribution(list_houses)
+
+    # return list_houses
 
 def plot_distribution(list_houses):
 
@@ -122,4 +125,4 @@ if __name__ == "__main__":
     list_houses = place_houses(TOTAL_HOUSES, data["Percentage"])
     print(list_houses)
     print(len(list_houses))
-    plot_distribution(list_houses)
+    # plot_distribution(list_houses)
