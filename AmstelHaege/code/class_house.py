@@ -23,6 +23,9 @@ class House_types(object):
         self.portion = 0
         self.coords = []
 
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__
+
     def calculate_distance(self, other_house):
         """
         Calculate the distance between another house.
@@ -85,9 +88,6 @@ class House_types(object):
         # if top_right_x > 160 or top_right_y > 180
         #  return False
         return not (bottom_right_x > 320 or bottom_right_y < 0 or top_left_x < 0 or top_left_y > 360)
-
-    def __eq__(self, other):
-        return self.__dict__==other.__dict__
 
 
 class House(House_types):

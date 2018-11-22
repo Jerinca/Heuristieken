@@ -129,13 +129,12 @@ def legit_placement(new_house, list_houses):
         for house in list_houses:
             if not house == new_house:
                 if new_house.intersect(house):
-                    # count += 1
                     print("hoi")
                     return False
 
-            if count == 0:
-                print("doei")
-                return True
+        if count == 0:
+            print("doei")
+            return True
 
     print("maybe")
     return False

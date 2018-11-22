@@ -1,0 +1,14 @@
+Objective function:
+
+WAARDE HUIS = Prijs + Vermeerderingswaarde * Aantal meters vrijstand
+
+Prijs van de huizen staat vast.
+
+Vermeerderingswaarde is ook een constante: percentage verhoging * prijs huis
+
+Aantal meters vrijstand is een variabele:
+
+Vrijstand: kleinste afstand tot volgend huis OF rand van de wijk (vrijstand moet
+namelijk binnen de oppervlakte van de wijk vallen).
+
+Totale waarde = Som van alle WAARDE HUIS.
