@@ -97,6 +97,13 @@ def place_houses(TOTAL_HOUSES, percentages):
 
     return list_houses
 
+# JERRY MEE BEZIG XXX
+# def calculate_totalvalue(list_houses):
+#
+#     for house in list_houses:
+#         house.calculate_value(house.calculate_distance(hiermoetwatlogischin))
+
+
 def plot_distribution(list_houses):
 
     fig = plt.figure()
