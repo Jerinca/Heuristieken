@@ -45,8 +45,7 @@ class House_types(object):
         """
         Calculate the distance between houses
         """
-        print(list_houses[0])
-    
+
         x_bottom_and_top_left = self.coords[0][0]
         y_bottom_left_and_bottom_right = self.coords[0][1]
         y_top_left_and_top_right = self.coords[3][1]
@@ -97,7 +96,7 @@ class House_types(object):
                     distances = diagonal_distance
 
             # D
-            if x_coord_top_left_differenthouse > x_top_and_bottom_right and y_coord_top_left_differenthouse < y_bottom_left_and_bottom_right: 
+            if x_coord_top_left_differenthouse > x_top_and_bottom_right and y_coord_top_left_differenthouse < y_bottom_left_and_bottom_right:
                 a = (x_top_and_bottom_right - x_coord_top_left_differenthouse) ** 2
                 b = (y_bottom_left_and_bottom_right - y_coord_top_left_differenthouse) ** 2
                 diagonal_distance = math.sqrt(a + b)
@@ -106,7 +105,7 @@ class House_types(object):
 
             # E
             if x_coord_bottom_right_differenthouse < x_bottom_and_top_left:
-                horizontal_distance = x_bottom_and_top_left - x_coord_bottom_right_differenthouse 
+                horizontal_distance = x_bottom_and_top_left - x_coord_bottom_right_differenthouse
                 if horizontal_distance < distances:
                     distances = horizontal_distance
 
@@ -123,7 +122,7 @@ class House_types(object):
                     distances = horizontal_distance
             # H
             if y_coord_top_left_differenthouse < y_bottom_left_and_bottom_right:
-                vertical_distance = y_bottom_left_and_bottom_right - y_coord_top_left_differenthouse 
+                vertical_distance = y_bottom_left_and_bottom_right - y_coord_top_left_differenthouse
                 if vertical_distance < distances:
                     distances = vertical_distance
 
@@ -148,7 +147,7 @@ class House_types(object):
                 distances = distance_bottom_border
 
         return distances
-        
+
 
     def calculate_value(self, distances):
         """

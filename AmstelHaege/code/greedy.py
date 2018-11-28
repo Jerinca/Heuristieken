@@ -74,15 +74,19 @@ def main():
 
             max_distances_all_houses = []
 
-            for house in enumerate(houses_placed, i):
+            for house in houses_placed:
 
                 distances = house.calculate_dist(houses_greedy)
+                print(distances)
                 # find shortest distance
                 distance = max(distances)
                 max_distances_all_houses.append(distance)
 
             # find highest value in max_distances_all_houses and corresponding
             # house and append this one to houses_greedy
+
+            ## calculate distance klopt nog niet!!!! hij geeft bij een huis op
+            ## coord (0, 0) een afstand van 360 ipv 0.
 
 
 
