@@ -3,6 +3,18 @@
 Er komt een nieuwe woonwijk in de Duivendrechtse polder, op een stuk grond van 160 x 180 meter. De gemeente overweegt drie varianten: de 20-huizenvariant, de 40-huizenvariant en de 60-huizenvariant. Er wordt aangenomen dat een huis meer waard wordt naarmate de vrijstand toeneemt, de rekenpercentages zijn per huistype vastgesteld. Het doel is om voor elk huizenvariant een plattegrond te creeeren waarbij een zo hoog mogelijke waarde van de wijk bereikt kan worden.
 Daarnaast zijn er eisen waar de wijk aan moet voldoen, zoals een vaste verdeling (60% eengezinswoningen, 25% bungalows, 15% maisons), 20% oppervlaktewater.
 
+### State Space 
+Voor het berekenen van de upper bound van de state space wordt enkel met eengezinswoningen gewerkt, aangezien deze het kleinst zijn en dus meer oplossingen kunnen opleveren. De oppervlak van een eengezienswoning met verplichte bijstand is 10 x 10 meter, op het gehele oppervlak van de wijk passen er dus 16 x 18 = 288 huizen. Aangezien de volgorde van het plaatsen van de huizen niet uitmaakt voor het aantal oplossingen, vermening vuldigen we met de faculteit van n (aantal huizen). 
+
+```
+upperbound = 288!/((288-n)! * n!)
+```
+De lower bound is 1, omdat er minimaal een oplossing is. 
+
+### Objective Function
+De upperbound van de objective function is ... ) huis in het midden met maximale vrijstand  
+De lowerbound is de waarde waarbij de huizen geen vrijstand hebben (verplichte vrijstand niet meegerekend). !!! hier moet nog meer bij.
+
 
 ## Aan de slag (Getting Started)
 
