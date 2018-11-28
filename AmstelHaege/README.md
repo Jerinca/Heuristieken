@@ -12,7 +12,7 @@ upperbound = 288!/((288-n)! * n!)
 De lower bound is 1, omdat er minimaal een oplossing is. 
 
 ### Objective Function
-De upperbound van de objective function is ... ) huis in het midden met maximale vrijstand  
+De upperbound van de objective function is ...  (huis in het midden met maximale vrijstand) !!! hier moet nog meer bij.
 De lowerbound is de waarde waarbij de huizen geen vrijstand hebben (verplichte vrijstand niet meegerekend). !!! hier moet nog meer bij.
 
 
