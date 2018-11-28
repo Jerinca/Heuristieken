@@ -94,14 +94,26 @@ def place_houses(TOTAL_HOUSES, percentages):
                          list_houses.append(new_house)
 
         plot_distribution(list_houses)
+        calculate_totalvalue(list_houses)
 
     return list_houses
 
-# JERRY MEE BEZIG XXX
-# def calculate_totalvalue(list_houses):
-#
-#     for house in list_houses:
-#         house.calculate_value(house.calculate_distance(hiermoetwatlogischin))
+
+def calculate_totalvalue(list_houses):
+
+    counter = 0
+    all_values = []
+    
+    for house in list_houses:
+        trigger = house.calculate_dist(list_houses)
+        counter+=1
+        value_house = house.calculate_value(trigger)
+        all_values.append(value_house)
+
+    sum_values = sum(all_values)
+    print(sum_values, "TOTALE DOEKOES!!!--------")
+    return sum_values
+
 
 
 def plot_distribution(list_houses):
@@ -114,6 +126,8 @@ def plot_distribution(list_houses):
     for house in list_houses:
         house_rec = house.rectangle()
         ax.add_patch(house_rec)
+
+    plt.title('Map AmstelHaege')
 
     plt.grid()
     plt.show()

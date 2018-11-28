@@ -3,6 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
+# set borders
+WIDTH = 320
+HEIGHT = 360
+MIN = 0
+
+
 class House_types(object):
     """
     Representation of a house (parent) in Amstelhaege
@@ -35,11 +41,120 @@ class House_types(object):
         c = math.sqrt(a + b)
         return c
 
-    def calculate_value(self, sum_distance):
+    def calculate_dist(self, list_houses):
+        """
+        Calculate the distance between houses
+        """
+        print(list_houses[0])
+    
+        x_bottom_and_top_left = self.coords[0][0]
+        y_bottom_left_and_bottom_right = self.coords[0][1]
+        y_top_left_and_top_right = self.coords[3][1]
+        x_top_and_bottom_right = self.coords[2][0]
+
+
+        distances = HEIGHT
+
+        for house in list_houses:
+            # rectangle bottomleft
+            x_coord_top_right_differenthouse = house.coords[2][0]
+            y_coord_top_right_differenthouse = house.coords[2][1]
+
+            # rectangle toplelft
+            x_coord_bottom_right_differenthouse = house.coords[1][0]
+            y_coord_bottom_right_differenthouse = house.coords[1][1]
+
+            # rectangle topright
+            x_coord_bottom_left_differenthouse = house.coords[0][0]
+            y_coord_bottom_left_differenthouse = house.coords[0][1]
+
+            # rectangle bottom right
+            x_coord_top_left_differenthouse = house.coords[3][0]
+            y_coord_top_left_differenthouse = house.coords[3][1]
+
+            # A
+            if x_coord_top_right_differenthouse < x_bottom_and_top_left and y_coord_top_right_differenthouse < y_bottom_left_and_bottom_right:
+                a = (x_bottom_and_top_left - x_coord_top_right_differenthouse) ** 2
+                b = (y_bottom_left_and_bottom_right - y_coord_top_right_differenthouse) ** 2
+                diagonal_distance = math.sqrt(a + b)
+                if diagonal_distance < distances:
+                    distances = diagonal_distance
+
+            # B
+            if x_coord_bottom_right_differenthouse < x_bottom_and_top_left and y_coord_bottom_right_differenthouse > y_top_left_and_top_right:
+                a = (x_bottom_and_top_left - x_coord_bottom_right_differenthouse) ** 2
+                b = (y_top_left_and_top_right - y_coord_bottom_right_differenthouse) ** 2
+                diagonal_distance = math.sqrt(a + b)
+                if diagonal_distance < distances:
+                    distances = diagonal_distance
+
+            # C
+            if x_coord_bottom_left_differenthouse > x_top_and_bottom_right and y_coord_bottom_left_differenthouse > y_top_left_and_top_right:
+                a = (x_top_and_bottom_right - x_coord_bottom_left_differenthouse) ** 2
+                b = (y_top_left_and_top_right - y_coord_bottom_left_differenthouse) ** 2
+                diagonal_distance = math.sqrt(a + b)
+                if diagonal_distance < distances:
+                    distances = diagonal_distance
+
+            # D
+            if x_coord_top_left_differenthouse > x_top_and_bottom_right and y_coord_top_left_differenthouse < y_bottom_left_and_bottom_right: 
+                a = (x_top_and_bottom_right - x_coord_top_left_differenthouse) ** 2
+                b = (y_bottom_left_and_bottom_right - y_coord_top_left_differenthouse) ** 2
+                diagonal_distance = math.sqrt(a + b)
+                if diagonal_distance < distances:
+                    distances = diagonal_distance
+
+            # E
+            if x_coord_bottom_right_differenthouse < x_bottom_and_top_left:
+                horizontal_distance = x_bottom_and_top_left - x_coord_bottom_right_differenthouse 
+                if horizontal_distance < distances:
+                    distances = horizontal_distance
+
+            # F
+            if y_coord_bottom_left_differenthouse > y_top_left_and_top_right:
+                vertical_distance = y_coord_bottom_left_differenthouse - y_top_left_and_top_right
+                if vertical_distance < distances:
+                    distances = vertical_distance
+
+            # G
+            if x_coord_bottom_left_differenthouse > x_top_and_bottom_right:
+                horizontal_distance = x_coord_bottom_left_differenthouse - x_top_and_bottom_right
+                if horizontal_distance < distances:
+                    distances = horizontal_distance
+            # H
+            if y_coord_top_left_differenthouse < y_bottom_left_and_bottom_right:
+                vertical_distance = y_bottom_left_and_bottom_right - y_coord_top_left_differenthouse 
+                if vertical_distance < distances:
+                    distances = vertical_distance
+
+            # boundry map left
+            distance_left_border = x_bottom_and_top_left - MIN
+            if distance_left_border < distances:
+                distances = distance_left_border
+
+            # boundry map right
+            distance_right_border = WIDTH - x_top_and_bottom_right
+            if distance_right_border < distances:
+                distances = distance_right_border
+
+            # boundry map top
+            distance_top_border = HEIGHT - y_top_left_and_top_right
+            if distance_top_border < distances:
+                distances = distance_top_border
+
+            # boudry map bottom
+            distance_bottom_border = y_bottom_left_and_bottom_right - MIN
+            if distance_bottom_border < distances:
+                distances = distance_bottom_border
+
+        return distances
+        
+
+    def calculate_value(self, distances):
         """
         Calculate the value of a house.
         """
-        self.value *= (1 + (sum_distance * self.perc_increase))
+        self.value *= (1 + (distances * self.perc_increase))
         print(self.value)
 
         return self.value
