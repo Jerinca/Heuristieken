@@ -8,183 +8,202 @@ from class_house import House_types, House, Bungalow, Maison
 
 
 INPUT_CSV = "https://raw.githubusercontent.com/Jerinca/Heuristieken/master/AmstelHaege/data/Gegevenshuizen.csv"
-TOTAL_HOUSES = [20, 40, 60]
-WIDTH = 320
-HEIGHT = 360
+# TOTAL_HOUSES = [20, 40, 60]
+# WIDTH = 320
+# HEIGHT = 360
 
-def csv_reader(filename):
+class Area(object):
     """
-    Loads csv file as data frame
-    """
-
-    data = pd.read_csv(filename, index_col=0, sep=";", decimal=",")
-    return data
-
-def df_to_dict(df):
-    """
-    Transforms data frame to dictionary
+    Representation of the area Amstelhaege
+    Width and Height are taken from csv file
+    and set as class attributes.
     """
 
-    dict = df.to_dict()
-    return dict
+    height = 360
+    width = 320
+    portions = [0.6, 0.25, 0.15]
 
-def place_houses(TOTAL_HOUSES, percentages):
+    def __init__(self, amount_houses):
+        """
+        Initialize area with a list for amount of houses to place
+        and the portions of the different types of houses.
+        """
 
-    # first random generate of coordinates without duplicates
-    # n =  bound value coordinates (for x is 160 and y is 180)
-    # N =  total points (houses) for us it is [20, 40, 60]
-    # also consider a certain distance
-    # So retrieve random coordinate, get the corner coordinates of rectangle
-    # Calculate distances relative to previous placed rectangles
-    # if distance >= 0 for all corner points relative to the others than it is
-    # possible to place the rectangle and can be added to list of houses
-    list_houses = []
+        self.value = 0
+        self.amount_houses = amount_houses
+        self.houses_placed = []
 
-    for amount in TOTAL_HOUSES:
-        while len(list_houses) < amount:
-             if len(list_houses) < (amount * percentages[0]):
-                 x = randint(0, WIDTH)
-                 y = randint(0, HEIGHT)
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__
+
+
+    def csv_reader(self, filename):
+        """
+        Loads csv file as data frame
+        """
+
+        data = pd.read_csv(filename, index_col=0, sep=";", decimal=",")
+        return data
+
+    def df_to_dict(self, df):
+        """
+        Transforms data frame to dictionary
+        """
+
+        dict = df.to_dict()
+        return dict
+
+    def place_houses(self):
+
+        # list_houses = []
+
+        while len(self.houses_placed) < self.amount_houses:
+             if len(self.houses_placed) < (self.amount_houses * self.portions[0]):
+                 x = randint(0, self.width)
+                 y = randint(0, self.height)
                  new_house = House(x, y, 0)
                  house_rect = new_house.rectangle()
                  new_house.get_coordinates(house_rect)
                  if new_house.in_map():
                      count = 0
 
-                     for house in list_houses:
+                     for house in self.houses_placed:
                          if new_house.intersect(house):
                              count += 1
 
                      if count == 0:
 
-                         list_houses.append(new_house)
+                         self.houses_placed.append(new_house)
 
-             elif len(list_houses) < ((amount * percentages[0]) + (amount * percentages[1])):
-                 x = randint(0, WIDTH)
-                 y = randint(0, HEIGHT)
+             elif len(self.houses_placed) < ((self.amount_houses * self.portions[0]) + (self.amount_houses * self.portions[1])):
+                 x = randint(0, self.width)
+                 y = randint(0, self.height)
                  new_house = Bungalow(x, y, 0)
                  house_rect = new_house.rectangle()
                  new_house.get_coordinates(house_rect)
                  if new_house.in_map():
                      count = 0
 
-                     for house in list_houses:
+                     for house in self.houses_placed:
                          if new_house.intersect(house):
                              count += 1
 
                      if count == 0:
 
-                         list_houses.append(new_house)
+                         self.houses_placed.append(new_house)
 
              else:
-                 x = randint(0, WIDTH)
-                 y = randint(0, HEIGHT)
+                 x = randint(0, self.width)
+                 y = randint(0, self.height)
                  new_house = Maison(x, y, 0)
                  house_rect = new_house.rectangle()
                  new_house.get_coordinates(house_rect)
                  if new_house.in_map():
                      count = 0
 
-                     for house in list_houses:
+                     for house in self.houses_placed:
                          if new_house.intersect(house):
                              count += 1
 
                      if count == 0:
 
-                         list_houses.append(new_house)
+                         self.houses_placed.append(new_house)
 
-        plot_distribution(list_houses)
-        calculate_totalvalue(list_houses)
-        list_houses[7].calculate_dist(list_houses)
-    return list_houses
+        self.houses_placed[7].calculate_dist(self.houses_placed)
+    # return list_houses
 
 
-def calculate_totalvalue(list_houses):
+    def calculate_totalvalue(self):
 
-    counter = 0
-    all_values = []
+        counter = 0
+        all_values = []
 
-    for house in list_houses:
-        trigger = house.calculate_dist(list_houses)
-        # print(trigger)
-        # print("trigger")
-        counter+=1
-        value_house = house.calculate_value(trigger)
-        all_values.append(value_house)
+        for house in self.houses_placed:
+            trigger = house.calculate_dist(self.houses_placed)
+            # print(trigger)
+            # print("trigger")
+            counter+=1
+            value_house = house.calculate_value(trigger)
+            all_values.append(value_house)
 
-    sum_values = sum(all_values)
-    # print(sum_values, "TOTALE DOEKOES!!!--------")
-    return sum_values
+        self.value = sum(all_values)
+        # print(sum_values, "TOTALE DOEKOES!!!--------")
+        # return sum_values
 
+    def plot_distribution(self):
 
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        ax.set_facecolor("green")
+        plt.axis([0, self.width, 0, self.height])
 
-def plot_distribution(list_houses):
+        for house in self.houses_placed:
+            house_rec = house.rectangle()
+            ax.add_patch(house_rec)
 
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
-    ax.set_facecolor("green")
-    plt.axis([0, WIDTH, 0, HEIGHT])
+        plt.title('Map AmstelHaege')
 
-    for house in list_houses:
-        house_rec = house.rectangle()
-        ax.add_patch(house_rec)
+        plt.grid()
+        plt.show()
 
-    plt.title('Map AmstelHaege')
+    def move_house(self, index, new_x, new_y):
+        self.houses_placed[index].x = new_x
+        self.houses_placed[index].y = new_y
 
-    plt.grid()
-    plt.show()
+        # move_house(old_list, index, randint(0, WIDTH), randint(0, HEIGHT))
 
-def move_house(list, index, new_x, new_y):
-    list[index].x = new_x
-    list[index].y = new_y
+    def legit_placement(self, new_house):
+        house_rect = new_house.rectangle()
+        new_house.get_coordinates(house_rect)
+        # print(new_house.x)
+        # print(new_house.y)
 
-    return (list)
-    # move_house(old_list, index, randint(0, WIDTH), randint(0, HEIGHT))
-def legit_placement(new_house, list_houses):
-    house_rect = new_house.rectangle()
-    new_house.get_coordinates(house_rect)
-    print(new_house.x)
-    print(new_house.y)
+        if new_house.in_map():
+            count = 0
 
-    if new_house.in_map():
-        count = 0
+            for house in self.houses_placed:
+                if not house == new_house:
+                    if new_house.intersect(house):
+                        print("hoi")
+                        return False
 
-        for house in list_houses:
-            if not house == new_house:
-                if new_house.intersect(house):
-                    print("hoi")
-                    return False
+            if count == 0:
+                print("doei")
+                return True
 
-        if count == 0:
-            print("doei")
-            return True
-
-    print("maybe")
-    return False
+        print("maybe")
+        return False
 
 if __name__ == "__main__":
 
-    data = csv_reader(INPUT_CSV)
-    # print(data)
-    test = data["Percentage"][0]
-    # print(type(test))
-    dict = df_to_dict(data)
-    # print(dict)
-    # print(type(dict["Percentage"]["Eensgezins"]))
+    amstelhaege = Area(20)
+    amstelhaege.place_houses()
+    print(len(amstelhaege.houses_placed))
+    amstelhaege.plot_distribution()
+    amstelhaege.calculate_totalvalue()
+    print(amstelhaege.value)
 
-    list_houses = place_houses(TOTAL_HOUSES, data["Percentage"])
-    # list_houses_new = move_house(list_houses, 1, randint(0, WIDTH), randint(0, HEIGHT))
-    list_houses_new = move_house(list_houses, 1, list_houses[2].x + 1, list_houses[2].y + 1)
-    # plot_distribution(list_houses_new)
-
-    while not legit_placement(list_houses_new[1], list_houses_new):
-        list_houses_new = move_house(list_houses_new, 1, randint(0, WIDTH), randint(0, HEIGHT))
-        print("here")
-
-    print("not here")
-
-    # print(list_houses)
-    # print(len(list_houses))
-    # plot_distribution(list_houses)
-
-    # if not house == new_house werkt niet
+    # data = csv_reader(INPUT_CSV)
+    # # print(data)
+    # test = data["Percentage"][0]
+    # # print(type(test))
+    # dict = df_to_dict(data)
+    # # print(dict)
+    # # print(type(dict["Percentage"]["Eensgezins"]))
+    #
+    # list_houses = place_houses(TOTAL_HOUSES, data["Percentage"])
+    # # list_houses_new = move_house(list_houses, 1, randint(0, WIDTH), randint(0, HEIGHT))
+    # list_houses_new = move_house(list_houses, 1, list_houses[2].x + 1, list_houses[2].y + 1)
+    # # plot_distribution(list_houses_new)
+    #
+    # while not legit_placement(list_houses_new[1], list_houses_new):
+    #     list_houses_new = move_house(list_houses_new, 1, randint(0, WIDTH), randint(0, HEIGHT))
+    #     print("here")
+    #
+    # print("not here")
+    #
+    # # print(list_houses)
+    # # print(len(list_houses))
+    # # plot_distribution(list_houses)
+    #
+    # # if not house == new_house werkt niet

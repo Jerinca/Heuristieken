@@ -14,6 +14,12 @@ class House_types(object):
     Representation of a house (parent) in Amstelhaege
     """
 
+    width = 0
+    height = 0
+    color = "grey"
+    value = 0
+    perc_increase = 0
+
     def __init__(self, x, y, angle):
         """
         Initialize house as a single coordinate.
@@ -21,12 +27,6 @@ class House_types(object):
         self.x = x
         self.y = y
         self.angle = angle
-        self.color = "grey"
-        self.value = 0
-        self.perc_increase = 0
-        self.length = 0
-        self.width = 0
-        self.portion = 0
         self.coords = []
 
     def __eq__(self, other):
@@ -192,7 +192,7 @@ class House_types(object):
         Calculate the value of a house.
         """
         self.value *= (1 + (distances * self.perc_increase))
-        print(self.value)
+        # print(self.value)
 
         return self.value
 
@@ -200,7 +200,7 @@ class House_types(object):
     def rectangle(self):
 
         bottom_left = (self.x, self.y)
-        rectangle = patches.Rectangle(bottom_left, self.width, self.length, self.angle, color=self.color)
+        rectangle = patches.Rectangle(bottom_left, self.width, self.height, self.angle, color=self.color)
         return rectangle
 
 
@@ -241,14 +241,14 @@ class House(House_types):
     Representation of a house (child) in Amstelhaege
     """
 
+    width = 20
+    height = 20
+    color = "yellow"
+    value = 285000
+    perc_increase = 0.03
+
     def __init__(self, x, y, angle):
         House_types.__init__(self, x, y, angle)
-        self.color = "yellow"
-        self.value = 285000
-        self.perc_increase = 0.03
-        self.length = 20
-        self.width = 20
-        self.portion = 0.60 # 60% van de woningen
         self.coords = []
 
 class Bungalow(House_types):
@@ -256,14 +256,14 @@ class Bungalow(House_types):
     Representation of a Bungalow (child) in Amstelhaege
     """
 
+    width = 21
+    height = 26
+    color = "blue"
+    value = 399000
+    perc_increase = 0.04
+
     def __init__(self, x, y, angle):
         House_types.__init__(self, x, y, angle)
-        self.color = "blue"
-        self.value = 399000
-        self.perc_increase = 0.04
-        self.length = 26
-        self.width = 21
-        self.portion = 0.25
         self.coords = []
 
 class Maison(House_types):
@@ -271,14 +271,14 @@ class Maison(House_types):
     Representation of a Maison (child) in Amstelhaege
     """
 
+    width = 33
+    height = 34
+    color = "red"
+    value = 610000
+    perc_increase = 0.06
+
     def __init__(self, x, y, angle):
         House_types.__init__(self, x, y, angle)
-        self.color = "red"
-        self.value = 610000
-        self.perc_increase = 0.06
-        self.length = 34
-        self.width = 33
-        self.portion = 0.15
         self.coords = []
 
 
