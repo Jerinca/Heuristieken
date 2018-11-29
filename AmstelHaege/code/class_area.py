@@ -106,12 +106,14 @@ def calculate_totalvalue(list_houses):
 
     for house in list_houses:
         trigger = house.calculate_dist(list_houses)
+        # print(trigger)
+        # print("trigger")
         counter+=1
         value_house = house.calculate_value(trigger)
         all_values.append(value_house)
 
     sum_values = sum(all_values)
-    print(sum_values, "TOTALE DOEKOES!!!--------")
+    # print(sum_values, "TOTALE DOEKOES!!!--------")
     return sum_values
 
 

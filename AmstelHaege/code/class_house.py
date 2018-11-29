@@ -98,7 +98,7 @@ class House_types(object):
                 b = (y_bottom_left_and_bottom_right - y_coord_top_right_differenthouse) ** 2
                 diagonal_distance = math.sqrt(a + b)
                 if diagonal_distance < distances:
-                    print("a")
+                    # print("a")
                     distances = diagonal_distance
 
             # B
@@ -106,22 +106,22 @@ class House_types(object):
                 a = (x_bottom_and_top_left - x_coord_bottom_right_differenthouse) ** 2
                 b = (y_top_left_and_top_right - y_coord_bottom_right_differenthouse) ** 2
                 diagonal_distance = math.sqrt(a + b)
-                print("left corner")
+                # print("left corner")
                 if diagonal_distance < distances:
-                    print("b")
+                    # print("b")
                     distances = diagonal_distance
 
             # C
             elif x_coord_bottom_left_differenthouse > x_top_and_bottom_right and y_coord_bottom_left_differenthouse > y_top_left_and_top_right:
                 a = (x_top_and_bottom_right - x_coord_bottom_left_differenthouse) ** 2
-                print(a)
+                # print(a)
                 b = (y_top_left_and_top_right - y_coord_bottom_left_differenthouse) ** 2
-                print(b)
+                # print(b)
                 diagonal_distance = math.sqrt(a + b)
-                print("right corner")
-                print(math.sqrt(1300))
+                # print("right corner")
+                # print(math.sqrt(1300))
                 if diagonal_distance < distances:
-                    print('here')
+                    # print('here')
                     distances = diagonal_distance
 
             # D
@@ -130,61 +130,61 @@ class House_types(object):
                 b = (y_bottom_left_and_bottom_right - y_coord_top_left_differenthouse) ** 2
                 diagonal_distance = math.sqrt(a + b)
                 if diagonal_distance < distances:
-                    print("d")
+                    # print("d")
                     distances = diagonal_distance
 
             # E
             elif x_coord_bottom_right_differenthouse <= x_bottom_and_top_left:
                 horizontal_distance = x_bottom_and_top_left - x_coord_bottom_right_differenthouse
                 if horizontal_distance < distances:
-                    print("e")
+                    # print("e")
                     distances = horizontal_distance
 
             # F
             elif y_coord_bottom_left_differenthouse >= y_top_left_and_top_right:
                 vertical_distance = y_coord_bottom_left_differenthouse - y_top_left_and_top_right
                 if vertical_distance < distances:
-                    print("f")
+                    # print("f")
                     distances = vertical_distance
 
             # G
             elif x_coord_bottom_left_differenthouse >= x_top_and_bottom_right:
                 horizontal_distance = x_coord_bottom_left_differenthouse - x_top_and_bottom_right
                 if horizontal_distance < distances:
-                    print("g")
+                    # print("g")
                     distances = horizontal_distance
             # H
             elif y_coord_top_left_differenthouse <= y_bottom_left_and_bottom_right:
                 vertical_distance = y_bottom_left_and_bottom_right - y_coord_top_left_differenthouse
                 if vertical_distance < distances:
-                    print("h")
+                    # print("h")
                     distances = vertical_distance
 
             # boundry map left
             distance_left_border = x_bottom_and_top_left - MIN
             if distance_left_border < distances:
-                print("border")
+                # print("border")
                 distances = distance_left_border
 
             # boundry map right
             distance_right_border = WIDTH - x_top_and_bottom_right
             if distance_right_border < distances:
-                print("border")
+                # print("border")
                 distances = distance_right_border
 
             # boundry map top
             distance_top_border = HEIGHT - y_top_left_and_top_right
             if distance_top_border < distances:
-                print("border")
+                # print("border")
                 distances = distance_top_border
 
             # boudry map bottom
             distance_bottom_border = y_bottom_left_and_bottom_right - MIN
             if distance_bottom_border < distances:
-                print("border")
+                # print("border")
                 distances = distance_bottom_border
 
-        print(distances)
+        # print(distances)
         return distances
 
     def calculate_value(self, distances):

@@ -11,3 +11,4 @@ WIDTH = 320
 HEIGHT = 360
 
 def main():
+    # pseudocode: place r
