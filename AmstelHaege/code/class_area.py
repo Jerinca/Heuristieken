@@ -107,7 +107,7 @@ def calculate_totalvalue(list_houses):
     for house in list_houses:
         trigger = house.calculate_dist(list_houses)
         counter+=1
-        value_house = house.calculate_value(trigger['min'])
+        value_house = house.calculate_value(trigger)
         all_values.append(value_house)
 
     sum_values = sum(all_values)
