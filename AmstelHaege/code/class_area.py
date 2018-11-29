@@ -95,7 +95,7 @@ def place_houses(TOTAL_HOUSES, percentages):
 
         plot_distribution(list_houses)
         calculate_totalvalue(list_houses)
-
+        list_houses[7].calculate_dist(list_houses)
     return list_houses
 
 
@@ -103,11 +103,11 @@ def calculate_totalvalue(list_houses):
 
     counter = 0
     all_values = []
-    
+
     for house in list_houses:
         trigger = house.calculate_dist(list_houses)
         counter+=1
-        value_house = house.calculate_value(trigger)
+        value_house = house.calculate_value(trigger['min'])
         all_values.append(value_house)
 
     sum_values = sum(all_values)
