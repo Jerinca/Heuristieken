@@ -299,7 +299,7 @@ if __name__ == "__main__":
 
     house_rec1 = house1.rectangle()
     coords_house1 = house1.get_coordinates(house_rec1)
-    # list.append(house1)
+    list.append(house1)
     print(list)
 
     house_rec2 = house2.rectangle()
