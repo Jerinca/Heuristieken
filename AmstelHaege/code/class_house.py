@@ -54,6 +54,35 @@ class House_types(object):
         distances_list = []
         distances = HEIGHT
 
+
+        distance_info = {}
+
+        if len(list_houses) == 0:
+            # boundry map left
+            distance_left_border = x_bottom_and_top_left - MIN
+            distances_list.append(distance_left_border)
+            if distance_left_border < distances:
+                distances = distance_left_border
+
+            # boundry map right
+            distance_right_border = WIDTH - x_top_and_bottom_right
+            distances_list.append(distance_right_border)
+            if distance_right_border < distances:
+                distances = distance_right_border
+
+            # boundry map top
+            distance_top_border = HEIGHT - y_top_left_and_top_right
+            distances_list.append(distance_top_border)
+            if distance_top_border < distances:
+                distances = distance_top_border
+
+            # boudry map bottom
+            distance_bottom_border = y_bottom_left_and_bottom_right - MIN
+            distances_list.append(distance_bottom_border)
+            if distance_bottom_border < distances:
+                distances = distance_bottom_border            
+
+
         for house in list_houses:
             # rectangle bottomleft
             x_coord_top_right_differenthouse = house.coords[2][0]
@@ -157,7 +186,7 @@ class House_types(object):
             if distance_bottom_border < distances:
                 distances = distance_bottom_border
 
-        distance_info = {}
+
         distance_info['min'] = min(distances_list)
         distance_info['max'] = max(distances_list)
         print(distance_info)
@@ -260,10 +289,10 @@ class Maison(House_types):
 
 
 if __name__ == "__main__":
-    house1 = Bungalow(110, 50, 0)
-    house2 = Maison(10, -2, 0)
-    house3 = House(140, 140, 90)
-    house4 = House(-10, 10, 90)
+    house1 = House(160, 180, 0)
+    house2 = House(160, 200, 0)
+    # house3 = House(140, 140, 90)
+    # house4 = House(-10, 10, 90)
     sum_distance = house1.calculate_distance(house2)
     value = house1.calculate_value(sum_distance)
     print(sum_distance)
