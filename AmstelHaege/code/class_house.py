@@ -93,7 +93,7 @@ class House_types(object):
             y_coord_top_left_differenthouse = house.coords[3][1]
 
             # A
-            if x_coord_top_right_differenthouse < x_bottom_and_top_left and y_coord_top_right_differenthouse < y_bottom_left_and_bottom_right:
+            if (x_coord_top_right_differenthouse < x_bottom_and_top_left and y_coord_top_right_differenthouse < y_bottom_left_and_bottom_right):
                 a = (x_bottom_and_top_left - x_coord_top_right_differenthouse) ** 2
                 b = (y_bottom_left_and_bottom_right - y_coord_top_right_differenthouse) ** 2
                 diagonal_distance = math.sqrt(a + b)
@@ -134,27 +134,27 @@ class House_types(object):
                     distances = diagonal_distance
 
             # E
-            elif x_coord_bottom_right_differenthouse < x_bottom_and_top_left:
+            elif x_coord_bottom_right_differenthouse <= x_bottom_and_top_left:
                 horizontal_distance = x_bottom_and_top_left - x_coord_bottom_right_differenthouse
                 if horizontal_distance < distances:
                     print("e")
                     distances = horizontal_distance
 
             # F
-            elif y_coord_bottom_left_differenthouse > y_top_left_and_top_right:
+            elif y_coord_bottom_left_differenthouse >= y_top_left_and_top_right:
                 vertical_distance = y_coord_bottom_left_differenthouse - y_top_left_and_top_right
                 if vertical_distance < distances:
                     print("f")
                     distances = vertical_distance
 
             # G
-            elif x_coord_bottom_left_differenthouse > x_top_and_bottom_right:
+            elif x_coord_bottom_left_differenthouse >= x_top_and_bottom_right:
                 horizontal_distance = x_coord_bottom_left_differenthouse - x_top_and_bottom_right
                 if horizontal_distance < distances:
                     print("g")
                     distances = horizontal_distance
             # H
-            elif y_coord_top_left_differenthouse < y_bottom_left_and_bottom_right:
+            elif y_coord_top_left_differenthouse <= y_bottom_left_and_bottom_right:
                 vertical_distance = y_bottom_left_and_bottom_right - y_coord_top_left_differenthouse
                 if vertical_distance < distances:
                     print("h")
@@ -284,8 +284,8 @@ class Maison(House_types):
 
 if __name__ == "__main__":
     list = []
-    house1 = House(160, 170, 0)
-    house2 = House(200, 220, 0)
+    house1 = House(180, 170, 0)
+    house2 = House(205, 290, 0)
     # house3 = House(140, 140, 90)
     # house4 = House(-10, 10, 90)
     # sum_distance = house1.calculate_distance(house2)
