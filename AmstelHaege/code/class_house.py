@@ -98,75 +98,93 @@ class House_types(object):
                 b = (y_bottom_left_and_bottom_right - y_coord_top_right_differenthouse) ** 2
                 diagonal_distance = math.sqrt(a + b)
                 if diagonal_distance < distances:
+                    print("a")
                     distances = diagonal_distance
 
             # B
-            if x_coord_bottom_right_differenthouse < x_bottom_and_top_left and y_coord_bottom_right_differenthouse > y_top_left_and_top_right:
+            elif x_coord_bottom_right_differenthouse < x_bottom_and_top_left and y_coord_bottom_right_differenthouse > y_top_left_and_top_right:
                 a = (x_bottom_and_top_left - x_coord_bottom_right_differenthouse) ** 2
                 b = (y_top_left_and_top_right - y_coord_bottom_right_differenthouse) ** 2
                 diagonal_distance = math.sqrt(a + b)
+                print("left corner")
                 if diagonal_distance < distances:
+                    print("b")
                     distances = diagonal_distance
 
             # C
-            if x_coord_bottom_left_differenthouse > x_top_and_bottom_right and y_coord_bottom_left_differenthouse > y_top_left_and_top_right:
+            elif x_coord_bottom_left_differenthouse > x_top_and_bottom_right and y_coord_bottom_left_differenthouse > y_top_left_and_top_right:
                 a = (x_top_and_bottom_right - x_coord_bottom_left_differenthouse) ** 2
+                print(a)
                 b = (y_top_left_and_top_right - y_coord_bottom_left_differenthouse) ** 2
+                print(b)
                 diagonal_distance = math.sqrt(a + b)
+                print("right corner")
+                print(math.sqrt(1300))
                 if diagonal_distance < distances:
+                    print('here')
                     distances = diagonal_distance
 
             # D
-            if x_coord_top_left_differenthouse > x_top_and_bottom_right and y_coord_top_left_differenthouse < y_bottom_left_and_bottom_right:
+            elif x_coord_top_left_differenthouse > x_top_and_bottom_right and y_coord_top_left_differenthouse < y_bottom_left_and_bottom_right:
                 a = (x_top_and_bottom_right - x_coord_top_left_differenthouse) ** 2
                 b = (y_bottom_left_and_bottom_right - y_coord_top_left_differenthouse) ** 2
                 diagonal_distance = math.sqrt(a + b)
                 if diagonal_distance < distances:
+                    print("d")
                     distances = diagonal_distance
 
             # E
-            if x_coord_bottom_right_differenthouse < x_bottom_and_top_left:
+            elif x_coord_bottom_right_differenthouse < x_bottom_and_top_left:
                 horizontal_distance = x_bottom_and_top_left - x_coord_bottom_right_differenthouse
                 if horizontal_distance < distances:
+                    print("e")
                     distances = horizontal_distance
 
             # F
-            if y_coord_bottom_left_differenthouse > y_top_left_and_top_right:
+            elif y_coord_bottom_left_differenthouse > y_top_left_and_top_right:
                 vertical_distance = y_coord_bottom_left_differenthouse - y_top_left_and_top_right
                 if vertical_distance < distances:
+                    print("f")
                     distances = vertical_distance
 
             # G
-            if x_coord_bottom_left_differenthouse > x_top_and_bottom_right:
+            elif x_coord_bottom_left_differenthouse > x_top_and_bottom_right:
                 horizontal_distance = x_coord_bottom_left_differenthouse - x_top_and_bottom_right
                 if horizontal_distance < distances:
+                    print("g")
                     distances = horizontal_distance
             # H
-            if y_coord_top_left_differenthouse < y_bottom_left_and_bottom_right:
+            elif y_coord_top_left_differenthouse < y_bottom_left_and_bottom_right:
                 vertical_distance = y_bottom_left_and_bottom_right - y_coord_top_left_differenthouse
                 if vertical_distance < distances:
+                    print("h")
                     distances = vertical_distance
 
             # boundry map left
             distance_left_border = x_bottom_and_top_left - MIN
             if distance_left_border < distances:
+                print("border")
                 distances = distance_left_border
 
             # boundry map right
             distance_right_border = WIDTH - x_top_and_bottom_right
             if distance_right_border < distances:
+                print("border")
                 distances = distance_right_border
 
             # boundry map top
             distance_top_border = HEIGHT - y_top_left_and_top_right
             if distance_top_border < distances:
+                print("border")
                 distances = distance_top_border
 
             # boudry map bottom
             distance_bottom_border = y_bottom_left_and_bottom_right - MIN
             if distance_bottom_border < distances:
+                print("border")
                 distances = distance_bottom_border
 
+        print(distances)
         return distances
 
     def calculate_value(self, distances):
@@ -265,8 +283,9 @@ class Maison(House_types):
 
 
 if __name__ == "__main__":
-    house1 = House(160, 180, 0)
-    # house2 = House(160, 200, 0)
+    list = []
+    house1 = House(160, 170, 0)
+    house2 = House(200, 220, 0)
     # house3 = House(140, 140, 90)
     # house4 = House(-10, 10, 90)
     # sum_distance = house1.calculate_distance(house2)
@@ -280,25 +299,37 @@ if __name__ == "__main__":
 
     house_rec1 = house1.rectangle()
     coords_house1 = house1.get_coordinates(house_rec1)
-    # print(house1.coords)
-    # print(house1.coords[1])
-    ax.add_patch(house_rec1)
+    # list.append(house1)
+    print(list)
 
     house_rec2 = house2.rectangle()
     coords_house2 = house2.get_coordinates(house_rec2)
-    print(house2.coords)
-    print(house2.coords[2])
-    print("test")
-    print(house2.in_map())
-    # print(coords_house2)
-    ax.add_patch(house_rec2)
+    list.append(house2)
+    hoi = house1.calculate_dist(list)
+
+    print(hoi)
+
+    # print(house1.coords)
+    # print(house1.coords[1])
+    ax.add_patch(house_rec1)
+    ax.add_patch(house_rec2
+    )
+
+    # house_rec2 = house2.rectangle()
+    # coords_house2 = house2.get_coordinates(house_rec2)
+    # print(house2.coords)
+    # print(house2.coords[2])
+    # print("test")
+    # print(house2.in_map())
+    # # print(coords_house2)
+    # ax.add_patch(house_rec2)
 
     # print(house1.intersect(house2))
 
-    house_rec3 = house3.rectangle()
-    coords_house3 = house3.get_coordinates(house_rec3)
-    # print(coords_house3)
-    ax.add_patch(house_rec3)
+    # house_rec3 = house3.rectangle()
+    # coords_house3 = house3.get_coordinates(house_rec3)
+    # # print(coords_house3)
+    # ax.add_patch(house_rec3)
 
     plt.grid()
     plt.show()
