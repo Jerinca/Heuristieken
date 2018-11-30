@@ -13,7 +13,7 @@ HEIGHT = 360
 
 def main():
 
-    rdm_amstelhaege = Area(20)
+    rdm_amstelhaege = Area(2)
     rdm_amstelhaege.place_houses()
     rdm_amstelhaege.calculate_totalvalue()
     total_value = rdm_amstelhaege.value
@@ -31,8 +31,21 @@ def main():
                 old_y = house.y
 
                 rdm_amstelhaege.move_house(index, x, y)
+                # print(x,y)
 
-                if rdm_amstelhaege.legit_placement(house):
+                # if rdm_amstelhaege.legit_placement(house):
+                count = 0
+                if not rdm_amstelhaege.houses_placed[index].in_map():
+                    count += 1
+                    print("bye")
+
+                for object in rdm_amstelhaege.houses_placed:
+                    if rdm_amstelhaege.houses_placed[index].intersect(object):
+                        count += 1
+                        print(index)
+
+                if count == 0:
+                    print("hoi")
                     rdm_amstelhaege.calculate_totalvalue()
 
                     if rdm_amstelhaege.value > total_value:
