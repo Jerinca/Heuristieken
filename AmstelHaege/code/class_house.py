@@ -27,6 +27,11 @@ class House_types(object):
         self.x = x
         self.y = y
         self.angle = angle
+        self.width = 0
+        self.height = 0
+        self.color = "grey"
+        self.value = 0
+        self.perc_increase = 0
         self.coords = []
 
     def __eq__(self, other):
@@ -249,6 +254,11 @@ class House(House_types):
 
     def __init__(self, x, y, angle):
         House_types.__init__(self, x, y, angle)
+        self.width = 20
+        self.height = 20
+        self.color = "yellow"
+        self.value = 285000
+        self.perc_increase = 0.03
         self.coords = []
 
 class Bungalow(House_types):
@@ -264,6 +274,11 @@ class Bungalow(House_types):
 
     def __init__(self, x, y, angle):
         House_types.__init__(self, x, y, angle)
+        self.width = 21
+        self.height = 26
+        self.color = "blue"
+        self.value = 399000
+        self.perc_increase = 0.04
         self.coords = []
 
 class Maison(House_types):
@@ -279,6 +294,11 @@ class Maison(House_types):
 
     def __init__(self, x, y, angle):
         House_types.__init__(self, x, y, angle)
+        self.width = 33
+        self.height = 34
+        self.color = "red"
+        self.value = 610000
+        self.perc_increase = 0.06
         self.coords = []
 
 

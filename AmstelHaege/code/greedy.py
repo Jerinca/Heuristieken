@@ -59,7 +59,7 @@ def main():
 
             maxpos = min_distances_houses.index(max(min_distances_houses))
             amstelhaege.houses_placed.append(houses_placed[maxpos])
-
+            amstelhaege.plot_distribution()
 
         elif len(amstelhaege.houses_placed) < ((amstelhaege.amount_houses * amstelhaege.portions[2]) + (amstelhaege.amount_houses * amstelhaege.portions[1])):
 
@@ -91,6 +91,7 @@ def main():
 
             maxpos = min_distances_houses.index(max(min_distances_houses))
             amstelhaege.houses_placed.append(houses_placed[maxpos])
+            amstelhaege.plot_distribution()
 
         else:
 
@@ -122,6 +123,8 @@ def main():
 
             maxpos = min_distances_houses.index(max(min_distances_houses))
             amstelhaege.houses_placed.append(houses_placed[maxpos])
+            amstelhaege.plot_distribution()
+
 
     print(amstelhaege.houses_placed)
     amstelhaege.calculate_totalvalue()

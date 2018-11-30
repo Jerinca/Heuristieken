@@ -36,6 +36,9 @@ class Area(object):
     def __eq__(self, other):
         return self.__dict__ == other.__dict__
 
+    def __hash__(self):
+        return hash(self.value, self.amount_houses, self.houses_placed)
+
 
     def csv_reader(self, filename):
         """
@@ -111,6 +114,9 @@ class Area(object):
 
         self.houses_placed[7].calculate_dist(self.houses_placed)
     # return list_houses
+
+    def remove_house(self, house):
+        self.houses_placed.remove(house)
 
 
     def calculate_totalvalue(self):
