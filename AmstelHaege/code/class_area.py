@@ -128,7 +128,7 @@ class Area(object):
 
                          self.houses_placed.append(new_house)
 
-        self.houses_placed[7].calculate_dist(self.houses_placed)
+        # self.houses_placed[7].calculate_dist(self.houses_placed)
     # return list_houses
 
     def remove_house(self, house):
@@ -181,8 +181,8 @@ class Area(object):
         # print(new_house.x)
         # print(new_house.y)
 
-        if new_house.in_map():
-            count = 0
+        if not new_house.in_map():
+            count += 1
 
             for house in self.houses_placed:
                 if not house == new_house:
@@ -202,6 +202,7 @@ if __name__ == "__main__":
     amstelhaege.plot_distribution()
     amstelhaege.calculate_totalvalue()
     print(amstelhaege.value)
+
 
     # data = csv_reader(INPUT_CSV)
     # # print(data)
