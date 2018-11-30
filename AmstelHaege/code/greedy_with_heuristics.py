@@ -61,9 +61,23 @@ def main():
                 all_distances_maison = []
                 all_distance_to_other_houses = []
                 # vind minimale afstand van huis tot maison and de andere types!!!
+                for house_area in amstelhaege.houses_placed:
+                    if house_area.name == "bungalow" or house_area.name == "house":
+                        distance = house.calculate_distance(house_area)
+                        print("other")
+                        print(distance)
+                        all_distances_to_other_houses.append(distance)
 
-                    # als huis vergeleken wordt met maison wil je de afstand ook afzonderlijk opslaan
-                    # en de afstanden tot andere type huizen apart van maison
+                    elif house_area.name == "maison":
+                        distance = house.calculate_distance(house_area)
+                        print("maison")
+                        print(distance)
+                        all_distances_maison.append(distance)
+
+                # vind minimale afstand tot maison and other houses
+                min_distances_to_maison.append(min(all_distances_maison))
+                min_distance_to_other_houses.append(min(all_distance_to_other_houses))
+                
 
                 # vind minimale afstand van huist t.o.v alle type huizen
                 distance_min_all_houses = house.calculate_dist(amstelhaege.houses_placed)
@@ -77,8 +91,6 @@ def main():
                 values_area.append(value)
                 amstelhaege.remove_house(house)
 
-            # finds first house with maximale lowest distance and its index
-            # maxpos = min_distances_houses.index(max(min_distances_houses))
 
             #finds first house with max total value area and its index and then
             # append to area
@@ -93,7 +105,7 @@ def main():
             for y_bottom_left in range(0, amstelhaege.height, Bungalow.height):
                 for x_bottom_left in range(0, amstelhaege.width, Bungalow.width):
 
-                    house_to_place = Maison(x_bottom_left, y_bottom_left, 0)
+                    house_to_place = Bungalow(x_bottom_left, y_bottom_left, 0)
                     house_to_place_rect = house_to_place.rectangle()
                     house_to_place.get_coordinates(house_to_place_rect)
                     count = 0
@@ -115,7 +127,21 @@ def main():
             values_area = []
 
             for house in houses_placed:
+                all_distances_maison = []
+                all_distance_to_other_houses = []
                 # vind minimale afstand van huis tot maison and de andere types!!!
+                for house_area in amstelhaege.houses_placed:
+                    if house_area.name == "bungalow" or house_area.name == "house":
+                        distance = house.calculate_distance(house_area)
+                        print("other")
+                        print(distance)
+                        min_distance_to_other_houses.append(distance)
+
+                    elif house_area.name == "maison":
+                        distance = house.calculate_distance(house_area)
+                        print("maison")
+                        print(distance)
+                        min_distances_to_maison.append(distance)
 
                 # vind minimale afstand van huist t.o.v alle type huizen
                 distance_min_all_houses = house.calculate_dist(amstelhaege.houses_placed)
@@ -128,9 +154,6 @@ def main():
                 value = amstelhaege.value
                 values_area.append(value)
                 amstelhaege.remove_house(house)
-
-            # finds first house with maximale lowest distance and its index
-            # maxpos = min_distances_houses.index(max(min_distances_houses))
 
             #finds first house with max total value area and its index and then
             # append to area
@@ -144,7 +167,7 @@ def main():
             for y_bottom_left in range(0, amstelhaege.height, House.height):
                 for x_bottom_left in range(0, amstelhaege.width, House.width):
 
-                    house_to_place = Maison(x_bottom_left, y_bottom_left, 0)
+                    house_to_place = House(x_bottom_left, y_bottom_left, 0)
                     house_to_place_rect = house_to_place.rectangle()
                     house_to_place.get_coordinates(house_to_place_rect)
                     count = 0
@@ -166,7 +189,21 @@ def main():
             values_area = []
 
             for house in houses_placed:
+                all_distances_maison = []
+                all_distance_to_other_houses = []
                 # vind minimale afstand van huis tot maison and de andere types!!!
+                for house_area in amstelhaege.houses_placed:
+                    if house_area.name == "bungalow" or house_area.name == "house":
+                        distance = house.calculate_distance(house_area)
+                        print("other")
+                        print(distance)
+                        min_distance_to_other_houses.append(distance)
+
+                    elif house_area.name == "maison":
+                        distance = house.calculate_distance(house_area)
+                        print("maison")
+                        print(distance)
+                        min_distances_to_maison.append(distance)
 
                 # vind minimale afstand van huist t.o.v alle type huizen
                 distance_min_all_houses = house.calculate_dist(amstelhaege.houses_placed)
@@ -179,9 +216,6 @@ def main():
                 value = amstelhaege.value
                 values_area.append(value)
                 amstelhaege.remove_house(house)
-
-            # finds first house with maximale lowest distance and its index
-            # maxpos = min_distances_houses.index(max(min_distances_houses))
 
             #finds first house with max total value area and its index and then
             # append to area
