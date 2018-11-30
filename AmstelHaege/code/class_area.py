@@ -144,7 +144,7 @@ class Area(object):
             trigger = house.calculate_dist(self.houses_placed)
             # print(trigger)
             # print("trigger")
-            counter+=1
+            counter += 1
             house.calculate_value(trigger)
             value_house = house.value
             all_values.append(value_house)
