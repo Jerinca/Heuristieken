@@ -187,14 +187,11 @@ class Area(object):
             for house in self.houses_placed:
                 if not house == new_house:
                     if new_house.intersect(house):
-                        print("hoi")
                         return False
 
             if count == 0:
-                print("doei")
                 return True
 
-        print("maybe")
         return False
 
 if __name__ == "__main__":
