@@ -104,16 +104,34 @@ def main():
 
                         houses_placed.append(house_to_place)
 
-            min_distances_houses = []
+            min_distances_all_houses = []
+            min_distances_to_maison = []
+            min_distance_to_other_houses = []
+            values_area = []
 
             for house in houses_placed:
-                distance_min = house.calculate_dist(amstelhaege.houses_placed)
-                min_distances_houses.append(distance_min)
+                # vind minimale afstand van huis tot maison and de andere types!!!
 
-            maxpos = min_distances_houses.index(max(min_distances_houses))
+                # vind minimale afstand van huist t.o.v alle type huizen
+                distance_min_all_houses = house.calculate_dist(amstelhaege.houses_placed)
+                min_distances_all_houses.append(distance_min_all_houses)
+
+                # append every house to amstelhaege, calculate value, store value
+                # and then remove house (for every possible house)
+                amstelhaege.houses_placed.append(house)
+                amstelhaege.calculate_totalvalue()
+                value = amstelhaege.value
+                values_area.append(value)
+                amstelhaege.remove_house(house)
+
+            # finds first house with maximale lowest distance and its index
+            # maxpos = min_distances_houses.index(max(min_distances_houses))
+
+            #finds first house with max total value area and its index and then
+            # append to area
+            maxpos = values_area.index(max(values_area))
             amstelhaege.houses_placed.append(houses_placed[maxpos])
             amstelhaege.plot_distribution()
-
         else:
 
             houses_placed = []
@@ -137,13 +155,32 @@ def main():
 
                         houses_placed.append(house_to_place)
 
-            min_distances_houses = []
+            min_distances_all_houses = []
+            min_distances_to_maison = []
+            min_distance_to_other_houses = []
+            values_area = []
 
             for house in houses_placed:
-                distance_min = house.calculate_dist(amstelhaege.houses_placed)
-                min_distances_houses.append(distance_min)
+                # vind minimale afstand van huis tot maison and de andere types!!!
 
-            maxpos = min_distances_houses.index(max(min_distances_houses))
+                # vind minimale afstand van huist t.o.v alle type huizen
+                distance_min_all_houses = house.calculate_dist(amstelhaege.houses_placed)
+                min_distances_all_houses.append(distance_min_all_houses)
+
+                # append every house to amstelhaege, calculate value, store value
+                # and then remove house (for every possible house)
+                amstelhaege.houses_placed.append(house)
+                amstelhaege.calculate_totalvalue()
+                value = amstelhaege.value
+                values_area.append(value)
+                amstelhaege.remove_house(house)
+
+            # finds first house with maximale lowest distance and its index
+            # maxpos = min_distances_houses.index(max(min_distances_houses))
+
+            #finds first house with max total value area and its index and then
+            # append to area
+            maxpos = values_area.index(max(values_area))
             amstelhaege.houses_placed.append(houses_placed[maxpos])
             amstelhaege.plot_distribution()
 

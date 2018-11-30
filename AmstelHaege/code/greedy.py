@@ -38,16 +38,16 @@ def main():
                     house_to_place = Maison(x_bottom_left, y_bottom_left, 0)
                     house_to_place_rect = house_to_place.rectangle()
                     house_to_place.get_coordinates(house_to_place_rect)
+                    count = 0
 
-                    if house_to_place.in_map():
-                        count = 0
+                    if not house_to_place.in_map():
+                        count += 1
 
                     for house in amstelhaege.houses_placed:
                         if house_to_place.intersect(house):
                             count += 1
 
                     if count == 0:
-
                         houses_placed.append(house_to_place)
 
             min_distances_houses = []
@@ -59,7 +59,7 @@ def main():
 
             maxpos = min_distances_houses.index(max(min_distances_houses))
             amstelhaege.houses_placed.append(houses_placed[maxpos])
-            amstelhaege.plot_distribution()
+            # amstelhaege.plot_distribution()
 
         elif len(amstelhaege.houses_placed) < ((amstelhaege.amount_houses * amstelhaege.portions[2]) + (amstelhaege.amount_houses * amstelhaege.portions[1])):
 
@@ -71,9 +71,10 @@ def main():
                     house_to_place = Bungalow(x_bottom_left, y_bottom_left, 0)
                     house_to_place_rect = house_to_place.rectangle()
                     house_to_place.get_coordinates(house_to_place_rect)
+                    count = 0
 
-                    if house_to_place.in_map():
-                        count = 0
+                    if not house_to_place.in_map():
+                        count += 1
 
                     for house in amstelhaege.houses_placed:
                         if house_to_place.intersect(house):
@@ -91,7 +92,7 @@ def main():
 
             maxpos = min_distances_houses.index(max(min_distances_houses))
             amstelhaege.houses_placed.append(houses_placed[maxpos])
-            amstelhaege.plot_distribution()
+            # amstelhaege.plot_distribution()
 
         else:
 
@@ -103,9 +104,10 @@ def main():
                     house_to_place = House(x_bottom_left, y_bottom_left, 0)
                     house_to_place_rect = house_to_place.rectangle()
                     house_to_place.get_coordinates(house_to_place_rect)
+                    count = 0
 
-                    if house_to_place.in_map():
-                        count = 0
+                    if not house_to_place.in_map():
+                        count += 1
 
                     for house in amstelhaege.houses_placed:
                         if house_to_place.intersect(house):
@@ -123,7 +125,7 @@ def main():
 
             maxpos = min_distances_houses.index(max(min_distances_houses))
             amstelhaege.houses_placed.append(houses_placed[maxpos])
-            amstelhaege.plot_distribution()
+            # amstelhaege.plot_distribution()
 
 
     print(amstelhaege.houses_placed)

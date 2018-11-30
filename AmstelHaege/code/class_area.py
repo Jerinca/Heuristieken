@@ -145,7 +145,8 @@ class Area(object):
             # print(trigger)
             # print("trigger")
             counter+=1
-            value_house = house.calculate_value(trigger)
+            house.calculate_value(trigger)
+            value_house = house.value
             all_values.append(value_house)
 
         self.value = sum(all_values)

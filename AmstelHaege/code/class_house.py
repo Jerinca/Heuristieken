@@ -17,7 +17,7 @@ class House_types(object):
     width = 0
     height = 0
     color = "grey"
-    value = 0
+    value_const = 0
     perc_increase = 0
 
     def __init__(self, x, y, angle):
@@ -28,6 +28,7 @@ class House_types(object):
         self.y = y
         self.angle = angle
         self.name = "house_types"
+        self.value_const = 0
         self.width = 0
         self.height = 0
         self.color = "grey"
@@ -197,10 +198,10 @@ class House_types(object):
         """
         Calculate the value of a house.
         """
-        self.value *= (1 + (distances * self.perc_increase))
+        # self.value *= (1 + (distances * self.perc_increase))
+        self.value = self.value_const + self.value_const * (distances * self.perc_increase)
         # print(self.value)
 
-        return self.value
 
 
     def rectangle(self):
@@ -251,7 +252,8 @@ class House(House_types):
     width = 20
     height = 20
     color = "yellow"
-    value = 285000
+    value = 0
+    value_const = 285000
     perc_increase = 0.03
 
     def __init__(self, x, y, angle):
@@ -260,7 +262,8 @@ class House(House_types):
         self.width = 20
         self.height = 20
         self.color = "yellow"
-        self.value = 285000
+        self.value = 0
+        self.value_const = 285000
         self.perc_increase = 0.03
         self.coords = []
 
@@ -273,7 +276,8 @@ class Bungalow(House_types):
     width = 21
     height = 26
     color = "blue"
-    value = 399000
+    value = 0
+    value_const = 399000
     perc_increase = 0.04
 
     def __init__(self, x, y, angle):
@@ -282,7 +286,8 @@ class Bungalow(House_types):
         self.width = 21
         self.height = 26
         self.color = "blue"
-        self.value = 399000
+        self.value = 0
+        self.value_const = 399000
         self.perc_increase = 0.04
         self.coords = []
 
@@ -295,7 +300,8 @@ class Maison(House_types):
     width = 33
     height = 34
     color = "red"
-    value = 610000
+    value = 0
+    value_const = 610000
     perc_increase = 0.06
 
     def __init__(self, x, y, angle):
@@ -304,7 +310,8 @@ class Maison(House_types):
         self.width = 33
         self.height = 34
         self.color = "red"
-        self.value = 610000
+        self.value = 0
+        self.value_const = 610000
         self.perc_increase = 0.06
         self.coords = []
 
