@@ -91,9 +91,10 @@ def main():
                     house_to_place = Bungalow(x_bottom_left, y_bottom_left, 0)
                     house_to_place_rect = house_to_place.rectangle()
                     house_to_place.get_coordinates(house_to_place_rect)
+                    count = 0
 
-                    if house_to_place.in_map():
-                        count = 0
+                    if not house_to_place.in_map():
+                        count += 1
 
                     for house in amstelhaege.houses_placed:
                         if house_to_place.intersect(house):
@@ -123,9 +124,10 @@ def main():
                     house_to_place = House(x_bottom_left, y_bottom_left, 0)
                     house_to_place_rect = house_to_place.rectangle()
                     house_to_place.get_coordinates(house_to_place_rect)
+                    count = 0
 
-                    if house_to_place.in_map():
-                        count = 0
+                    if not house_to_place.in_map():
+                        count += 1
 
                     for house in amstelhaege.houses_placed:
                         if house_to_place.intersect(house):
