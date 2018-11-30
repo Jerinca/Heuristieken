@@ -61,9 +61,6 @@ def main():
                 all_distances_maison = []
                 all_distance_to_other_houses = []
                 # vind minimale afstand van huis tot maison and de andere types!!!
-                for house_area in amstelhaege.houses_placed:
-                    if house_area.name == "bungalow" or house_area.name == "house":
-                        
                     # als huis vergeleken wordt met maison wil je de afstand ook afzonderlijk opslaan
                     # en de afstanden tot andere type huizen apart van maison
 
