@@ -56,6 +56,22 @@ class Area(object):
         dict = df.to_dict()
         return dict
 
+    def place_house(self, new_house):
+        """
+        Allen handig voor random plaatsen of iedergeval voor
+        als er geen  verder vergelijkingen nodig zijn dan die al in de functie
+        worden beschreven en de huizen direct geplaatst kunnen worden.
+        """
+        if new_house.in_map():
+            count == 0
+
+        for house in self.houses_placed:
+            if new_house.intersect(house):
+                count += 1
+
+        if count == 0:
+            self.houses_placed.append(new_house)
+
     def place_houses(self):
 
         # list_houses = []

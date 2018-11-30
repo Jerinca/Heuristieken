@@ -13,7 +13,7 @@ class House_types(object):
     """
     Representation of a house (parent) in Amstelhaege
     """
-
+    name = "house_types"
     width = 0
     height = 0
     color = "grey"
@@ -27,6 +27,7 @@ class House_types(object):
         self.x = x
         self.y = y
         self.angle = angle
+        self.name = "house_types"
         self.width = 0
         self.height = 0
         self.color = "grey"
@@ -246,6 +247,7 @@ class House(House_types):
     Representation of a house (child) in Amstelhaege
     """
 
+    name = "house"
     width = 20
     height = 20
     color = "yellow"
@@ -254,6 +256,7 @@ class House(House_types):
 
     def __init__(self, x, y, angle):
         House_types.__init__(self, x, y, angle)
+        self.name = "house"
         self.width = 20
         self.height = 20
         self.color = "yellow"
@@ -266,6 +269,7 @@ class Bungalow(House_types):
     Representation of a Bungalow (child) in Amstelhaege
     """
 
+    name = "bungalow"
     width = 21
     height = 26
     color = "blue"
@@ -274,6 +278,7 @@ class Bungalow(House_types):
 
     def __init__(self, x, y, angle):
         House_types.__init__(self, x, y, angle)
+        self.name = "bungalow"
         self.width = 21
         self.height = 26
         self.color = "blue"
@@ -286,6 +291,7 @@ class Maison(House_types):
     Representation of a Maison (child) in Amstelhaege
     """
 
+    name = "maison"
     width = 33
     height = 34
     color = "red"
@@ -294,6 +300,7 @@ class Maison(House_types):
 
     def __init__(self, x, y, angle):
         House_types.__init__(self, x, y, angle)
+        self.name = "maison"
         self.width = 33
         self.height = 34
         self.color = "red"
