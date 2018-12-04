@@ -4,11 +4,11 @@ Er komt een nieuwe woonwijk in de Duivendrechtse polder, op een stuk grond van 1
 Daarnaast zijn er eisen waar de wijk aan moet voldoen, zoals een vaste verdeling (60% eengezinswoningen, 25% bungalows, 15% maisons), 20% oppervlaktewater.
 
 ### State Space 
-Voor het berekenen van de upper bound van de state space wordt enkel met eengezinswoningen gewerkt, aangezien deze het kleinst zijn en dus meer oplossingen kunnen opleveren. De oppervlak van een eengezienswoning met verplichte bijstand is 10 x 10 meter, op het gehele oppervlak van de wijk passen er dus 16 x 18 = 288 huizen (max_inlengte * max_inbreedte). Aangezien de volgorde van het plaatsen van de huizen niet uitmaakt voor het aantal oplossingen, vermening vuldigen we met de faculteit van n (aantal huizen). 
+Voor het berekenen van de upper bound van de state space wordt enkel met eengezinswoningen gewerkt, aangezien deze het kleinst zijn en dus meer oplossingen kunnen opleveren. De oppervlak van een eengezinswoning met verplichte bijstand is 10 x 10 meter, op het gehele oppervlak van de wijk passen er dus 16 x 18 = 288 huizen (max_inlengte * max_inbreedte). Aangezien de volgorde van het plaatsen van de huizen niet uitmaakt voor het aantal oplossingen, vermening vuldigen we met de faculteit van n (aantal huizen). Gezien er met een type huis wordt gewerkt, is 50% van de oplossingen een spiegeling van een andere oplossing. De upperbound halveert dus.
 
 ```
-upperbound = (max_inlengte * max_inbreedte)!/(((max_inlengte * max_inbreedte) - n)! * n!)
-Voor eengezinswoningen is dit dus: 288!/((288-n)! * n!)
+upperbound = ((max_inlengte * max_inbreedte)!/(((max_inlengte * max_inbreedte) - n)! * n!)) * 0.5
+Voor eengezinswoningen is dit dus: (288!/((288-n)! * n!)) * 0.5
 ```
 De lower bound is 1, omdat er minimaal een oplossing is. 
 
