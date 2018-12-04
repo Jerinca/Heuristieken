@@ -23,7 +23,7 @@ AMOUNT = TOTAL_HOUSES[2]
 
 def main():
 
-    amstelhaege = Area(20)
+    amstelhaege = Area(60)
     # house = House(0, 0, 0)
     # bungalow = Bungalow(0, 0, 0)
     # maison = Maison(0, 0, 0)
@@ -84,7 +84,6 @@ def main():
             # append to area
             maxpos = values_area.index(max(values_area))
             amstelhaege.houses_placed.append(houses_placed[maxpos])
-            amstelhaege.plot_distribution()
 
         elif len(amstelhaege.houses_placed) < ((amstelhaege.amount_houses * amstelhaege.portions[2]) + (amstelhaege.amount_houses * amstelhaege.portions[1])):
 
@@ -93,7 +92,7 @@ def main():
             for y_bottom_left in range(0, amstelhaege.height, Bungalow.height):
                 for x_bottom_left in range(0, amstelhaege.width, Bungalow.width):
 
-                    house_to_place = Maison(x_bottom_left, y_bottom_left, 0)
+                    house_to_place = Bungalow(x_bottom_left, y_bottom_left, 0)
                     house_to_place_rect = house_to_place.rectangle()
                     house_to_place.get_coordinates(house_to_place_rect)
                     count = 0
@@ -136,7 +135,6 @@ def main():
             # append to area
             maxpos = values_area.index(max(values_area))
             amstelhaege.houses_placed.append(houses_placed[maxpos])
-            amstelhaege.plot_distribution()
         else:
 
             houses_placed = []
@@ -144,7 +142,7 @@ def main():
             for y_bottom_left in range(0, amstelhaege.height, House.height):
                 for x_bottom_left in range(0, amstelhaege.width, House.width):
 
-                    house_to_place = Maison(x_bottom_left, y_bottom_left, 0)
+                    house_to_place = House(x_bottom_left, y_bottom_left, 0)
                     house_to_place_rect = house_to_place.rectangle()
                     house_to_place.get_coordinates(house_to_place_rect)
                     count = 0
@@ -187,7 +185,6 @@ def main():
             # append to area
             maxpos = values_area.index(max(values_area))
             amstelhaege.houses_placed.append(houses_placed[maxpos])
-            amstelhaege.plot_distribution()
 
 
     print(amstelhaege.houses_placed)

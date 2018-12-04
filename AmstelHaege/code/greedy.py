@@ -21,7 +21,7 @@ AMOUNT = TOTAL_HOUSES[2]
 
 def main():
 
-    amstelhaege = Area(20)
+    amstelhaege = Area(60)
     # house = House(0, 0, 0)
     # bungalow = Bungalow(0, 0, 0)
     # maison = Maison(0, 0, 0)

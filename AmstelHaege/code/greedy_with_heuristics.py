@@ -23,7 +23,7 @@ AMOUNT = TOTAL_HOUSES[2]
 
 def main():
 
-    amstelhaege = Area(20)
+    amstelhaege = Area(60)
     # house = House(0, 0, 0)
     # bungalow = Bungalow(0, 0, 0)
     # maison = Maison(0, 0, 0)
@@ -66,7 +66,7 @@ def main():
                         distance = house.calculate_distance(house_area)
                         print("other")
                         print(distance)
-                        all_distances_to_other_houses.append(distance)
+                        all_distance_to_other_houses.append(distance)
 
                     elif house_area.name == "maison":
                         distance = house.calculate_distance(house_area)
@@ -75,9 +75,9 @@ def main():
                         all_distances_maison.append(distance)
 
                 # vind minimale afstand tot maison and other houses
-                min_distances_to_maison.append(min(all_distances_maison))
-                min_distance_to_other_houses.append(min(all_distance_to_other_houses))
-                
+                if len(all_distances_maison) > 0 and len(all_distance_to_other_houses) > 0:
+                    min_distances_to_maison.append(min(all_distances_maison))
+                    min_distance_to_other_houses.append(min(all_distance_to_other_houses))
 
                 # vind minimale afstand van huist t.o.v alle type huizen
                 distance_min_all_houses = house.calculate_dist(amstelhaege.houses_placed)
@@ -91,12 +91,27 @@ def main():
                 values_area.append(value)
                 amstelhaege.remove_house(house)
 
+            index = []
+            counter = 0
+            houses_heurestics = []
+            values_heurestics = []
 
-            #finds first house with max total value area and its index and then
-            # append to area
-            maxpos = values_area.index(max(values_area))
-            amstelhaege.houses_placed.append(houses_placed[maxpos])
-            amstelhaege.plot_distribution()
+            for dist_maison, dist_other in zip(min_distances_to_maison, min_distance_to_other_houses):
+                if dist_maison >= (2 * dist_other):
+                    index.append(counter)
+                    houses_heurestics.append(houses_placed[counter])
+                    values_heurestics.append(values_area[counter])
+
+                counter += 1
+
+            if len(index) > 0:
+                maxpos = values_heurestics.index(max(values_heurestics))
+                amstelhaege.houses_placed.append(houses_heurestics[maxpos])
+            else:
+                #finds first house with max total value area and its index and then
+                # append to area
+                maxpos = values_area.index(max(values_area))
+                amstelhaege.houses_placed.append(houses_placed[maxpos])
 
         elif len(amstelhaege.houses_placed) < ((amstelhaege.amount_houses * amstelhaege.portions[2]) + (amstelhaege.amount_houses * amstelhaege.portions[1])):
 
@@ -135,13 +150,18 @@ def main():
                         distance = house.calculate_distance(house_area)
                         print("other")
                         print(distance)
-                        min_distance_to_other_houses.append(distance)
+                        all_distance_to_other_houses.append(distance)
 
                     elif house_area.name == "maison":
                         distance = house.calculate_distance(house_area)
                         print("maison")
                         print(distance)
-                        min_distances_to_maison.append(distance)
+                        all_distances_maison.append(distance)
+
+                # vind minimale afstand tot maison and other houses
+                if len(all_distances_maison) > 0 and len(all_distance_to_other_houses) > 0:
+                    min_distances_to_maison.append(min(all_distances_maison))
+                    min_distance_to_other_houses.append(min(all_distance_to_other_houses))
 
                 # vind minimale afstand van huist t.o.v alle type huizen
                 distance_min_all_houses = house.calculate_dist(amstelhaege.houses_placed)
@@ -155,11 +175,27 @@ def main():
                 values_area.append(value)
                 amstelhaege.remove_house(house)
 
-            #finds first house with max total value area and its index and then
-            # append to area
-            maxpos = values_area.index(max(values_area))
-            amstelhaege.houses_placed.append(houses_placed[maxpos])
-            amstelhaege.plot_distribution()
+            index = []
+            counter = 0
+            houses_heurestics = []
+            values_heurestics = []
+
+            for dist_maison, dist_other in zip(min_distances_to_maison, min_distance_to_other_houses):
+                if dist_maison >= (2 * dist_other):
+                    index.append(counter)
+                    houses_heurestics.append(houses_placed[counter])
+                    values_heurestics.append(values_area[counter])
+
+                counter += 1
+
+            if len(index) > 0:
+                maxpos = values_heurestics.index(max(values_heurestics))
+                amstelhaege.houses_placed.append(houses_heurestics[maxpos])
+            else:
+                #finds first house with max total value area and its index and then
+                # append to area
+                maxpos = values_area.index(max(values_area))
+                amstelhaege.houses_placed.append(houses_placed[maxpos])
         else:
 
             houses_placed = []
@@ -197,13 +233,18 @@ def main():
                         distance = house.calculate_distance(house_area)
                         print("other")
                         print(distance)
-                        min_distance_to_other_houses.append(distance)
+                        all_distance_to_other_houses.append(distance)
 
                     elif house_area.name == "maison":
                         distance = house.calculate_distance(house_area)
                         print("maison")
                         print(distance)
-                        min_distances_to_maison.append(distance)
+                        all_distances_maison.append(distance)
+
+                # vind minimale afstand tot maison and other houses
+                if len(all_distances_maison) > 0 and len(all_distance_to_other_houses) > 0:
+                    min_distances_to_maison.append(min(all_distances_maison))
+                    min_distance_to_other_houses.append(min(all_distance_to_other_houses))
 
                 # vind minimale afstand van huist t.o.v alle type huizen
                 distance_min_all_houses = house.calculate_dist(amstelhaege.houses_placed)
@@ -217,12 +258,27 @@ def main():
                 values_area.append(value)
                 amstelhaege.remove_house(house)
 
-            #finds first house with max total value area and its index and then
-            # append to area
-            maxpos = values_area.index(max(values_area))
-            amstelhaege.houses_placed.append(houses_placed[maxpos])
-            amstelhaege.plot_distribution()
+            index = []
+            counter = 0
+            houses_heurestics = []
+            values_heurestics = []
 
+            for dist_maison, dist_other in zip(min_distances_to_maison, min_distance_to_other_houses):
+                if dist_maison >= (2 * dist_other):
+                    index.append(counter)
+                    houses_heurestics.append(houses_placed[counter])
+                    values_heurestics.append(values_area[counter])
+
+                counter += 1
+
+            if len(index) > 0:
+                maxpos = values_heurestics.index(max(values_heurestics))
+                amstelhaege.houses_placed.append(houses_heurestics[maxpos])
+            else:
+                #finds first house with max total value area and its index and then
+                # append to area
+                maxpos = values_area.index(max(values_area))
+                amstelhaege.houses_placed.append(houses_placed[maxpos])
 
     print(amstelhaege.houses_placed)
     amstelhaege.calculate_totalvalue()
