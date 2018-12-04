@@ -36,8 +36,8 @@ class House_types(object):
         self.perc_increase = 0
         self.coords = []
 
-    def __eq__(self, other):
-        return self.__dict__ == other.__dict__
+    # def __eq__(self, other):
+    #     return self.__dict__ == other.__dict__
 
     def calculate_distance(self, house):
         """
@@ -311,7 +311,7 @@ class House_types(object):
         Calculate the value of a house.
         """
         # self.value *= (1 + (distances * self.perc_increase))
-        self.value = self.value_const + self.value_const * (distances * self.perc_increase)
+        self.value = self.value_const + self.value_const * (distances / 2 * self.perc_increase)
         # print(self.value)
 
 
@@ -430,8 +430,8 @@ class Maison(House_types):
 
 if __name__ == "__main__":
     list = []
-    house1 = House(180, 170, 0)
-    house2 = House(205, 290, 0)
+    house1 = House(300, 340, 0)
+    house2 = House(280, 340, 0)
     # house3 = House(140, 140, 90)
     # house4 = House(-10, 10, 90)
     # sum_distance = house1.calculate_distance(house2)
@@ -452,14 +452,18 @@ if __name__ == "__main__":
     coords_house2 = house2.get_coordinates(house_rec2)
     list.append(house2)
     hoi = house1.calculate_dist(list)
+    house1.calculate_value(hoi)
+    print(house1.value)
+    hoi2 = house2.calculate_dist(list)
+    house2.calculate_value(hoi)
+    print(house2.value)
 
     print(hoi)
 
     # print(house1.coords)
     # print(house1.coords[1])
     ax.add_patch(house_rec1)
-    ax.add_patch(house_rec2
-    )
+    ax.add_patch(house_rec2)
 
     # house_rec2 = house2.rectangle()
     # coords_house2 = house2.get_coordinates(house_rec2)

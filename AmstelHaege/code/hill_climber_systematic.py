@@ -13,15 +13,17 @@ HEIGHT = 360
 
 def main():
 
-    rdm_amstelhaege = Area(2)
+    rdm_amstelhaege = Area(5)
     rdm_amstelhaege.place_houses()
     rdm_amstelhaege.calculate_totalvalue()
     total_value = rdm_amstelhaege.value
     rdm_amstelhaege.plot_distribution()
     print(total_value)
+    best_plot = rdm_amstelhaege
 
+    index = 0
     for house in rdm_amstelhaege.houses_placed:
-        index = 0
+        print(index)
         old_x = house.x
         old_y = house.y
 
@@ -37,25 +39,38 @@ def main():
                 count = 0
                 if not rdm_amstelhaege.houses_placed[index].in_map():
                     count += 1
-                    print("bye")
+                    rdm_amstelhaege.move_house(index, old_x, old_y)
+                    # print("bye")
 
                 for object in rdm_amstelhaege.houses_placed:
-                    if rdm_amstelhaege.houses_placed[index].intersect(object):
-                        count += 1
-                        print(index)
+                    if not object == rdm_amstelhaege.houses_placed[index]:
+                        if rdm_amstelhaege.houses_placed[index].intersect(object):
+                            count += 1
+                            rdm_amstelhaege.move_house(index, old_x, old_y)
+                            # print(index)
 
                 if count == 0:
-                    print("hoi")
+                    # print("hoi")
                     rdm_amstelhaege.calculate_totalvalue()
+                    # print(rdm_amstelhaege.value)
+                    # rdm_amstelhaege.plot_distribution()
 
                     if rdm_amstelhaege.value > total_value:
                         total_value = rdm_amstelhaege.value
-                        rdm_amstelhaege.plot_distribution()
+                        best_plot = rdm_amstelhaege
+                        # rdm_amstelhaege.plot_distribution()
+                        # print("more")
                         print(total_value)
-                else:
-                    rdm_amstelhaege.move_house(index, old_x, old_y)
+                        # print(rdm_amstelhaege.houses_placed[0].x)
+                        # print(rdm_amstelhaege.houses_placed[1].x)
+                    else:
+                        rdm_amstelhaege.move_house(index, old_x, old_y)
+        index+=1
 
-        # rdm_amstelhaege.plot_distribution()
+    print(total_value)
+    # print(best_plot.houses_placed[0].x)
+    # print(best_plot.houses_placed[1].x)
+    rdm_amstelhaege.plot_distribution()
 
 if __name__ == "__main__":
     main()

@@ -143,11 +143,10 @@ class Area(object):
         for house in self.houses_placed:
             trigger = house.calculate_dist(self.houses_placed)
             # print(trigger)
-            # print("trigger")
             counter += 1
             house.calculate_value(trigger)
-            value_house = house.value
-            all_values.append(value_house)
+            # value_house = house.value
+            all_values.append(house.value)
 
         self.value = sum(all_values)
         # print(sum_values, "TOTALE DOEKOES!!!--------")
@@ -172,6 +171,8 @@ class Area(object):
     def move_house(self, index, new_x, new_y):
         self.houses_placed[index].x = new_x
         self.houses_placed[index].y = new_y
+        rect = self.houses_placed[index].rectangle()
+        self.houses_placed[index].get_coordinates(rect)
 
         # move_house(old_list, index, randint(0, WIDTH), randint(0, HEIGHT))
 
