@@ -23,7 +23,7 @@ AMOUNT = TOTAL_HOUSES[2]
 
 def main():
 
-    amstelhaege = Area(60)
+    amstelhaege = Area(20)
     # house = House(0, 0, 0)
     # bungalow = Bungalow(0, 0, 0)
     # maison = Maison(0, 0, 0)
@@ -192,6 +192,7 @@ def main():
     print(amstelhaege.value)
     amstelhaege.plot_distribution()
 
+    return amstelhaege
 
 if __name__ == "__main__":
     main()
