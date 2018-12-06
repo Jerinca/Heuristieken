@@ -168,6 +168,8 @@ class Area(object):
         plt.grid()
         plt.show()
 
+        return fig
+
     def move_house(self, index, new_x, new_y):
         self.houses_placed[index].x = new_x
         self.houses_placed[index].y = new_y

@@ -13,7 +13,7 @@ HEIGHT = 360
 
 def main():
 
-    rdm_amstelhaege = Area(20)
+    rdm_amstelhaege = Area(3)
     rdm_amstelhaege.place_houses()
     rdm_amstelhaege.calculate_totalvalue()
     total_value = rdm_amstelhaege.value

@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 from class_house import House_types, House, Bungalow, Maison
 from class_area import Area
 import greedy_obj_func
-import datetime
 
 TOTAL_HOUSES = [20, 40, 60]
 PERCENTAGES = [0.15, 0.35, 0.6]
@@ -15,7 +14,7 @@ HEIGHT = 360
 
 def main():
 
-    rdm_amstelhaege = Area(2)
+    rdm_amstelhaege = Area(20)
     rdm_amstelhaege.place_houses()
     # rdm_amstelhaege = greedy_obj_func.main()
     rdm_amstelhaege.calculate_totalvalue()
@@ -23,9 +22,6 @@ def main():
     rdm_amstelhaege.plot_distribution()
     print(total_value)
     best_plot = rdm_amstelhaege
-    file = open("values_systematic_20_06122018", "w")
-    starttime = datetime.datetime.now()
-    file.write(starttime.strftime("%Y-%m-%d %H:%M:%S") +"\n")
 
     counter = 1
     while (counter >= 1):
@@ -70,23 +66,17 @@ def main():
                             counter += 1
                             # rdm_amstelhaege.plot_distribution()
                             # print("more")
-                            file.write(str(total_value)+ "\n")
-                            # print(total_value)
+                            print(total_value)
                             # print(rdm_amstelhaege.houses_placed[0].x)
                             # print(rdm_amstelhaege.houses_placed[1].x)
                         else:
                             rdm_amstelhaege.move_house(index, old_x, old_y)
             index += 1
 
-    endtime = datetime.datetime.now()
-    file.write(endtime.strftime("%Y-%m-%d %H:%M:%S")+ "\n")
-    file.write(str(total_value))
-    file.close()
-    # print(total_value)
+    print(total_value)
     # print(best_plot.houses_placed[0].x)
     # print(best_plot.houses_placed[1].x)
-    fig = rdm_amstelhaege.plot_distribution()
-    fig.savefig('systematic_20_06122018.png')
+    rdm_amstelhaege.plot_distribution()
 
 if __name__ == "__main__":
     main()
