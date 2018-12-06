@@ -1,1 +1,0 @@
-Runtime is: 57.897541851 seconds
