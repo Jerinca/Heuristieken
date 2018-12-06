@@ -1,9 +1,6 @@
 # #TODO
 #
-# -	Waarde van de greedies 
-# -	Random hillclimber aanpassen
 # -	Hill climber op de greedies toepassen
-# -	Score in titel grafiek zetten
 # -	Pijnpunten van case beschrijven 
 # -	Hillclimber niet per huis, maar random huis kiezen, maar wel systematisch alles langsgaan.
 # -	Verloop plotten
