@@ -12,3 +12,8 @@ Vrijstand: kleinste afstand tot volgend huis OF rand van de wijk (vrijstand moet
 namelijk binnen de oppervlakte van de wijk vallen).
 
 Totale waarde = Som van alle WAARDE HUIS.
+
+
+
+NOTE:
+In geval van percentuele waardevermeerdering per meter is de toename niet cumulatief. Een maison met twee meter extra vrijstand is dus 12.0% meer waard, niet 12.36%.
