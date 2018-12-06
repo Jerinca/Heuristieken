@@ -14,6 +14,7 @@ from random import randint
 import matplotlib.pyplot as plt
 from class_house import House_types, House, Bungalow, Maison
 from class_area import Area
+import time
 
 TOTAL_HOUSES = [20, 40, 60]
 PERCENTAGES = [0.15, 0.35, 0.6]
@@ -21,8 +22,10 @@ WIDTH = 320
 HEIGHT = 360
 AMOUNT = TOTAL_HOUSES[2]
 
-def main():
+start_time = time.process_time()
 
+def main():
+    counter_houses = 0
     amstelhaege = Area(60)
     # house = House(0, 0, 0)
     # bungalow = Bungalow(0, 0, 0)
@@ -64,14 +67,10 @@ def main():
                 for house_area in amstelhaege.houses_placed:
                     if house_area.name == "bungalow" or house_area.name == "house":
                         distance = house.calculate_distance(house_area)
-                        print("other")
-                        print(distance)
                         all_distance_to_other_houses.append(distance)
 
                     elif house_area.name == "maison":
                         distance = house.calculate_distance(house_area)
-                        print("maison")
-                        print(distance)
                         all_distances_maison.append(distance)
 
                 # vind minimale afstand tot maison and other houses
@@ -107,11 +106,21 @@ def main():
             if len(index) > 0:
                 maxpos = values_heurestics.index(max(values_heurestics))
                 amstelhaege.houses_placed.append(houses_heurestics[maxpos])
+                counter_houses += 1
+                amstelhaege.calculate_totalvalue()
+                fig = amstelhaege.plot_distribution()
+                fig.savefig("../resultaten/greedy_heurestics(60)/" + "house" + str(counter_houses) + ".png")
+                plt.close(fig)
             else:
                 #finds first house with max total value area and its index and then
                 # append to area
                 maxpos = values_area.index(max(values_area))
                 amstelhaege.houses_placed.append(houses_placed[maxpos])
+                counter_houses += 1
+                amstelhaege.calculate_totalvalue()
+                fig = amstelhaege.plot_distribution()
+                fig.savefig("../resultaten/greedy_heurestics(60)/" + "house" + str(counter_houses) + ".png")
+                plt.close(fig)
 
         elif len(amstelhaege.houses_placed) < ((amstelhaege.amount_houses * amstelhaege.portions[2]) + (amstelhaege.amount_houses * amstelhaege.portions[1])):
 
@@ -148,14 +157,10 @@ def main():
                 for house_area in amstelhaege.houses_placed:
                     if house_area.name == "bungalow" or house_area.name == "house":
                         distance = house.calculate_distance(house_area)
-                        print("other")
-                        print(distance)
                         all_distance_to_other_houses.append(distance)
 
                     elif house_area.name == "maison":
                         distance = house.calculate_distance(house_area)
-                        print("maison")
-                        print(distance)
                         all_distances_maison.append(distance)
 
                 # vind minimale afstand tot maison and other houses
@@ -191,11 +196,21 @@ def main():
             if len(index) > 0:
                 maxpos = values_heurestics.index(max(values_heurestics))
                 amstelhaege.houses_placed.append(houses_heurestics[maxpos])
+                counter_houses += 1
+                amstelhaege.calculate_totalvalue()
+                fig = amstelhaege.plot_distribution()
+                fig.savefig("../resultaten/greedy_heurestics(60)/" + "house" + str(counter_houses) + ".png")
+                plt.close(fig)
             else:
                 #finds first house with max total value area and its index and then
                 # append to area
                 maxpos = values_area.index(max(values_area))
                 amstelhaege.houses_placed.append(houses_placed[maxpos])
+                counter_houses += 1
+                amstelhaege.calculate_totalvalue()
+                fig = amstelhaege.plot_distribution()
+                fig.savefig("../resultaten/greedy_heurestics(60)/" + "house" + str(counter_houses) + ".png")
+                plt.close(fig)
         else:
 
             houses_placed = []
@@ -231,14 +246,10 @@ def main():
                 for house_area in amstelhaege.houses_placed:
                     if house_area.name == "bungalow" or house_area.name == "house":
                         distance = house.calculate_distance(house_area)
-                        print("other")
-                        print(distance)
                         all_distance_to_other_houses.append(distance)
 
                     elif house_area.name == "maison":
                         distance = house.calculate_distance(house_area)
-                        print("maison")
-                        print(distance)
                         all_distances_maison.append(distance)
 
                 # vind minimale afstand tot maison and other houses
@@ -274,16 +285,27 @@ def main():
             if len(index) > 0:
                 maxpos = values_heurestics.index(max(values_heurestics))
                 amstelhaege.houses_placed.append(houses_heurestics[maxpos])
+                counter_houses += 1
+                amstelhaege.calculate_totalvalue()
+                fig = amstelhaege.plot_distribution()
+                fig.savefig("../resultaten/greedy_heurestics(60)/" + "house" + str(counter_houses) + ".png")
+                plt.close(fig)
             else:
                 #finds first house with max total value area and its index and then
                 # append to area
                 maxpos = values_area.index(max(values_area))
                 amstelhaege.houses_placed.append(houses_placed[maxpos])
+                counter_houses += 1
+                amstelhaege.calculate_totalvalue()
+                fig = amstelhaege.plot_distribution()
+                fig.savefig("../resultaten/greedy_heurestics(60)/" + "house" + str(counter_houses) + ".png")
+                plt.close(fig)
 
-    print(amstelhaege.houses_placed)
     amstelhaege.calculate_totalvalue()
-    print(amstelhaege.value)
-    amstelhaege.plot_distribution()
+    fig = amstelhaege.plot_distribution()
+    fig.savefig("../resultaten/greedy_heurestics(60)/" + "amstelhaege" + ".png")
+    plt.close(fig)
+    print("--- %s seconds ---" % (time.process_time() - start_time))
 
 
 if __name__ == "__main__":

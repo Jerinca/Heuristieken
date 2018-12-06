@@ -152,6 +152,6 @@ def main():
     plt.close(fig)
     print("--- %s seconds ---" % (time.process_time() - start_time))
 
-
+    return amstelhaege
 if __name__ == "__main__":
     main()

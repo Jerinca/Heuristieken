@@ -14,6 +14,7 @@ from random import randint
 import matplotlib.pyplot as plt
 from class_house import House_types, House, Bungalow, Maison
 from class_area import Area
+import time
 
 TOTAL_HOUSES = [20, 40, 60]
 PERCENTAGES = [0.15, 0.35, 0.6]
@@ -21,9 +22,12 @@ WIDTH = 320
 HEIGHT = 360
 AMOUNT = TOTAL_HOUSES[2]
 
-def main():
 
-    amstelhaege = Area(20)
+start_time = time.process_time()
+
+def main():
+    counter = 0
+    amstelhaege = Area(60)
     # house = House(0, 0, 0)
     # bungalow = Bungalow(0, 0, 0)
     # maison = Maison(0, 0, 0)
@@ -84,6 +88,11 @@ def main():
             # append to area
             maxpos = values_area.index(max(values_area))
             amstelhaege.houses_placed.append(houses_placed[maxpos])
+            counter += 1
+            amstelhaege.calculate_totalvalue()
+            fig = amstelhaege.plot_distribution()
+            fig.savefig("../resultaten/greedy_obj_func(60)/" + "house" + str(counter) + ".png")
+            plt.close(fig)
 
         elif len(amstelhaege.houses_placed) < ((amstelhaege.amount_houses * amstelhaege.portions[2]) + (amstelhaege.amount_houses * amstelhaege.portions[1])):
 
@@ -135,6 +144,11 @@ def main():
             # append to area
             maxpos = values_area.index(max(values_area))
             amstelhaege.houses_placed.append(houses_placed[maxpos])
+            counter += 1
+            amstelhaege.calculate_totalvalue()
+            fig = amstelhaege.plot_distribution()
+            fig.savefig("../resultaten/greedy_obj_func(60)/" + "house" + str(counter) + ".png")
+            plt.close(fig)
         else:
 
             houses_placed = []
@@ -185,12 +199,20 @@ def main():
             # append to area
             maxpos = values_area.index(max(values_area))
             amstelhaege.houses_placed.append(houses_placed[maxpos])
+            counter += 1
+            amstelhaege.calculate_totalvalue()
+            fig = amstelhaege.plot_distribution()
+            fig.savefig("../resultaten/greedy_obj_func(60)/" + "house" + str(counter) + ".png")
+            plt.close(fig)
 
 
     print(amstelhaege.houses_placed)
     amstelhaege.calculate_totalvalue()
     print(amstelhaege.value)
-    amstelhaege.plot_distribution()
+    fig = amstelhaege.plot_distribution()
+    fig.savefig("../resultaten/greedy_obj_func(60)/" + "amstelhaege" + ".png")
+    plt.close(fig)
+    print("--- %s seconds ---" % (time.process_time() - start_time))
 
     return amstelhaege
 
