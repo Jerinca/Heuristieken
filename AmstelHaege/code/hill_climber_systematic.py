@@ -15,7 +15,7 @@ HEIGHT = 360
 
 def main():
 
-    rdm_amstelhaege = Area(2)
+    rdm_amstelhaege = Area(20)
     rdm_amstelhaege.place_houses()
     # rdm_amstelhaege = greedy_obj_func.main()
     rdm_amstelhaege.calculate_totalvalue()
@@ -23,7 +23,7 @@ def main():
     rdm_amstelhaege.plot_distribution()
     print(total_value)
     best_plot = rdm_amstelhaege
-    file = open("values_systematic_20_06122018", "w")
+    file = open("values_systematic_20_06122018.txt", "w")
     starttime = datetime.datetime.now()
     file.write(starttime.strftime("%Y-%m-%d %H:%M:%S") +"\n")
 
