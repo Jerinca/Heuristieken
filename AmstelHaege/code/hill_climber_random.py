@@ -14,8 +14,8 @@ WIDTH = 320
 HEIGHT = 360
 
 def main():
-
-    rdm_amstelhaege = Area(2)
+    list_random_climber_values = []
+    rdm_amstelhaege = Area(20)
     rdm_amstelhaege.place_houses()
     # rdm_amstelhaege = greedy_obj_func.main()
     rdm_amstelhaege.calculate_totalvalue()
@@ -23,87 +23,68 @@ def main():
     rdm_amstelhaege.plot_distribution()
     print(total_value)
     # best_plot = rdm_amstelhaege
-    file = open("values_systematic_20_06122018.txt", "w")
+    # file = open("values_systematic_20_06122018.txt", "w")
     starttime = datetime.datetime.now()
-    file.write(starttime.strftime("%Y-%m-%d %H:%M:%S") +"\n")
+    print(starttime.strftime("%Y-%m-%d %H:%M:%S") +"\n")
 
-    for i in range(10):
+    for i in range(10000):
         index = randint(0, (len(rdm_amstelhaege.houses_placed) - 1))
-        y = randint(0, self.height)
-        x = randint(0, self.width)
+        y = randint(0, HEIGHT)
+        x = randint(0, WIDTH)
 
         old_x = rdm_amstelhaege.houses_placed[index].x
         old_y = rdm_amstelhaege.houses_placed[index].y
 
 
+        rdm_amstelhaege.move_house(index,y,x)
 
+        not_possible = 0 
+        if not rdm_amstelhaege.houses_placed[index].in_map():
+            not_possible += 1
+            rdm_amstelhaege.move_house(index, old_x, old_y)
+            print("bye")
 
-
-
-
-
-
-
-    counter = 1
-    while (counter >= 1):
-        counter = 0
-        index = 0
-        for house in rdm_amstelhaege.houses_placed:
-            print(index)
-            old_x = house.x
-            old_y = house.y
-
-            for y in range(0, rdm_amstelhaege.height, 1):
-                for x in range(0, rdm_amstelhaege.width, 1):
-                    old_x = house.x
-                    old_y = house.y
-
-                    rdm_amstelhaege.move_house(index, x, y)
-                    # print(x,y)
-
-                    # if rdm_amstelhaege.legit_placement(house):
-                    not_possible = 0
-                    if not rdm_amstelhaege.houses_placed[index].in_map():
+        else:
+            for object in rdm_amstelhaege.houses_placed:
+                if not object == rdm_amstelhaege.houses_placed[index]:
+                    if rdm_amstelhaege.houses_placed[index].intersect(object):
                         not_possible += 1
                         rdm_amstelhaege.move_house(index, old_x, old_y)
-                        # print("bye")
+                        # print(index)
+                    
+        if not_possible == 0:
+            # print("hoi")
+            rdm_amstelhaege.calculate_totalvalue()
+            # print(rdm_amstelhaege.value)
+            # rdm_amstelhaege.plot_distribution()
 
-                    for object in rdm_amstelhaege.houses_placed:
-                        if not object == rdm_amstelhaege.houses_placed[index]:
-                            if rdm_amstelhaege.houses_placed[index].intersect(object):
-                                not_possible += 1
-                                rdm_amstelhaege.move_house(index, old_x, old_y)
-                                # print(index)
-
-                    if not_possible == 0:
-                        # print("hoi")
-                        rdm_amstelhaege.calculate_totalvalue()
-                        # print(rdm_amstelhaege.value)
-                        # rdm_amstelhaege.plot_distribution()
-
-                        if rdm_amstelhaege.value > total_value:
-                            total_value = rdm_amstelhaege.value
-                            best_plot = rdm_amstelhaege
-                            counter += 1
-                            # rdm_amstelhaege.plot_distribution()
-                            # print("more")
-                            file.write(str(total_value)+ "\n")
-                            # print(total_value)
-                            # print(rdm_amstelhaege.houses_placed[0].x)
-                            # print(rdm_amstelhaege.houses_placed[1].x)
-                        else:
-                            rdm_amstelhaege.move_house(index, old_x, old_y)
-            index += 1
+            if rdm_amstelhaege.value > total_value:
+                print(rdm_amstelhaege.value)
+                # rdm_amstelhaege.plot_distribution()
+                list_random_climber_values.append(rdm_amstelhaege.value)
+                total_value = rdm_amstelhaege.value
+                best_plot = rdm_amstelhaege
+                # counter += 1
+                # rdm_amstelhaege.plot_distribution()
+                print("more")
+                # file.write(str(total_value)+ "\n")
+                # print(total_value)
+                # print(rdm_amstelhaege.houses_placed[0].x)
+                # print(rdm_amstelhaege.houses_placed[1].x)
+            else:
+                rdm_amstelhaege.move_house(index, old_x, old_y)
+                print(rdm_amstelhaege.value)
 
     endtime = datetime.datetime.now()
-    file.write(endtime.strftime("%Y-%m-%d %H:%M:%S")+ "\n")
-    file.write(str(total_value))
-    file.close()
-    # print(total_value)
+    print(endtime.strftime("%Y-%m-%d %H:%M:%S")+ "\n")
+    # file.write(str(total_value))
+    # file.close()
+    print(total_value)
     # print(best_plot.houses_placed[0].x)
     # print(best_plot.houses_placed[1].x)
     fig = rdm_amstelhaege.plot_distribution()
-    fig.savefig('systematic_20_06122018.png')
+    fig.savefig('random_hillclimber.png')
+    print(list_random_climber_values)
 
 if __name__ == "__main__":
     main()
