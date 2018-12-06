@@ -26,8 +26,12 @@ def main():
     # file = open("values_systematic_20_06122018.txt", "w")
     starttime = datetime.datetime.now()
     print(starttime.strftime("%Y-%m-%d %H:%M:%S") +"\n")
+    
+    counter_iteration = 0
+    list_x_values = []
 
-    for i in range(10000):
+    for i in range(1000):
+        counter_iteration += 1
         index = randint(0, (len(rdm_amstelhaege.houses_placed) - 1))
         y = randint(0, HEIGHT)
         x = randint(0, WIDTH)
@@ -51,7 +55,7 @@ def main():
                         not_possible += 1
                         rdm_amstelhaege.move_house(index, old_x, old_y)
                         # print(index)
-                    
+        
         if not_possible == 0:
             # print("hoi")
             rdm_amstelhaege.calculate_totalvalue()
@@ -61,6 +65,8 @@ def main():
             if rdm_amstelhaege.value > total_value:
                 print(rdm_amstelhaege.value)
                 # rdm_amstelhaege.plot_distribution()
+                list_x_values.append(counter_iteration)
+                
                 list_random_climber_values.append(rdm_amstelhaege.value)
                 total_value = rdm_amstelhaege.value
                 best_plot = rdm_amstelhaege
@@ -85,6 +91,17 @@ def main():
     fig = rdm_amstelhaege.plot_distribution()
     fig.savefig('random_hillclimber.png')
     print(list_random_climber_values)
+    # the histogram of the data
+
+    plt.show()
+
+    plt.plot(list_x_values, list_random_climber_values, color = 'lightseagreen')
+    plt.title("Random Hillclimber")
+    plt.grid(True)
+    plt.show()
+
+    
+
 
 if __name__ == "__main__":
     main()
