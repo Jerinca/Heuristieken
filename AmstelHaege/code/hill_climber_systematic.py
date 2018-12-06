@@ -22,10 +22,11 @@ def main():
     total_value = rdm_amstelhaege.value
     rdm_amstelhaege.plot_distribution()
     print(total_value)
-    best_plot = rdm_amstelhaege
-    file = open("values_systematic_20_06122018.txt", "w")
+    # best_plot = rdm_amstelhaege
+    # file = open("values_systematic_20_06122018.txt", "w")
     starttime = datetime.datetime.now()
-    file.write(starttime.strftime("%Y-%m-%d %H:%M:%S") +"\n")
+    print(starttime.strftime("%Y-%m-%d %H:%M:%S") +"\n")
+    values = []
 
     counter = 1
     while (counter >= 1):
@@ -36,8 +37,8 @@ def main():
             old_x = house.x
             old_y = house.y
 
-            for y in range(0, rdm_amstelhaege.height, 1):
-                for x in range(0, rdm_amstelhaege.width, 1):
+            for y in range(0, rdm_amstelhaege.height - house.height, 1):
+                for x in range(0, rdm_amstelhaege.width - house.width, 1):
                     old_x = house.x
                     old_y = house.y
 
@@ -51,11 +52,12 @@ def main():
                         rdm_amstelhaege.move_house(index, old_x, old_y)
                         # print("bye")
 
-                    for object in rdm_amstelhaege.houses_placed:
-                        if not object == rdm_amstelhaege.houses_placed[index]:
-                            if rdm_amstelhaege.houses_placed[index].intersect(object):
-                                not_possible += 1
-                                rdm_amstelhaege.move_house(index, old_x, old_y)
+                    else:
+                        for object in rdm_amstelhaege.houses_placed:
+                            if not object == rdm_amstelhaege.houses_placed[index]:
+                                if rdm_amstelhaege.houses_placed[index].intersect(object):
+                                    not_possible += 1
+                                    rdm_amstelhaege.move_house(index, old_x, old_y)
                                 # print(index)
 
                     if not_possible == 0:
@@ -66,11 +68,12 @@ def main():
 
                         if rdm_amstelhaege.value > total_value:
                             total_value = rdm_amstelhaege.value
-                            best_plot = rdm_amstelhaege
+                            values.append(rdm_amstelhaege.value)
+                            # best_plot = rdm_amstelhaege
                             counter += 1
                             # rdm_amstelhaege.plot_distribution()
                             # print("more")
-                            file.write(str(total_value)+ "\n")
+                            # file.write(str(total_value)+ "\n")
                             # print(total_value)
                             # print(rdm_amstelhaege.houses_placed[0].x)
                             # print(rdm_amstelhaege.houses_placed[1].x)
@@ -79,14 +82,15 @@ def main():
             index += 1
 
     endtime = datetime.datetime.now()
-    file.write(endtime.strftime("%Y-%m-%d %H:%M:%S")+ "\n")
-    file.write(str(total_value))
-    file.close()
+    print(endtime.strftime("%Y-%m-%d %H:%M:%S")+ "\n")
+    print(values)
+    # file.write(str(total_value))
+    # file.close()
     # print(total_value)
     # print(best_plot.houses_placed[0].x)
     # print(best_plot.houses_placed[1].x)
     fig = rdm_amstelhaege.plot_distribution()
-    fig.savefig('systematic_20_06122018.png')
+    fig.savefig('test2.png')
 
 if __name__ == "__main__":
     main()
