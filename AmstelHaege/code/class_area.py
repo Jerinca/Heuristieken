@@ -166,7 +166,7 @@ class Area(object):
         plt.title(f'Map AmstelHaege: {self.value}')
 
         plt.grid()
-        plt.show()
+        # plt.show()
 
         return fig
 
