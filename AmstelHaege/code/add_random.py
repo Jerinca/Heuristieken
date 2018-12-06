@@ -80,7 +80,6 @@ if __name__ == '__main__':
     amstelhaege = Area(20)
     areas = []
     values = []
-    count = []
     best_areas = []
     worst_areas = []
 
@@ -90,4 +89,6 @@ if __name__ == '__main__':
         areas.append(test_area)
         values.append(test_area.value)
 
-    for area in areas:
+    max_values = max(values)
+    min_values = min(values)
+    count = Counter(values)
