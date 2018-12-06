@@ -163,7 +163,7 @@ class Area(object):
             house_rec = house.rectangle()
             ax.add_patch(house_rec)
 
-        plt.title('Map AmstelHaege')
+        plt.title(f'Map AmstelHaege: {self.value}')
 
         plt.grid()
         plt.show()
@@ -202,8 +202,8 @@ if __name__ == "__main__":
     amstelhaege = Area(20)
     amstelhaege.place_houses()
     print(len(amstelhaege.houses_placed))
-    amstelhaege.plot_distribution()
     amstelhaege.calculate_totalvalue()
+    amstelhaege.plot_distribution()
     print(amstelhaege.value)
 
 
