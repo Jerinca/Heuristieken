@@ -48,7 +48,7 @@ python main.py
 ```
 ### Resultaten (Results)
 
-Het random plaatsen van alle huizen wordt 1000 keer uitgevoerd en met een histogram geplot om de distributie zichtbaar te maken. De resultaten (het stap voor stap plaatsen van de huizen) die uit de greedy komen worden opgeslagen in het resultaten mapje als losse afbeeldingen, waar vervolgens een gif bestand van wordt gemaakt. Bij de verschillende hill climbers worden zowel de uiteindelijke plattegrond en het verloop van de waardevermeerdering geplot. 
+Het random plaatsen van alle huizen wordt 10000 keer uitgevoerd en met een histogram geplot om de distributie zichtbaar te maken. De resultaten (het stap voor stap plaatsen van de huizen) die uit de greedy komen worden opgeslagen in het resultaten mapje als losse afbeeldingen, waar vervolgens een gif bestand van wordt gemaakt. Bij de verschillende hill climbers worden zowel de uiteindelijke plattegrond en het verloop van de waardevermeerdering geplot. 
 
 Om de algoritmes met elkaar te vergelijken, wordt de gemiddelde waarde van de wijk per algoritme berekend. Daarnaast zal de runtime van de algoritmes met elkaar vergeleken worden. 
 
