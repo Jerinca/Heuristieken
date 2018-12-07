@@ -17,7 +17,11 @@ def main():
     list_random_climber_values = []
     # rdm_amstelhaege = Area(5)
     # rdm_amstelhaege.place_houses()
+<<<<<<< HEAD
+    rdm_amstelhaege = greedy_obj_func.main(5)
+=======
     rdm_amstelhaege = greedy_obj_func.greedy_obj(5)
+>>>>>>> d066d7ab89ecb2dca75276495ce518577db05133
     rdm_amstelhaege.calculate_totalvalue()
     total_value = rdm_amstelhaege.value
     # rdm_amstelhaege.plot_distribution()
@@ -63,7 +67,7 @@ def main():
             # rdm_amstelhaege.plot_distribution()
 
             if rdm_amstelhaege.value > total_value:
-                print(rdm_amstelhaege.value)
+                # print(rdm_amstelhaege.value)
                 # rdm_amstelhaege.plot_distribution()
                 list_x_values.append(counter_iteration)
 
@@ -72,7 +76,7 @@ def main():
                 # best_plot = rdm_amstelhaege
                 # counter += 1
                 # rdm_amstelhaege.plot_distribution()
-                print("more")
+                # print("more")
                 # file.write(str(total_value)+ "\n")
                 # print(total_value)
                 # print(rdm_amstelhaege.houses_placed[0].x)
@@ -85,13 +89,13 @@ def main():
     print(endtime.strftime("%Y-%m-%d %H:%M:%S")+ "\n")
     # file.write(str(total_value))
     # file.close()
-    print(total_value)
-    rdm_amstelhaege.calculate_totalvalue
+    # print(total_value)
+    rdm_amstelhaege.calculate_totalvalue()
+    print(rdm_amstelhaege.value)
     # print(best_plot.houses_placed[0].x)
     # print(best_plot.houses_placed[1].x)
     fig = rdm_amstelhaege.plot_distribution()
     fig.savefig('greedy_obj_hillclimber1.png')
-    plt.show(fig)
     plt.close(fig)
     print(list_random_climber_values)
     # the histogram of the data
