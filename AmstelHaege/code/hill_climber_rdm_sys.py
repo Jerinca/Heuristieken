@@ -27,6 +27,10 @@ def main():
     starttime = datetime.datetime.now()
     print(starttime.strftime("%Y-%m-%d %H:%M:%S") +"\n")
     values = []
+    x_value = 0
+    x_values = []
+    values.append(total_value)
+    x_values.append(x_value)
 
     try:
         for i in range(2):
@@ -37,7 +41,7 @@ def main():
                 for x in range(0, rdm_amstelhaege.width - rdm_amstelhaege.houses_placed[index].width, 1):
                     old_x = rdm_amstelhaege.houses_placed[index].x
                     old_y = rdm_amstelhaege.houses_placed[index].y
-
+                    x_value += 1
                     rdm_amstelhaege.move_house(index, x, y)
                     # print(x,y)
 
@@ -65,7 +69,7 @@ def main():
                         if rdm_amstelhaege.value > total_value:
                             total_value = rdm_amstelhaege.value
                             values.append(rdm_amstelhaege.value)
-                            # best_plot = rdm_amstelhaege
+                            x_values.append(x_value)# best_plot = rdm_amstelhaege
                             # rdm_amstelhaege.plot_distribution()
                             # print("more")
                             # file.write(str(total_value)+ "\n")
@@ -92,6 +96,12 @@ def main():
     fig = rdm_amstelhaege.plot_distribution()
     fig.savefig('rand_sys1 .png')
     plt.close(fig)
+
+    plt.plot(x_values, values, color = 'lightseagreen')
+    plt.title("Random Hillclimber")
+    plt.grid(True)
+
+    plt.show()
 
 if __name__ == "__main__":
     main()
