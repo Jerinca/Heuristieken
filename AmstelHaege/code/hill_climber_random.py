@@ -17,7 +17,7 @@ def main():
     list_random_climber_values = []
     # rdm_amstelhaege = Area(5)
     # rdm_amstelhaege.place_houses()
-    rdm_amstelhaege = greedy_obj_func.main()
+    rdm_amstelhaege = greedy_obj_func.main(5)
     rdm_amstelhaege.calculate_totalvalue()
     total_value = rdm_amstelhaege.value
     rdm_amstelhaege.plot_distribution()

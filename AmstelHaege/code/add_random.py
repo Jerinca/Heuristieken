@@ -22,14 +22,13 @@ def random(amstelhaege):
 
     while len(amstelhaege.houses_placed) < amstelhaege.amount_houses:
        if len(amstelhaege.houses_placed) < (amstelhaege.amount_houses * amstelhaege.portions[0]):
-           count = 0
            x = randint(0, amstelhaege.width)
            y = randint(0, amstelhaege.height)
            new_house = House(x, y, 0)
            house_rect = new_house.rectangle()
            new_house.get_coordinates(house_rect)
-           if not new_house.in_map():
-               count += 1
+           if  new_house.in_map():
+               count = 0
 
                for house in amstelhaege.houses_placed:
                    if new_house.intersect(house):
@@ -40,14 +39,13 @@ def random(amstelhaege):
                    amstelhaege.houses_placed.append(new_house)
 
        elif len(amstelhaege.houses_placed) < ((amstelhaege.amount_houses * amstelhaege.portions[0]) + (amstelhaege.amount_houses * amstelhaege.portions[1])):
-           count = 0
            x = randint(0, amstelhaege.width)
            y = randint(0, amstelhaege.height)
            new_house = Bungalow(x, y, 0)
            house_rect = new_house.rectangle()
            new_house.get_coordinates(house_rect)
-           if not new_house.in_map():
-               count += 1
+           if  new_house.in_map():
+               count = 0
 
                for house in amstelhaege.houses_placed:
                    if new_house.intersect(house):
@@ -58,14 +56,13 @@ def random(amstelhaege):
                    amstelhaege.houses_placed.append(new_house)
 
        else:
-           count = 0
            x = randint(0, amstelhaege.width)
            y = randint(0, amstelhaege.height)
            new_house = Maison(x, y, 0)
            house_rect = new_house.rectangle()
            new_house.get_coordinates(house_rect)
-           if not new_house.in_map():
-               count += 1
+           if  new_house.in_map():
+               count = 0
 
                for house in amstelhaege.houses_placed:
                    if new_house.intersect(house):
@@ -84,7 +81,7 @@ if __name__ == '__main__':
     areas = []
     values = []
 
-    for i in range(10000):
+    for i in range(10):
         test_area = random(amstelhaege)
         value = test_area.calculate_totalvalue()
         areas.append(test_area)
@@ -98,13 +95,13 @@ if __name__ == '__main__':
     for i, index in enumerate(max_index):
         area = areas[index]
         fig = area.plot_distribution()
-        fig.savefig("../resultaten/random(20)/best_areas" + "area" + str(i) + ".png")
+        fig.savefig("../resultaten/random(20)/best_areas/" + "area" + str(i) + ".png")
         plt.close(fig)
 
     for i, index in enumerate(min_index):
         area = areas[index]
         fig = area.plot_distribution()
-        fig.savefig("../resultaten/random(20)/worst_areas" + "area" + str(i) + ".png")
+        fig.savefig("../resultaten/random(20)/worst_areas/" + "area" + str(i) + ".png")
         plt.close(fig)
 
     # count = Counter(values)
