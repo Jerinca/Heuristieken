@@ -17,7 +17,7 @@ def main():
 
     # rdm_amstelhaege = Area(20)
     # rdm_amstelhaege.place_houses()
-    rdm_amstelhaege = greedy_obj_func.main()
+    rdm_amstelhaege = greedy_obj_func.greedy_obj(20)
     rdm_amstelhaege.calculate_totalvalue()
     total_value = rdm_amstelhaege.value
     rdm_amstelhaege.plot_distribution()

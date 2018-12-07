@@ -25,9 +25,9 @@ AMOUNT = TOTAL_HOUSES[2]
 
 start_time = time.process_time()
 
-def main():
+def greedy_obj(n):
     counter = 0
-    amstelhaege = Area(20)
+    amstelhaege = Area(n)
     # house = House(0, 0, 0)
     # bungalow = Bungalow(0, 0, 0)
     # maison = Maison(0, 0, 0)
@@ -217,4 +217,4 @@ def main():
     return amstelhaege
 
 if __name__ == "__main__":
-    main()
+    greedy_obj(20)
