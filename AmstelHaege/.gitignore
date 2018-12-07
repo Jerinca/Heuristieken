@@ -1,5 +1,5 @@
 # negeer alle python (png) bestanden van het resultaten mapje
-resultaten/
+#resultaten/
 
 # negeer de bestanden die mijn text-editor aanmaakt
 #.idea/*
