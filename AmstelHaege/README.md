@@ -53,9 +53,14 @@ Het random plaatsen van alle huizen wordt 10000 keer uitgevoerd en met een histo
 Om de algoritmes met elkaar te vergelijken, wordt de gemiddelde waarde van de wijk per algoritme berekend. Daarnaast zal de runtime van de algoritmes met elkaar vergeleken worden. 
 
 ## Knelpunten
-- geen garantie voor beste oplossing 
-- verplichte vrijstand overlappen bij ons niet, waardoor waarde minder hoog
-- 
+
+Het knelpunt van onze Amstelhaege case is dat de beste oplossing onbekend is voor de plattegronden van alle huizenvariant: we kunnen niet met zekerheid zeggen dat we de hoogste waarde van een wijk gevonden hebben. 
+
+Verder brengen verschillende algoritmes verschillende problemen met zich mee. Bij de Hill Climber is de vrije vrijstand bijvoorbeeld niet verplicht overlappend. Door dat wel te doen zouden we de waarde van de wijk kunnen verhogen. De verplichte vrijstand is 'inbegrepen' in de afmetingen van een huis. Aangezien de huizen niet met elkaar kunnen overlappen, zorgt dit ervoor dat de verplichte vrijstand (nog) niet kunnen overlappen. 
+Ook accepteren we bij de Hill Climber geen verslechtering waar vervolgens weer op door gewerkt kan worden. Een cooling scheme zou eventueel toegepast kunnen worden in een latere stadium. Daarnaast worden oplossingen die dezelfde waarde opleveren (geen verbetering, maar ook geen verslechtering) ook niet geaccepteerd. 
+De runtime van de systematische hill climber is vrij lang. De (extra) waardevermeerdering die door middel van dit algoritme behaald kan worden is, vergeleken met bijvoorbeeld een greedy, waarschijnlijk vrij klein (moet nog getest worden).  
+
+Bij de verschillende soorten Greedy's hebben we tot nog toe dezelfde volgorde van huizen plaatsen aangehouden. Eerst alle maisons, vervolgens bungalows en als laatste eensgezinswoningen. Het zou zo kunnen zijn dat als we deze volgorde aanpassen, we een nog betere waarde van de wijk kunnen krijgen.
 
 ## Auteurs (Authors)
 
