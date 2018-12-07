@@ -27,14 +27,17 @@ def main():
     starttime = datetime.datetime.now()
     print(starttime.strftime("%Y-%m-%d %H:%M:%S") +"\n")
     values = []
+    x_values =[]
 
     # lijst met mogelijke coordinaten
-
+    x_value = 0
     counter = 1
     try:
         while (counter >= 1):
             counter = 0
             index = 0
+            x_value += 1
+            x_values.append(x_value)
             for house in rdm_amstelhaege.houses_placed:
                 print(index)
                 old_x = house.x
@@ -97,6 +100,11 @@ def main():
     # print(best_plot.houses_placed[1].x)
     fig = rdm_amstelhaege.plot_distribution()
     fig.savefig('test3.png')
+
+    plt.plot(x_values, values, color = 'lightseagreen')
+    plt.title("Random Hillclimber")
+    plt.grid(True)
+    plt.show()
 
 if __name__ == "__main__":
     main()
