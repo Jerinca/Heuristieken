@@ -28,6 +28,8 @@ def main():
     print(starttime.strftime("%Y-%m-%d %H:%M:%S") +"\n")
     values = []
 
+    # lijst met mogelijke coordinaten
+
     counter = 1
     try:
         while (counter >= 1):
@@ -81,6 +83,7 @@ def main():
                             else:
                                 rdm_amstelhaege.move_house(index, old_x, old_y)
                 index += 1
+
     except KeyboardInterrupt:
         print(values)
 
