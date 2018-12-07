@@ -93,7 +93,7 @@ def main():
     # print(best_plot.houses_placed[0].x)
     # print(best_plot.houses_placed[1].x)
     fig = rdm_amstelhaege.plot_distribution()
-    fig.savefig('test2.png')
+    fig.savefig('test3.png')
 
 if __name__ == "__main__":
     main()

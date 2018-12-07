@@ -27,7 +27,7 @@ start_time = time.process_time()
 
 def main():
     counter = 0
-    amstelhaege = Area(5)
+    amstelhaege = Area(20)
     # house = House(0, 0, 0)
     # bungalow = Bungalow(0, 0, 0)
     # maison = Maison(0, 0, 0)

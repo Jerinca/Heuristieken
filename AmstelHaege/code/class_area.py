@@ -78,14 +78,13 @@ class Area(object):
 
         while len(self.houses_placed) < self.amount_houses:
              if len(self.houses_placed) < (self.amount_houses * self.portions[0]):
-                 count = 0
                  x = randint(0, self.width)
                  y = randint(0, self.height)
                  new_house = House(x, y, 0)
                  house_rect = new_house.rectangle()
                  new_house.get_coordinates(house_rect)
-                 if not new_house.in_map():
-                     count += 1
+                 if new_house.in_map():
+                     count = 0
 
                      for house in self.houses_placed:
                          if new_house.intersect(house):
@@ -96,14 +95,13 @@ class Area(object):
                          self.houses_placed.append(new_house)
 
              elif len(self.houses_placed) < ((self.amount_houses * self.portions[0]) + (self.amount_houses * self.portions[1])):
-                 count = 0
                  x = randint(0, self.width)
                  y = randint(0, self.height)
                  new_house = Bungalow(x, y, 0)
                  house_rect = new_house.rectangle()
                  new_house.get_coordinates(house_rect)
-                 if not new_house.in_map():
-                     count += 1
+                 if new_house.in_map():
+                     count = 0
 
                      for house in self.houses_placed:
                          if new_house.intersect(house):
@@ -114,14 +112,13 @@ class Area(object):
                          self.houses_placed.append(new_house)
 
              else:
-                 count = 0
                  x = randint(0, self.width)
                  y = randint(0, self.height)
                  new_house = Maison(x, y, 0)
                  house_rect = new_house.rectangle()
                  new_house.get_coordinates(house_rect)
-                 if not new_house.in_map():
-                     count += 1
+                 if new_house.in_map():
+                     count = 0
 
                      for house in self.houses_placed:
                          if new_house.intersect(house):
