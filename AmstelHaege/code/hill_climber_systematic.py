@@ -113,7 +113,7 @@ def main():
     plt.title("Random Hillclimber")
     plt.grid(True)
 
-    # plt.show()
+    plt.show()
 
 if __name__ == "__main__":
     main()
