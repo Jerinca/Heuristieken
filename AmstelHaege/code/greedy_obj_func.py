@@ -217,4 +217,6 @@ def greedy_obj(n):
     return amstelhaege
 
 if __name__ == "__main__":
-    greedy_obj(20)
+    greedy = greedy_obj(5)
+    greedy.plot_distribution()
+    plt.show()

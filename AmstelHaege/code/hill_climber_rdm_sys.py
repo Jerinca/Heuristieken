@@ -17,10 +17,10 @@ def main():
 
     # rdm_amstelhaege = Area(20)
     # rdm_amstelhaege.place_houses()
-    rdm_amstelhaege = greedy_obj_func.greedy_obj(20)
+    rdm_amstelhaege = greedy_obj_func.greedy_obj(2)
     rdm_amstelhaege.calculate_totalvalue()
     total_value = rdm_amstelhaege.value
-    rdm_amstelhaege.plot_distribution()
+    # rdm_amstelhaege.plot_distribution()
     print(total_value)
     # best_plot = rdm_amstelhaege
     # file = open("values_systematic_20_06122018.txt", "w")
@@ -29,7 +29,7 @@ def main():
     values = []
 
     try:
-        for i in range(10):
+        for i in range(2):
             index = randint(0, (len(rdm_amstelhaege.houses_placed) - 1))
             print(index)
 
@@ -81,14 +81,16 @@ def main():
 
     endtime = datetime.datetime.now()
     print(endtime.strftime("%Y-%m-%d %H:%M:%S")+ "\n")
+    rdm_amstelhaege.calculate_totalvalue()
     print(values)
+    print(rdm_amstelhaege.value)
     # file.write(str(total_value))
     # file.close()
     # print(total_value)
     # print(best_plot.houses_placed[0].x)
     # print(best_plot.houses_placed[1].x)
     fig = rdm_amstelhaege.plot_distribution()
-    fig.savefig('rand_sys.png')
+    fig.savefig('rand_sys1 .png')
 
 if __name__ == "__main__":
     main()
