@@ -77,52 +77,59 @@ def random(amstelhaege):
 
 if __name__ == '__main__':
     start_time = time.process_time()
-    # amstelhaege = Area(20)
     areas = []
     values = []
 
-    for i in range(10):
-        amstelhaege = Area(20)
+    for i in range(10000):
+        amstelhaege = Area(60)
         test_area = random(amstelhaege)
         value = test_area.calculate_totalvalue()
         areas.append(test_area)
         values.append(test_area.value)
 
     print("--- %s seconds ---" % (time.process_time() - start_time))
-    print(values)
-    max_values = max(values)
-    print(max_values)
 
     max_index = [i for i, x in enumerate(values) if x == max(values)]
     min_index = [i for i, x in enumerate(values) if x == min(values)]
 
+    print(max_index)
+    print(min_index)
+
     for i, index in enumerate(max_index):
         area = areas[index]
         fig = area.plot_distribution()
-        fig.savefig("../resultaten/random(20)/best_areas/" + "area" + str(i) + ".png")
+        fig.savefig("../resultaten/random(60)/best_areas/" + "area" + str(i) + ".png")
         plt.close(fig)
 
     for i, index in enumerate(min_index):
         area = areas[index]
         fig = area.plot_distribution()
-        fig.savefig("../resultaten/random(20)/worst_areas/" + "area" + str(i) + ".png")
+        fig.savefig("../resultaten/random(60)/worst_areas/" + "area" + str(i) + ".png")
         plt.close(fig)
 
     # count = Counter(values)
     labels, values = zip(*Counter(values).items())
     indexes = np.arange(len(labels))
-    print(values)
-    print(labels)
-    print(indexes)
     width = 1
 
-    # plt.hist(values,density=10, bins=10)
-    # plt.axis([7000000, 14000000, 0, 10])
-    # plt.show()
+    create_range = []
+    for i in range(21500000, 25500000, 200000):
+      create_range.append(i)
 
+
+    print(labels)
+
+    plt.style.use('ggplot')
+    plt.hist(labels, bins=create_range)
+
+    # , bins=[8000000, 8500000, 9000000, 9500000, 10000000, 10500000]
     # fig = plt.bar(indexes, values, width)
     # plt.xticks(indexes + width * 0.5, labels)
-    # plt.title("BarChart Random")
-    # plt.show()
+
+    plt.title("Histogram Random Algorithm (60)")
+    plt.xlabel("Values Area")
+    plt.ylabel("Frequencies")
+
+    plt.show()
     # fig.savefig("../resultaten/random(20)/barplot.png")
     # plt.close(fig)
