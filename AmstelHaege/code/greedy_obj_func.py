@@ -27,7 +27,7 @@ start_time = time.process_time()
 
 def main():
     counter = 0
-    amstelhaege = Area(60)
+    amstelhaege = Area(5)
     # house = House(0, 0, 0)
     # bungalow = Bungalow(0, 0, 0)
     # maison = Maison(0, 0, 0)
@@ -91,7 +91,7 @@ def main():
             counter += 1
             amstelhaege.calculate_totalvalue()
             fig = amstelhaege.plot_distribution()
-            fig.savefig("../resultaten/greedy_obj_func(60)/" + "house" + str(counter) + ".png")
+            fig.savefig("../resultaten/greedy_obj_func(20)/" + "house" + str(counter) + ".png")
             plt.close(fig)
 
         elif len(amstelhaege.houses_placed) < ((amstelhaege.amount_houses * amstelhaege.portions[2]) + (amstelhaege.amount_houses * amstelhaege.portions[1])):
@@ -147,7 +147,7 @@ def main():
             counter += 1
             amstelhaege.calculate_totalvalue()
             fig = amstelhaege.plot_distribution()
-            fig.savefig("../resultaten/greedy_obj_func(60)/" + "house" + str(counter) + ".png")
+            fig.savefig("../resultaten/greedy_obj_func(20)/" + "house" + str(counter) + ".png")
             plt.close(fig)
         else:
 
@@ -202,7 +202,7 @@ def main():
             counter += 1
             amstelhaege.calculate_totalvalue()
             fig = amstelhaege.plot_distribution()
-            fig.savefig("../resultaten/greedy_obj_func(60)/" + "house" + str(counter) + ".png")
+            fig.savefig("../resultaten/greedy_obj_func(20)/" + "house" + str(counter) + ".png")
             plt.close(fig)
 
 
@@ -210,7 +210,7 @@ def main():
     amstelhaege.calculate_totalvalue()
     print(amstelhaege.value)
     fig = amstelhaege.plot_distribution()
-    fig.savefig("../resultaten/greedy_obj_func(60)/" + "amstelhaege" + ".png")
+    fig.savefig("../resultaten/greedy_obj_func(20)/" + "amstelhaege" + ".png")
     plt.close(fig)
     print("--- %s seconds ---" % (time.process_time() - start_time))
 
