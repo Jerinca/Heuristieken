@@ -91,6 +91,7 @@ def main():
     # print(best_plot.houses_placed[1].x)
     fig = rdm_amstelhaege.plot_distribution()
     fig.savefig('rand_sys1 .png')
+    plt.close(fig)
 
 if __name__ == "__main__":
     main()

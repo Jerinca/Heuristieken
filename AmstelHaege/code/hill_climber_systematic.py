@@ -15,12 +15,13 @@ HEIGHT = 360
 
 def main():
 
-    rdm_amstelhaege = Area(20)
-    rdm_amstelhaege.place_houses()
-    # rdm_amstelhaege = greedy_obj_func.greedy_obj(20)
+    # rdm_amstelhaege = Area(2)
+    # rdm_amstelhaege.place_houses()
+    rdm_amstelhaege = greedy_obj_func.greedy_obj(2)
     rdm_amstelhaege.calculate_totalvalue()
     total_value = rdm_amstelhaege.value
-    rdm_amstelhaege.plot_distribution()
+    # fig1 = rdm_amstelhaege.plot_distribution()
+
     print(total_value)
     # best_plot = rdm_amstelhaege
     # file = open("values_systematic_20_06122018.txt", "w")
@@ -28,16 +29,18 @@ def main():
     print(starttime.strftime("%Y-%m-%d %H:%M:%S") +"\n")
     values = []
     x_values =[]
+    values.append(total_value)
 
     # lijst met mogelijke coordinaten
     x_value = 0
+    x_values.append(x_value)
     counter = 1
     try:
         while (counter >= 1):
             counter = 0
             index = 0
-            x_value += 1
-            x_values.append(x_value)
+
+
             for house in rdm_amstelhaege.houses_placed:
                 print(index)
                 old_x = house.x
@@ -47,6 +50,7 @@ def main():
                     for x in range(0, rdm_amstelhaege.width - house.width, 1):
                         old_x = house.x
                         old_y = house.y
+                        x_value += 1
 
                         rdm_amstelhaege.move_house(index, x, y)
                         # print(x,y)
@@ -75,6 +79,7 @@ def main():
                             if rdm_amstelhaege.value > total_value:
                                 total_value = rdm_amstelhaege.value
                                 values.append(rdm_amstelhaege.value)
+                                x_values.append(x_value)
                                 # best_plot = rdm_amstelhaege
                                 counter += 1
                                 # rdm_amstelhaege.plot_distribution()
@@ -93,6 +98,8 @@ def main():
     endtime = datetime.datetime.now()
     print(endtime.strftime("%Y-%m-%d %H:%M:%S")+ "\n")
     print(values)
+    rdm_amstelhaege.calculate_totalvalue()
+    print(rdm_amstelhaege.value)
     # file.write(str(total_value))
     # file.close()
     # print(total_value)
@@ -100,11 +107,13 @@ def main():
     # print(best_plot.houses_placed[1].x)
     fig = rdm_amstelhaege.plot_distribution()
     fig.savefig('test3.png')
+    plt.close(fig)
 
     plt.plot(x_values, values, color = 'lightseagreen')
     plt.title("Random Hillclimber")
     plt.grid(True)
-    plt.show()
+
+    # plt.show()
 
 if __name__ == "__main__":
     main()
