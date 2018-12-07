@@ -5,7 +5,9 @@ Met random.py kunnen huizen volledig random worden geplaatst. De plaatsing houdt
 
 ## Greedy
 Er zijn drie verschillende greedies gecreeerd:
-- 
+- greedy_obj_func: selecteert de positie met de hoogste waarde voor elk huis om te plaatsen. 
+- greedy_distance_extended: selecteert de positie met de grootste vrijstand voor elk huis om te plaatsen. 
+- greedy_heuristics: afstand tot maison > 2 * afstand tot overige type huizen.
 
 ## Hill Climber
 De hill climbers worden gerund met random oplossingen en oplossingen die uit de greedy komen. Er zijn drie verschillende hill climbers:
@@ -14,3 +16,6 @@ De hill climbers worden gerund met random oplossingen en oplossingen die uit de 
 - hill_climber_rdm_sys: dit is een combinatie van de bovenstaande twee typen. Het selecteert namelijk random huizen, maar verplaatst de huizen systematisch door de hele wijk. 
 
 *Let op: op dit moment worden de algoritmes nog niet vanuit main.py gerund, maar vanuit de algoritme files zelf. 
+
+      
+
