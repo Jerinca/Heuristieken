@@ -13,7 +13,7 @@ Voor eengezinswoningen is dit dus: (288!/((288-n)! * n!)) * 0.5
 De lower bound is 1, omdat er minimaal een oplossing is. 
 
 ### Objective Function
-De upperbound van de objective function is de waarde waarbij de huizen maximale vrijstand hebben. Voor het gemak is de formule enkel gebaseerd op maisons. Een maison heeft 6 meter verplichte vrijstand rondom het huis. De extra vrijstand die een maison maximaal kan hebben is 68.5, namelijk (160 - 10.5 (= breedte van het huis) - 12 (6m vrijstand links en rechts)) / 2 = 68.75. Gezien wij enkel met halve meters werken, wordt dit 68.5.
+De upperbound van de objective function is de waarde waarbij de huizen maximale vrijstand hebben. Voor het gemak is de formule enkel gebaseerd op maisons. Een maison heeft 6 meter verplichte vrijstand rondom het huis. De extra vrijstand die een maison maximaal kan hebben is 68.5, namelijk (160 - 10.5 (= breedte van het huis) - 12 (6m vrijstand links en rechts)) / 2 = 68.75. 
 ```
 max_vrijstand = (breedte_wijk - breedte_huis - (2 * verplichte_vrijstand))/ 2
 upperbound = (n * waarde_maison) * (1 + perc_vermeerdering_maison * max_vrijstand)
@@ -48,7 +48,9 @@ Om de code te draaien met de standaardconfiguratie, gebruik:
 python main.py
 ```
 ### Resultaten (Results)
+Het random plaatsen van alle huizen wordt 1000 keer uitgevoerd en met een histogram geplot om de distributie zichtbaar te maken. De resultaten (het stap voor stap plaatsen van de huizen) die uit de greedy komen worden opgeslagen in het resultaten mapje als losse afbeeldingen, waar vervolgens een gif bestand van wordt gemaakt. Bij de verschillende hill climbers worden zowel de uiteindelijke plattegrond en het verloop van de waardevermeerdering geplot. 
 
+Om de algoritmes met elkaar te vergelijken, wordt de gemiddelde waarde van de wijk per algoritme berekend. Daarnaast zal de runtime van de algoritmes met elkaar vergeleken worden. 
 
 ## Auteurs (Authors)
 
