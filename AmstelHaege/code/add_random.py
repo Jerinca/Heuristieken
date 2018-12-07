@@ -77,17 +77,21 @@ def random(amstelhaege):
 
 if __name__ == '__main__':
     start_time = time.process_time()
-    amstelhaege = Area(20)
+    # amstelhaege = Area(20)
     areas = []
     values = []
 
     for i in range(10):
+        amstelhaege = Area(20)
         test_area = random(amstelhaege)
         value = test_area.calculate_totalvalue()
         areas.append(test_area)
         values.append(test_area.value)
 
     print("--- %s seconds ---" % (time.process_time() - start_time))
+    print(values)
+    max_values = max(values)
+    print(max_values)
 
     max_index = [i for i, x in enumerate(values) if x == max(values)]
     min_index = [i for i, x in enumerate(values) if x == min(values)]
@@ -107,11 +111,18 @@ if __name__ == '__main__':
     # count = Counter(values)
     labels, values = zip(*Counter(values).items())
     indexes = np.arange(len(labels))
+    print(values)
+    print(labels)
+    print(indexes)
     width = 1
 
-    fig = plt.bar(indexes, values, width)
-    plt.xticks(indexes + width * 0.5, labels)
-    plt.title("BarChart Random")
-    plt.show()
+    # plt.hist(values,density=10, bins=10)
+    # plt.axis([7000000, 14000000, 0, 10])
+    # plt.show()
+
+    # fig = plt.bar(indexes, values, width)
+    # plt.xticks(indexes + width * 0.5, labels)
+    # plt.title("BarChart Random")
+    # plt.show()
     # fig.savefig("../resultaten/random(20)/barplot.png")
     # plt.close(fig)
