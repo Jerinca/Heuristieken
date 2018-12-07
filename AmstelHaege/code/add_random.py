@@ -111,5 +111,7 @@ if __name__ == '__main__':
 
     fig = plt.bar(indexes, values, width)
     plt.xticks(indexes + width * 0.5, labels)
-    fig.savefig("../resultaten/random(20)/barplot.png")
-    plt.close(fig)
+    plt.title("BarChart Random")
+    plt.show()
+    # fig.savefig("../resultaten/random(20)/barplot.png")
+    # plt.close(fig)
