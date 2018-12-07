@@ -47,6 +47,8 @@ Om de code te draaien met de standaardconfiguratie, gebruik:
 ```
 python main.py
 ```
+### Resultaten (Results)
+
 
 ## Auteurs (Authors)
 
