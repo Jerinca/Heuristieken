@@ -17,7 +17,7 @@ def main():
 
     # rdm_amstelhaege = Area(20)
     # rdm_amstelhaege.place_houses()
-    rdm_amstelhaege = greedy_obj_func.greedy_obj(2)
+    rdm_amstelhaege = greedy_obj_func.greedy_obj(20)
     rdm_amstelhaege.calculate_totalvalue()
     total_value = rdm_amstelhaege.value
     # rdm_amstelhaege.plot_distribution()
@@ -33,7 +33,7 @@ def main():
     x_values.append(x_value)
 
     try:
-        for i in range(2):
+        for i in range(20):
             index = randint(0, (len(rdm_amstelhaege.houses_placed) - 1))
             print(index)
 
@@ -94,7 +94,11 @@ def main():
     # print(best_plot.houses_placed[0].x)
     # print(best_plot.houses_placed[1].x)
     fig = rdm_amstelhaege.plot_distribution()
+<<<<<<< HEAD
     fig.savefig('rand_sys1.png')
+=======
+    fig.savefig('rand_sys2.png')
+>>>>>>> c1a76b4675ad3b0707e8737945b297e5b5d8dbc1
     plt.close(fig)
 
     plt.plot(x_values, values, color = 'lightseagreen')

@@ -34,14 +34,14 @@ def greedy_obj(n):
 
     while len(amstelhaege.houses_placed) < amstelhaege.amount_houses:
 
-        if len(amstelhaege.houses_placed) < (amstelhaege.amount_houses * amstelhaege.portions[2]):
+        if len(amstelhaege.houses_placed) < (amstelhaege.amount_houses * amstelhaege.portions[0]):
 
             houses_placed = []
 
             for y_bottom_left in range(0, amstelhaege.height, Maison.height):
                 for x_bottom_left in range(0, amstelhaege.width, Maison.width):
 
-                    house_to_place = Maison(x_bottom_left, y_bottom_left, 0)
+                    house_to_place = House(x_bottom_left, y_bottom_left, 0)
                     house_to_place_rect = house_to_place.rectangle()
                     house_to_place.get_coordinates(house_to_place_rect)
                     count = 0
@@ -91,10 +91,10 @@ def greedy_obj(n):
             counter += 1
             amstelhaege.calculate_totalvalue()
             fig = amstelhaege.plot_distribution()
-            fig.savefig("../resultaten/greedy_obj_func(20)/" + "house" + str(counter) + ".png")
+            fig.savefig("../resultaten/greedy_obj_func(40)_reverse/" + "house" + str(counter) + ".png")
             plt.close(fig)
 
-        elif len(amstelhaege.houses_placed) < ((amstelhaege.amount_houses * amstelhaege.portions[2]) + (amstelhaege.amount_houses * amstelhaege.portions[1])):
+        elif len(amstelhaege.houses_placed) < ((amstelhaege.amount_houses * amstelhaege.portions[0]) + (amstelhaege.amount_houses * amstelhaege.portions[1])):
 
             houses_placed = []
 
@@ -147,7 +147,7 @@ def greedy_obj(n):
             counter += 1
             amstelhaege.calculate_totalvalue()
             fig = amstelhaege.plot_distribution()
-            fig.savefig("../resultaten/greedy_obj_func(20)/" + "house" + str(counter) + ".png")
+            fig.savefig("../resultaten/greedy_obj_func(40)_reverse/" + "house" + str(counter) + ".png")
             plt.close(fig)
         else:
 
@@ -156,7 +156,7 @@ def greedy_obj(n):
             for y_bottom_left in range(0, amstelhaege.height, House.height):
                 for x_bottom_left in range(0, amstelhaege.width, House.width):
 
-                    house_to_place = House(x_bottom_left, y_bottom_left, 0)
+                    house_to_place = Maison(x_bottom_left, y_bottom_left, 0)
                     house_to_place_rect = house_to_place.rectangle()
                     house_to_place.get_coordinates(house_to_place_rect)
                     count = 0
@@ -202,7 +202,7 @@ def greedy_obj(n):
             counter += 1
             amstelhaege.calculate_totalvalue()
             fig = amstelhaege.plot_distribution()
-            fig.savefig("../resultaten/greedy_obj_func(20)/" + "house" + str(counter) + ".png")
+            fig.savefig("../resultaten/greedy_obj_func(40)_reverse/" + "house" + str(counter) + ".png")
             plt.close(fig)
 
 
@@ -210,13 +210,13 @@ def greedy_obj(n):
     amstelhaege.calculate_totalvalue()
     print(amstelhaege.value)
     fig = amstelhaege.plot_distribution()
-    fig.savefig("../resultaten/greedy_obj_func(20)/" + "amstelhaege" + ".png")
+    fig.savefig("../resultaten/greedy_obj_func(40)_reverse/" + "amstelhaege" + ".png")
     plt.close(fig)
     print("--- %s seconds ---" % (time.process_time() - start_time))
 
     return amstelhaege
 
 if __name__ == "__main__":
-    greedy = greedy_obj(2)
+    greedy = greedy_obj(40)
     greedy.plot_distribution()
     plt.show()
