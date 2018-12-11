@@ -32,6 +32,11 @@ def main():
     values.append(total_value)
     x_values.append(x_value)
 
+    taken_coords = []
+
+    # for house in rdm_amstelhaege.houses_placed:
+    #     coords = house.coords
+
     try:
         for i in range(20):
             index = randint(0, (len(rdm_amstelhaege.houses_placed) - 1))
@@ -94,11 +99,9 @@ def main():
     # print(best_plot.houses_placed[0].x)
     # print(best_plot.houses_placed[1].x)
     fig = rdm_amstelhaege.plot_distribution()
-<<<<<<< HEAD
-    fig.savefig('rand_sys1.png')
-=======
+
     fig.savefig('rand_sys2.png')
->>>>>>> c1a76b4675ad3b0707e8737945b297e5b5d8dbc1
+
     plt.close(fig)
 
     plt.plot(x_values, values, color = 'lightseagreen')
