@@ -163,7 +163,8 @@ class Area(object):
             house_rec = house.rectangle()
             ax.add_patch(house_rec)
 
-        plt.title(f'Map AmstelHaege: {self.value}')
+        plt.title(f'Map AmstelHaege: {round(self.value)}')
+        plt.axis('scaled')
 
         plt.grid()
         # plt.show()

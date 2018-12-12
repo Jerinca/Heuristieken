@@ -33,7 +33,7 @@ def main():
     x_values.append(x_value)
 
     try:
-        for i in range(20):
+        for i in range(100):
             index = randint(0, (len(rdm_amstelhaege.houses_placed) - 1))
             print(index)
 
@@ -94,11 +94,13 @@ def main():
     # print(best_plot.houses_placed[0].x)
     # print(best_plot.houses_placed[1].x)
     fig = rdm_amstelhaege.plot_distribution()
-    fig.savefig('rand_sys2.png')
+    fig.savefig('rand_sys_100houses.png')
     plt.close(fig)
 
     plt.plot(x_values, values, color = 'lightseagreen')
-    plt.title("Random Hillclimber")
+    plt.title("Hillclimber combination random and systematic (100 times)")
+    plt.xlabel("number of function evaluations")
+    plt.ylabel("value amstelhaege(20)")
     plt.grid(True)
 
     plt.show()
