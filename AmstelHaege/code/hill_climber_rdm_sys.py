@@ -99,7 +99,7 @@ def main():
     # print(best_plot.houses_placed[0].x)
     # print(best_plot.houses_placed[1].x)
     fig = rdm_amstelhaege.plot_distribution()
-    fig.savefig('rand_sys_100houses.png')
+    fig.savefig('rand_sys_100houses1.png')
     plt.close(fig)
 
     plt.plot(x_values, values, color = 'lightseagreen')
