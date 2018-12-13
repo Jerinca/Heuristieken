@@ -15,9 +15,9 @@ HEIGHT = 360
 
 def main():
 
-    rdm_amstelhaege = Area(20)
-    rdm_amstelhaege.place_houses()
-    # rdm_amstelhaege = greedy_obj_func.greedy_obj(20)
+    # rdm_amstelhaege = Area(20)
+    # rdm_amstelhaege.place_houses()
+    rdm_amstelhaege = greedy_obj_func.greedy_obj(20)
     rdm_amstelhaege.calculate_totalvalue()
     total_value = rdm_amstelhaege.value
     # rdm_amstelhaege.plot_distribution()
@@ -99,7 +99,7 @@ def main():
     # print(best_plot.houses_placed[0].x)
     # print(best_plot.houses_placed[1].x)
     fig = rdm_amstelhaege.plot_distribution()
-    fig.savefig('rand_sys_100houses1.png')
+    fig.savefig('rand_sys_100houses_greedy_obj.png')
     plt.close(fig)
 
     plt.plot(x_values, values, color = 'lightseagreen')
