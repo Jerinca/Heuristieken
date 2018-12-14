@@ -1,6 +1,10 @@
 # importeer de gebruikte structuur
-from datastructuur import DataStructuur
-
+import csv
+import pandas as pd
+from class_house import House_types, House, Bungalow, Maison
+from class_area import Area
+import greedy_obj_func
+import hill_climber
 def main():
     A = DataStructuur("voorbeeld.csv")
 
