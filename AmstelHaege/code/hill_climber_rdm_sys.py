@@ -17,7 +17,7 @@ def main():
 
     # rdm_amstelhaege = Area(20)
     # rdm_amstelhaege.place_houses()
-    rdm_amstelhaege = greedy_obj_func.greedy_obj(20)
+    rdm_amstelhaege = greedy_obj_func.greedy_obj(40)
     rdm_amstelhaege.calculate_totalvalue()
     total_value = rdm_amstelhaege.value
     # rdm_amstelhaege.plot_distribution()
@@ -99,13 +99,13 @@ def main():
     # print(best_plot.houses_placed[0].x)
     # print(best_plot.houses_placed[1].x)
     fig = rdm_amstelhaege.plot_distribution()
-    fig.savefig('rand_sys_100houses_greedy_obj.png')
+    fig.savefig('rand_sys_100houses_greedy_obj(40).png')
     plt.close(fig)
 
     plt.plot(x_values, values, color = 'lightseagreen')
     plt.title("Hillclimber combination random and systematic (100 times)")
     plt.xlabel("number of function evaluations")
-    plt.ylabel("value amstelhaege(20)")
+    plt.ylabel("value amstelhaege(40)")
     plt.grid(True)
 
     plt.show()

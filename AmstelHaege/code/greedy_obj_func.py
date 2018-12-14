@@ -90,9 +90,9 @@ def greedy_obj(n):
             amstelhaege.houses_placed.append(houses_placed[maxpos])
             counter += 1
             amstelhaege.calculate_totalvalue()
-            fig = amstelhaege.plot_distribution()
-            fig.savefig("../resultaten/greedy_obj_func(20)/" + "house" + str(counter) + ".png")
-            plt.close(fig)
+            # fig = amstelhaege.plot_distribution()
+            # fig.savefig("../resultaten/greedy_obj_func(40)/" + "house" + str(counter) + ".png")
+            # plt.close(fig)
 
         elif len(amstelhaege.houses_placed) < ((amstelhaege.amount_houses * amstelhaege.portions[2]) + (amstelhaege.amount_houses * amstelhaege.portions[1])):
 
@@ -146,9 +146,9 @@ def greedy_obj(n):
             amstelhaege.houses_placed.append(houses_placed[maxpos])
             counter += 1
             amstelhaege.calculate_totalvalue()
-            fig = amstelhaege.plot_distribution()
-            fig.savefig("../resultaten/greedy_obj_func(20)/" + "house" + str(counter) + ".png")
-            plt.close(fig)
+            # fig = amstelhaege.plot_distribution()
+            # fig.savefig("../resultaten/greedy_obj_func(40)/" + "house" + str(counter) + ".png")
+            # plt.close(fig)
         else:
 
             houses_placed = []
@@ -201,22 +201,22 @@ def greedy_obj(n):
             amstelhaege.houses_placed.append(houses_placed[maxpos])
             counter += 1
             amstelhaege.calculate_totalvalue()
-            fig = amstelhaege.plot_distribution()
-            fig.savefig("../resultaten/greedy_obj_func(20)/" + "house" + str(counter) + ".png")
-            plt.close(fig)
+            # fig = amstelhaege.plot_distribution()
+            # fig.savefig("../resultaten/greedy_obj_func(40)/" + "house" + str(counter) + ".png")
+            # plt.close(fig)
 
 
     print(amstelhaege.houses_placed)
     amstelhaege.calculate_totalvalue()
     print(amstelhaege.value)
     fig = amstelhaege.plot_distribution()
-    fig.savefig("../resultaten/greedy_obj_func(20)/" + "amstelhaege" + ".png")
+    fig.savefig("../resultaten/greedy_obj_func(40)/" + "amstelhaege" + ".png")
     plt.close(fig)
     print("--- %s seconds ---" % (time.process_time() - start_time))
 
     return amstelhaege
 
 if __name__ == "__main__":
-    greedy = greedy_obj(20)
+    greedy = greedy_obj(40)
     greedy.plot_distribution()
     plt.show()

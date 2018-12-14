@@ -154,7 +154,7 @@ class Area(object):
 
     def plot_distribution(self):
 
-        fig = plt.figure()
+        fig = plt.figure(figsize=(6,8))
         ax = fig.add_subplot(111)
         ax.set_facecolor("green")
         plt.axis([0, self.width, 0, self.height])
@@ -164,7 +164,9 @@ class Area(object):
             ax.add_patch(house_rec)
 
         plt.title(f'Map AmstelHaege: {round(self.value)}')
-        plt.axis('scaled')
+        # plt.axis('scaled')
+        # plt.yscale("linear")
+        # plt.xscale("linear")
 
         plt.grid()
         # plt.show()
