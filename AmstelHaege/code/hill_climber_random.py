@@ -17,7 +17,7 @@ def main():
     list_random_climber_values = []
     # rdm_amstelhaege = Area(5)
     # rdm_amstelhaege.place_houses()
-    rdm_amstelhaege = greedy_obj_func.greedy_obj(5)
+    rdm_amstelhaege = greedy_obj_func.greedy_obj(20)
     rdm_amstelhaege.calculate_totalvalue()
     total_value = rdm_amstelhaege.value
     # rdm_amstelhaege.plot_distribution()
@@ -30,7 +30,7 @@ def main():
     counter_iteration = 0
     list_x_values = []
 
-    for i in range(1000):
+    for i in range(100000):
         counter_iteration += 1
         index = randint(0, (len(rdm_amstelhaege.houses_placed) - 1))
         y = randint(0, HEIGHT)
@@ -91,7 +91,7 @@ def main():
     # print(best_plot.houses_placed[0].x)
     # print(best_plot.houses_placed[1].x)
     fig = rdm_amstelhaege.plot_distribution()
-    fig.savefig('greedy_obj_hillclimber1.png')
+    fig.savefig('greedy_obj_hillclimber_run.png')
     plt.close(fig)
     print(list_random_climber_values)
     # the histogram of the data
