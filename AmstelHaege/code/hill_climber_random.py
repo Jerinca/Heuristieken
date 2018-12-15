@@ -100,6 +100,8 @@ def main():
 
     plt.plot(list_x_values, list_random_climber_values, color = 'lightseagreen')
     plt.title("Random Hillclimber")
+    plt.xlabel("number of function evaluations")
+    plt.ylabel("value amstelhaege(20)")
     plt.grid(True)
     plt.show()
 
