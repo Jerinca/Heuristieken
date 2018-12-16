@@ -17,7 +17,7 @@ def main():
 
     # rdm_amstelhaege = Area(2)
     # rdm_amstelhaege.place_houses()
-    rdm_amstelhaege = greedy_obj_func.greedy_obj(2)
+    rdm_amstelhaege = greedy_obj_func.greedy_obj(20)
     rdm_amstelhaege.calculate_totalvalue()
     total_value = rdm_amstelhaege.value
     # fig1 = rdm_amstelhaege.plot_distribution()
@@ -106,7 +106,7 @@ def main():
     # print(best_plot.houses_placed[0].x)
     # print(best_plot.houses_placed[1].x)
     fig = rdm_amstelhaege.plot_distribution()
-    fig.savefig('test3.png')
+    fig.savefig('test100000.png')
     plt.close(fig)
 
     plt.plot(x_values, values, color = 'lightseagreen')
