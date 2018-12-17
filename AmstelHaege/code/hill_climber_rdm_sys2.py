@@ -15,7 +15,9 @@ HEIGHT = 360
 
 def main():
 
-    rdm_amstelhaege = greedy_obj_func.greedy_obj(20)
+    # rdm_amstelhaege = greedy_obj_func.greedy_obj(20)
+    rdm_amstelhaege = Area(20)
+    rdm_amstelhaege.place_houses()
     rdm_amstelhaege.calculate_totalvalue()
     total_value = rdm_amstelhaege.value
     print(total_value)
@@ -59,7 +61,7 @@ def main():
 
                         rdm_amstelhaege.calculate_totalvalue()
 
-                        if rdm_amstelhaege.value > total_value:
+                        if rdm_amstelhaege.value >= total_value:
                             total_value = rdm_amstelhaege.value
                             values.append(rdm_amstelhaege.value)
                             x_values.append(x_value)
@@ -76,7 +78,7 @@ def main():
     print(rdm_amstelhaege.value)
 
     fig = rdm_amstelhaege.plot_distribution()
-    fig.savefig('hillclimber_rdm_sys_200_20houses.png')
+    fig.savefig('hillclimber_rdm_sys_200_20houses_nogreedy.png')
     plt.close(fig)
 
     plt.plot(x_values, values, color = 'lightseagreen')
