@@ -210,13 +210,13 @@ def greedy_obj(n):
     amstelhaege.calculate_totalvalue()
     print(amstelhaege.value)
     fig = amstelhaege.plot_distribution()
-    fig.savefig("../resultaten/greedy_obj_func(40)/" + "amstelhaege" + ".png")
+    fig.savefig("../resultaten/greedy_obj_func(60)/" + "amstelhaege" + ".png")
     plt.close(fig)
     print("--- %s seconds ---" % (time.process_time() - start_time))
 
     return amstelhaege
 
 if __name__ == "__main__":
-    greedy = greedy_obj(40)
+    greedy = greedy_obj(60)
     greedy.plot_distribution()
     plt.show()
