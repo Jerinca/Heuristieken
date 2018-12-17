@@ -24,9 +24,6 @@ def main():
     start_time = time.process_time()
 
     amstelhaege = Area(40)
-    # house = House(0, 0, 0)
-    # bungalow = Bungalow(0, 0, 0)
-    # maison = Maison(0, 0, 0)
     counter = 0
     name = "house"
 
