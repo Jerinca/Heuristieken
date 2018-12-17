@@ -14,11 +14,11 @@ from class_house import House_types, House, Bungalow, Maison
 from class_area import Area
 import time
 
-TOTAL_HOUSES = [20, 40, 60]
-PERCENTAGES = [0.15, 0.35, 0.6]
-WIDTH = 320
-HEIGHT = 360
-AMOUNT = TOTAL_HOUSES[2]
+# TOTAL_HOUSES = [20, 40, 60]
+# PERCENTAGES = [0.15, 0.35, 0.6]
+# WIDTH = 320
+# HEIGHT = 360
+# AMOUNT = TOTAL_HOUSES[2]
 
 def main():
     start_time = time.process_time()
