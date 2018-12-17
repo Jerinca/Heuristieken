@@ -72,6 +72,7 @@ def random(amstelhaege):
 
                    amstelhaege.houses_placed.append(new_house)
 
+    amstelhaege.calculate_totalvalue()
     return amstelhaege
 
 
