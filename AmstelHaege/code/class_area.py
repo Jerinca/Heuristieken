@@ -56,26 +56,26 @@ class Area(object):
         dict = df.to_dict()
         return dict
 
-    def place_house(self, new_house):
-        """
-        Function that place house one house in area
-        """
-
-        count = 0
-
-        # if new house in the map set counter 0
-        if not new_house.in_map():
-            count += 1
-
-        # for every house placed
-        for house in self.houses_placed:
-            # if new house intersects with existing house counter + 1
-            if new_house.intersect(house):
-                count += 1
-
-        # if no intersection, append new house
-        if count == 0:
-            self.houses_placed.append(new_house)
+    # def place_house(self, new_house):
+    #     """
+    #     Function that place house one house in area
+    #     """
+    #
+    #     count = 0
+    #
+    #     # if new house in the map set counter 0
+    #     if not new_house.in_map():
+    #         count += 1
+    #
+    #     # for every house placed
+    #     for house in self.houses_placed:
+    #         # if new house intersects with existing house counter + 1
+    #         if new_house.intersect(house):
+    #             count += 1
+    #
+    #     # if no intersection, append new house
+    #     if count == 0:
+    #         self.houses_placed.append(new_house)
 
     def place_houses(self):
         """
