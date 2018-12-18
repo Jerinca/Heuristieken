@@ -1,6 +1,3 @@
-import csv
-import pandas as pd
-import numpy as np
 from random import randint
 import matplotlib.pyplot as plt
 from class_house import House_types, House, Bungalow, Maison
