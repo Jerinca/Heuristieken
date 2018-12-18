@@ -2,7 +2,7 @@ from random import randint
 import matplotlib.pyplot as plt
 from class_house import House_types, House, Bungalow, Maison
 from class_area import Area
-import greedy_obj_func
+import greedy
 
 WIDTH = 320
 HEIGHT = 360
@@ -108,6 +108,7 @@ def random_systematic(amstelhaege, n):
     amstelhaege.calculate_totalvalue()
 
     save_distribution(amstelhaege, '../resultaten/hill_climber/random_systematic.png')
+    plot_progress(list_x_values, list_random_climber_values)
 
 def steepest_ascent(amstelhaege):
     """
@@ -140,6 +141,7 @@ def steepest_ascent(amstelhaege):
     amstelhaege.calculate_totalvalue()
 
     save_distribution(amstelhaege, '../resultaten/hill_climber/steepest_ascent.png')
+    plot_progress(list_x_values, list_random_climber_values)
 
 def plot_progress(list_x_values, list_random_climber_values):
     """
@@ -159,14 +161,3 @@ def save_distribution(amstelhaege, name):
     fig = amstelhaege.plot_distribution()
     fig.savefig(name)
     plt.close(fig)
-
-if __name__ == "__main__":
-    amstelhaege_random = Area(2)
-    amstelhaege_random.place_houses()
-    # amstelhaege_greedy = greedy_obj_func.greedy_obj(5)
-    #
-    stochastic(amstelhaege_random, 5)
-    #
-    # random_systematic(amstelhaege_random, 2)
-
-    # steepest_ascentc(amstelhaege_random)
