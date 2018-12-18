@@ -5,23 +5,28 @@ from class_house import House_types, House, Bungalow, Maison
 from class_area import Area
 import greedy
 import hill_climber
-import add_random
+import random_distribution
 
-def main():
-    amstelhaege = Area(20)
+def main(n):
+    amstelhaege = Area(n)
 
-    # # random
-    # A = add_random.random(amstelhaege_random)
+    # random
+    A = random_distribution.random(amstelhaege)
 
     # constructive
     B1 = greedy.greedy_distance(amstelhaege)
     B2 = greedy.greedy_obj(amstelhaege)
     B3 = greedy.greedy_heurestics(amstelhaege)
 
-    # iterative
-    # C1 = hill_climber.stochastic(A, 5)
-    # C2 = hill_climber.steepest_ascent(A)
-    # C3 = hill_climber.random_systematic(A, 2)
+    # iterative starting with random solution
+    C1 = hill_climber.stochastic(A, 100)
+    C2 = hill_climber.steepest_ascent(A)
+    C3 = hill_climber.random_systematic(A, 100)
+
+    # iterative starting with amstelhaege from greedy_obj 
+    C4 = hill_climber.stochastic(B2, 100)
+    C5 = hill_climber.steepest_ascent(B2)
+    C6 = hill_climber.random_systematic(B2, 100)
 
 if __name__ == "__main__":
-    main()
+    main(20)
