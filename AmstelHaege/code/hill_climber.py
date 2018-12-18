@@ -149,12 +149,14 @@ def plot_progress(list_x_values, list_random_climber_values):
     """
     Plots the progress of the algorithm.
     """
-    plt.plot(list_x_values, list_random_climber_values, color = 'lightseagreen')
+    fig = plt.plot(list_x_values, list_random_climber_values, color = 'lightseagreen')
     plt.title("Hillclimber")
     plt.xlabel("number of function evaluations")
     plt.ylabel("value amstelhaege(20)")
     plt.grid(True)
-    plt.show()
+    # plt.show()
+    fig.savefig("../resultaten/hill_climber/verloop.png")
+    plt.close(fig)
 
 def save_distribution(amstelhaege, name):
     """
@@ -169,8 +171,8 @@ if __name__ == "__main__":
     amstelhaege_random.place_houses()
     # amstelhaege_greedy = greedy_obj_func.greedy_obj(5)
     #
-    # stochastic(amstelhaege_random, 5)
+    stochastic(amstelhaege_random, 5)
     #
     # random_systematic(amstelhaege_random, 2)
 
-    steepest_ascentc(amstelhaege_random)
+    # steepest_ascentc(amstelhaege_random)
