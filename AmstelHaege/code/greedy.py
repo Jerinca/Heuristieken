@@ -191,10 +191,8 @@ def find_house_min_distance(amstelhaege, houses_placed, counter, string):
     for house in houses_placed:
 
         distance_min = house.calculate_dist(amstelhaege.houses_placed)
-        print(distance_min)
         min_distances_houses.append(distance_min)
 
-    print(min_distances_houses)
     maxpos = min_distances_houses.index(max(min_distances_houses))
     amstelhaege.houses_placed.append(houses_placed[maxpos])
     counter += 1
@@ -325,9 +323,3 @@ def place_with_heurestics(amstelhaege, houses_placed, counter_houses):
     counter_houses = check_heurestics(values_heurestics, houses_heurestics, values_area, houses_placed, counter_houses)
 
     return counter_houses
-
-if __name__ == "__main__":
-    amstelhaege = Area(20)
-    amstelhaege = greedy_distance(amstelhaege)
-    amstelhaege.calculate_totalvalue()
-    print(amstelhaege.value)

@@ -91,7 +91,7 @@ class House_types(object):
                 elif x_left_differenthouse >= x_right:
                     distances = house.new_distance(x_left_differenthouse, x_right, distances)
 
-                else:
+                elif y_top_differenthouse <= y_bottom:
                     distances = house.new_distance(y_bottom, y_top_differenthouse, distances)
 
         return distances
