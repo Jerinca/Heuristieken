@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 from class_house import House_types, House, Bungalow, Maison
 from class_area import Area
 import greedy_obj_func
-import datetime
 
 WIDTH = 320
 HEIGHT = 360
