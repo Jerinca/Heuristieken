@@ -1,17 +1,14 @@
 # Project AmstelHaege
 # Team name: Blauw
-# Members: Jerinca Vreugdenhil, Yang Yang To en  Julien Fer
+# Members: Jerinca Vreugdenhil, Yang Yang To en Julien Fer
 #
 # This program contains serveral applications of a greedy algorithm
 
-import csv
-import pandas as pd
+
 import numpy as np
-from random import randint
 import matplotlib.pyplot as plt
 from class_house import House_types, House, Bungalow, Maison
 from class_area import Area
-import time
 
 
 def greedy_distance(amstelhaege):
@@ -24,22 +21,30 @@ def greedy_distance(amstelhaege):
 
     while len(amstelhaege.houses_placed) < amstelhaege.amount_houses:
 
-        if len(amstelhaege.houses_placed) < (amstelhaege.amount_houses * amstelhaege.portions[2]):
+        if (len(amstelhaege.houses_placed) < (amstelhaege.amount_houses *
+                                              amstelhaege.portions[2])):
 
             houses_placed = place_Maison(amstelhaege)
-            counter = find_house_min_distance(amstelhaege, houses_placed, counter, "distance")
+            counter = find_house_min_distance(
+                amstelhaege, houses_placed, counter, "distance")
 
-        elif len(amstelhaege.houses_placed) < ((amstelhaege.amount_houses * amstelhaege.portions[2]) + (amstelhaege.amount_houses * amstelhaege.portions[1])):
+        elif (len(amstelhaege.houses_placed) < ((amstelhaege.amount_houses
+                                                 * amstelhaege.portions[2])
+                                                + (amstelhaege.amount_houses *
+                                                 amstelhaege.portions[1]))):
 
             houses_placed = place_Bungalow(amstelhaege)
-            counter = find_house_min_distance(amstelhaege, houses_placed, counter, "distance")
+            counter = find_house_min_distance(
+                amstelhaege, houses_placed, counter, "distance")
 
         else:
 
             houses_placed = place_House(amstelhaege)
-            counter = find_house_min_distance(amstelhaege, houses_placed, counter, "distance")
+            counter = find_house_min_distance(
+                amstelhaege, houses_placed, counter, "distance")
 
     return amstelhaege
+
 
 def greedy_obj(amstelhaege):
     """
@@ -51,22 +56,30 @@ def greedy_obj(amstelhaege):
 
     while len(amstelhaege.houses_placed) < amstelhaege.amount_houses:
 
-        if len(amstelhaege.houses_placed) < (amstelhaege.amount_houses * amstelhaege.portions[2]):
+        if (len(amstelhaege.houses_placed) < (amstelhaege.amount_houses
+                                              * amstelhaege.portions[2])):
 
             houses_placed = place_Maison(amstelhaege)
-            counter = find_house_max_value(amstelhaege, houses_placed, counter, "obj_func")
+            counter = find_house_max_value(
+                amstelhaege, houses_placed, counter, "obj_func")
 
-        elif len(amstelhaege.houses_placed) < ((amstelhaege.amount_houses * amstelhaege.portions[2]) + (amstelhaege.amount_houses * amstelhaege.portions[1])):
+        elif (len(amstelhaege.houses_placed) < ((amstelhaege.amount_houses *
+                                                amstelhaege.portions[2]) +
+                                                (amstelhaege.amount_houses *
+                                                   amstelhaege.portions[1]))):
 
             houses_placed = place_Bungalow(amstelhaege)
-            counter = find_house_max_value(amstelhaege, houses_placed, counter, "obj_func")
+            counter = find_house_max_value(
+                amstelhaege, houses_placed, counter, "obj_func")
 
         else:
 
             houses_placed = place_House(amstelhaege)
-            counter = find_house_max_value(amstelhaege, houses_placed, counter, "obj_func")
+            counter = find_house_max_value(
+                amstelhaege, houses_placed, counter, "obj_func")
 
     return amstelhaege
+
 
 def greedy_heurestics(amstelhaege):
     """
@@ -79,22 +92,30 @@ def greedy_heurestics(amstelhaege):
 
     while len(amstelhaege.houses_placed) < amstelhaege.amount_houses:
 
-        if len(amstelhaege.houses_placed) < (amstelhaege.amount_houses * amstelhaege.portions[2]):
+        if len(amstelhaege.houses_placed) < (amstelhaege.amount_houses
+                                             * amstelhaege.portions[2]):
 
             houses_placed = place_Maison(amstelhaege)
-            counter_houses = place_with_heurestics(amstelhaege, houses_placed, counter_houses)
+            counter_houses = place_with_heurestics(
+                amstelhaege, houses_placed, counter_houses)
 
-        elif len(amstelhaege.houses_placed) < ((amstelhaege.amount_houses * amstelhaege.portions[2]) + (amstelhaege.amount_houses * amstelhaege.portions[1])):
+        elif (len(amstelhaege.houses_placed) < ((amstelhaege.amount_houses *
+                                                 amstelhaege.portions[2]) +
+                                                (amstelhaege.amount_houses *
+                                                   amstelhaege.portions[1]))):
 
             houses_placed = place_Bungalow(amstelhaege)
-            counter_houses = place_with_heurestics(amstelhaege, houses_placed, counter_houses)
+            counter_houses = place_with_heurestics(
+                amstelhaege, houses_placed, counter_houses)
 
         else:
 
             houses_placed = place_House(amstelhaege)
-            counter_houses = place_with_heurestics(amstelhaege, houses_placed, counter_houses)
+            counter_houses = place_with_heurestics(
+                amstelhaege, houses_placed, counter_houses)
 
     return amstelhaege
+
 
 def place_Maison(amstelhaege):
     """
@@ -114,6 +135,7 @@ def place_Maison(amstelhaege):
 
     return houses_placed
 
+
 def place_Bungalow(amstelhaege):
     """
     Places houses of type Bungalow on every possible place in Area
@@ -131,6 +153,7 @@ def place_Bungalow(amstelhaege):
             place_house(amstelhaege, house_to_place, houses_placed)
 
     return houses_placed
+
 
 def place_House(amstelhaege):
     """
@@ -150,6 +173,7 @@ def place_House(amstelhaege):
 
     return houses_placed
 
+
 def place_house(amstelhaege, new_house, list):
     """
     Function that checks if house to be placed is legit
@@ -168,6 +192,7 @@ def place_house(amstelhaege, new_house, list):
     if count == 0:
         list.append(new_house)
 
+
 def save_distribution(amstelhaege, string, counter):
     """
     Save plot of distribution houses at
@@ -176,8 +201,10 @@ def save_distribution(amstelhaege, string, counter):
 
     amstelhaege.calculate_totalvalue()
     fig = amstelhaege.plot_distribution()
-    fig.savefig("../resultaten/greedy_" + string + "(" + str(amstelhaege.amount_houses) + ")/" + "house" + str(counter) + ".png")
+    fig.savefig("../resultaten/greedy_" + string + "(" +
+                str(amstelhaege.amount_houses) + ")/" + "house" + str(counter) + ".png")
     plt.close(fig)
+
 
 def find_house_min_distance(amstelhaege, houses_placed, counter, string):
     """
@@ -200,6 +227,7 @@ def find_house_min_distance(amstelhaege, houses_placed, counter, string):
 
     return counter
 
+
 def find_house_max_value(amstelhaege, houses_placed, counter, string):
     """
     Append every house to amstelhaege, calculate value, store value
@@ -221,6 +249,7 @@ def find_house_max_value(amstelhaege, houses_placed, counter, string):
     save_distribution(amstelhaege, string, counter)
 
     return counter
+
 
 def find_dist_Maison_Other(amstelhaege, house):
     """
@@ -245,6 +274,7 @@ def find_dist_Maison_Other(amstelhaege, house):
 
     return all_distances_maison, all_distance_to_other_houses
 
+
 def calc_temp_value(amstelhaege, house, values_area):
     """
     This function places temporarely a house in the area amstelhaege, calculates
@@ -255,6 +285,7 @@ def calc_temp_value(amstelhaege, house, values_area):
     amstelhaege.calculate_totalvalue()
     values_area.append(amstelhaege.value)
     amstelhaege.remove_house(house)
+
 
 def apply_heurestics(list1, list2, houses_placed, values_area):
     """
@@ -276,6 +307,7 @@ def apply_heurestics(list1, list2, houses_placed, values_area):
 
     return houses_heurestics, values_heurestics
 
+
 def check_heurestics(val_heur, houses_heur, values, houses_placed, counter):
     """
     This function checks if there are any houses that suffices the heurestic
@@ -296,6 +328,7 @@ def check_heurestics(val_heur, houses_heur, values, houses_placed, counter):
 
     return counter
 
+
 def place_with_heurestics(amstelhaege, houses_placed, counter_houses):
     """
     Place houses of type maison according the heurestic that the house to be
@@ -309,17 +342,21 @@ def place_with_heurestics(amstelhaege, houses_placed, counter_houses):
 
     for house in houses_placed:
 
-        all_distances_maison, all_distance_to_other_houses = find_dist_Maison_Other(amstelhaege, house)
+        all_distances_maison, all_distance_to_other_houses = find_dist_Maison_Other(
+            amstelhaege, house)
 
         # vind minimale afstand van te plaatsen huis tot maison and other houses
         if len(all_distances_maison) > 0 and len(all_distance_to_other_houses) > 0:
             min_distances_to_maison.append(min(all_distances_maison))
-            min_distance_to_other_houses.append(min(all_distance_to_other_houses))
+            min_distance_to_other_houses.append(
+                min(all_distance_to_other_houses))
 
         calc_temp_value(amstelhaege, house, values_area)
 
-    houses_heurestics, values_heurestics = apply_heurestics(min_distances_to_maison, min_distance_to_other_houses, houses_placed, values_area)
+    houses_heurestics, values_heurestics = apply_heurestics(
+        min_distances_to_maison, min_distance_to_other_houses, houses_placed, values_area)
 
-    counter_houses = check_heurestics(values_heurestics, houses_heurestics, values_area, houses_placed, counter_houses)
+    counter_houses = check_heurestics(
+        values_heurestics, houses_heurestics, values_area, houses_placed, counter_houses)
 
     return counter_houses

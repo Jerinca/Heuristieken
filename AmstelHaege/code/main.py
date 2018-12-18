@@ -8,7 +8,7 @@ import hill_climber
 import add_random
 
 def main():
-    amstelhaege = Area(60)
+    amstelhaege = Area(20)
 
     # # random
     # A = add_random.random(amstelhaege_random)
