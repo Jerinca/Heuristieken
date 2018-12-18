@@ -154,9 +154,7 @@ def plot_progress(list_x_values, list_random_climber_values):
     plt.xlabel("number of function evaluations")
     plt.ylabel("value amstelhaege(20)")
     plt.grid(True)
-    # plt.show()
-    fig.savefig("../resultaten/hill_climber/verloop.png")
-    plt.close(fig)
+    plt.show()
 
 def save_distribution(amstelhaege, name):
     """

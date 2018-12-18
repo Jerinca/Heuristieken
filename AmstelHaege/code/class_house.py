@@ -94,7 +94,7 @@ class House_types(object):
                 else:
                     distances = house.new_distance(y_bottom, y_top_differenthouse, distances)
 
-        return distances
+            return distances
 
     def pythagorean(self, a, b, distances):
         """
