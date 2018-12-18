@@ -1,12 +1,8 @@
-import csv
-import pandas as pd
-import numpy as np
 from random import randint
 import matplotlib.pyplot as plt
 from class_house import House_types, House, Bungalow, Maison
 from class_area import Area
 import greedy_obj_func
-import datetime
 
 WIDTH = 320
 HEIGHT = 360
@@ -149,7 +145,7 @@ def plot_progress(list_x_values, list_random_climber_values):
     """
     Plots the progress of the algorithm.
     """
-    plt.plot(list_x_values, list_random_climber_values, color = 'lightseagreen')
+    fig = plt.plot(list_x_values, list_random_climber_values, color = 'lightseagreen')
     plt.title("Hillclimber")
     plt.xlabel("number of function evaluations")
     plt.ylabel("value amstelhaege(20)")
@@ -169,8 +165,8 @@ if __name__ == "__main__":
     amstelhaege_random.place_houses()
     # amstelhaege_greedy = greedy_obj_func.greedy_obj(5)
     #
-    # stochastic(amstelhaege_random, 5)
+    stochastic(amstelhaege_random, 5)
     #
     # random_systematic(amstelhaege_random, 2)
 
-    steepest_ascentc(amstelhaege_random)
+    # steepest_ascentc(amstelhaege_random)
